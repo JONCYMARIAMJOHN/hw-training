@@ -1,0 +1,9 @@
+Created database named companyDB on mongodb and created collection named employee
+Performed insertion, updation, deletion on the collection using mongodb shell
+Exported employee collection to JSON and CSV format
+Created dump of companyDB, dropped the database and restored it from the dump
+Imported sample employee data into database
+Created single field index with department and compound field index with department and salary and validated indexes
+Evaluated concepts of Sharding, Clustering and Nodes
+Evaluated concept of ObjectId and timestamp
+Verified Structure of MongoDB used Documents tab, Schema tab, used filtering, performed CRUD operations, created aggregation pipeline, done schema analysis, index management etc.
