@@ -27,12 +27,17 @@ import re
 
 for email in df["email"]:
     if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-        print(email)
+        print(email) 
 
 # Save to CSV 
 df.to_csv("users.csv", index=False)
 
 #Save to xml
+
+#Method 1: Using pandas built-in function
+df.to_xml("users_1.xml", index=False)
+
+#Method 2: Using dicttoxml library
 import xml.etree.ElementTree as ET
 
 root = ET.Element("users")
@@ -62,5 +67,5 @@ for user in data:
             child.text = str(value)
 
 tree = ET.ElementTree(root)
-tree.write("users.xml")
+tree.write("users_2.xml")
 
