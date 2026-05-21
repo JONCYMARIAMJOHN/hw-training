@@ -1,0 +1,49 @@
+File imported to MongoDB
+	mongoimport --db FirstDB --collection users --file ~/Desktop/users.json --jsonArray
+
+Evaluated Data
+	mongosh
+	use FirstDB
+	db.users.find()
+	
+Find details with particular values
+	db.users.find({"address.city":"Gwenborough"})
+	db.users.find({"company.name":"Hoeger LLC"})
+	
+Projection
+	db.users.find({}, {name:1, email:1, _id:0})
+
+Sorting
+	db.users.find().sort({name:1})
+	
+Aggregation
+	db.users.aggregate([{
+	   $group:{
+	      _id:"$address.city",
+	      totalUsers:{$sum:1}}
+	 }
+	])
+	
+Computed fields
+	db.users.aggregate([
+	 {
+	   $project:{
+	      name:1,
+	      fullAddress:{
+		 $concat:[
+		   "$address.street",
+		   ", ",
+		   "$address.city"
+		 ]
+	      }
+	   }
+	 }
+	])
+	
+Schema Analysis
+
+Exported data as json
+
+Imported data into a python file.
+Evaluated missing values, duplicates, data inconsistencies etc. 
+Then converted to csv and xml format

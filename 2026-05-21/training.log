@@ -1,0 +1,5 @@
+Day started with a meeting
+Done task based on a data set.
+Imported the data into MongoDB and evaluated and exported as json file
+Imported the JSON file into python. Checked missing values, duplicates, inconsistencies etc.
+Converted the data into csv and xml format
