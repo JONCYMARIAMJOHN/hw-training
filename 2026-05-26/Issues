@@ -1,0 +1,18 @@
+--------------------- ISSUES ----------------------------------------
+
+exprealty_2026_05_05 Issues : 
+
+If the name is lengthy, it is recorded in the 'firstname' field itself. Middle name and Last name are empty.
+Title,address,zipcode, office phone no are empty in the whole dataset
+State, country are not visible on website
+Row 346 : Firstname incorrect format
+Row 1516 : Firstname incorrect. Some lengthy sentence is recorded
+
+---------------------------------------------------------------------
+
+exprealty_2026_04_05 Issues : 
+If the name is lengthy, it is recorded in the 'firstname' field itself. Middle name and Last name are empty.
+Title,address,zipcode, office phone no are empty in the whole dataset
+State, country are not visible on website
+
+----------------------------------------------------------------------
