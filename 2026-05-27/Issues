@@ -1,0 +1,23 @@
+-------Issues-------
+
+DataHut_AT_Dm_PriceExtractions_20260527.CSV Issues
+
+The price value are dot separated in csv file, but comma separated in website (eg: 2.5 in csv and 2,5 in website)
+
+
+------ ----------------
+
+DataHut_AT_Foodora_Penny_PriceExtractions_20260527.CSV Issues
+
+Promotion description not found on website
+
+
+--------------------------
+
+bahrainfinder_bah_2026_05_04.json Issues
+
+reference_number missing for so many records
+user_id missing for all records
+
+
+
