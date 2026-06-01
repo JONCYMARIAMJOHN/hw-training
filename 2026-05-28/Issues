@@ -1,0 +1,37 @@
+-------------- Issues---------------
+
+bayut_uae_project_2026_05_04.json
+
+1. Row 2697 -Project status is not displayed on the url
+2. Row 2695 : Location is present in the JSON file, but it is not displayed on the url
+3. Row 2697 : Developer name is not displayed on the url
+
+
+---------------------------------
+
+DataHut_CH_Coop_FullDump_20260528.csv
+
+1. 33206 rows found
+2. Some columns are completely empty (eg: store_name, store_address, store_suburb, store_state, store_postcode, store_addressid, promotion_valid, promotion type etc.)
+3. Duplicates found on Breadcrumps column
+4. drained_weight not found on the website.
+
+
+-----------------------------
+
+DataHut_AT_Interspar_FullDump_20260528.csv
+
+1. 34539 Rows found
+2. Some columns are completely empty (eg: tore_name, store_address, store_suburb, store_state, store_postcode, store_addressid etc.)
+
+
+----------------------------
+
+DataHut_SI_Mercator_FullDump_20260528.csv
+
+1. 16930 Rows found
+2. pdp_url not accessible
+
+
+
+

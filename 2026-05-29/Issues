@@ -1,0 +1,9 @@
+------------Issues----------
+
+lazada_2026_05_26.csv
+
+1009 Rows found
+Id and Urls are found unique
+6 image urls are captured in the dataset, but 8 or more images are available for each product in the website
+UniqueId: 13677508571 ---> Selling price is recorderd as 238, and regular price is 450. But in the website only 450 is showing asthe price of the product. 
+UniqueId: 22751602371 ---> Selling price is recorderd as 138, and regular price is 254. But in the website only 254 is showing asthe price of the product. 
