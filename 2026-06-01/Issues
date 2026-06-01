@@ -1,0 +1,15 @@
+------- Issues -----------
+
+---autodoc_2026_05_15.csv---
+Catalogue price column contains fileds with empty values
+
+---autoteiledirekt_2026_05_15.csv---
+Checked and found no issues
+
+---mister_auto_2026_05_15.csv---
+Spelling mismatch in the 'Catelogue price' field
+Contains value 'In Stock' and 'Out of Stock' in Stock field, not as 'Avaliable' and 'Not Available' as mentioned in the requirement sheet
+
+
+---winparts_2026_05_15.csv---
+ 
