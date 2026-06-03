@@ -1,0 +1,62 @@
+QA Report
+___________________________________________________
+
+1.  machinerytrader_2026_06_03.csv
+----------------------------------
+
+Findings:
+* 8678 rows found
+* uniqe_id, url are unique
+* pcid column is empty
+
+Issues:
+* Row 38---> In the website along with the images, a video too is available. But the image column in the csv file doesn't include the link of the video. (UniqueId - 251333671)
+* Row 38---> First image path is incorrect. When we open the first image url in the csv file, some text is displayed ("MTI Equipment Pictures coming soon") like a watermark over the picture. But website image doesn't contain that. (UniqueId - 251333671)
+* Row 57---> Images field contain wrong values in the csv file. (UniqueId - 214831377)
+_____________________________________________________
+
+2.  DataHut_AT_Spar_PriceExtractions_20260603.csv
+-------------------------------------------------
+
+Findings:
+* 39065 rows found
+* uniqueId and Url are unique
+
+Doubts:
+* Developer
+* Run id
+* clarification on promotion description requirement
+
+Issues:
+* promotion price and selling price are not equal in cases of promotion description are present
+______________________________________________________
+
+3.  DataHut_AT_Billa_PriceExtractions_20260603.csv
+--------------------------------------------------
+
+Findings:
+* 12380 rows found
+
+Issues:
+* site_shown_uom --> 9 fields are empty (uniqueIds - 00-240470, 00-424344, 00-567341, 00-714378, 00-714753, 00-95497, 00-95499, 00-95781, 00-95782)
+* promotion description is empty for most of the products
+* selling price is not float type for 11 products (uniqueIds - 00-305161, 00-336380, 00-346096, 00-473661, 00-513428, 00-624516, 00-624522, 00-624525, 00-763995, 00-792716, 00-855650)
+* promotion price and selling price are not equal in cases of promotion description are present
+______________________________________________________
+
+4.  DataHut_AT_Dm_PriceExtractions_20260603.csv
+-----------------------------------------------
+
+Findings: 
+* 16493 rows found
+
+Issues:
+* 108 values in selling price are integer type
+______________________________________________________
+
+
+
+
+
+
+
