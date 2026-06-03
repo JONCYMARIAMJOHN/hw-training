@@ -1,0 +1,9 @@
+------- Issues -----------
+
+---winparts_2026_05_15.csv---
+Excess data in the dataset than mentioned in the requirement sheet
+Not able to acces the website
+ 
+
+---autoonderdelen24_2026_05_15.csv---
+Row 13 --> Description should be start with "Batterij (vermogen Ah): 95", But the value 95 is missing in the csv file (url- https://www.autoonderdelen24.be/continental-18519150.html)
