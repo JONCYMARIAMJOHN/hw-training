@@ -1,0 +1,28 @@
+QA Report
+___________________________________________________
+
+1) DataHut_SI_Dm_FullDump_20260604.csv
+----------------------------------
+
+* 11622 rows found
+* barcode field is not empty
+* Couldn't find labelling, label information, retail limit on website
+* promotion_description is empty accross the entire dataset
+* 
+_____________________________________________________
+
+2) DataHut_SI_Mercator_FullDump_20260604.csv
+----------------------------------------
+
+* 16926 rows found
+* Not able to open pdp_url
+
+3) DataHut_SI_Spar_FullDump_20260604.csv
+------------------------------------
+
+* 16285 rows found
+* There are empty fields in the dataset other than that mentioned in the requirement (eg: Variants, preparation instructions, country_of_origin, age_recommentations, flavour etc.)
+* competitor_name is spar
+* promotion_valid_from , price_valid_from fields are not available in the website 
+* competitor_product_key field is empty
+
