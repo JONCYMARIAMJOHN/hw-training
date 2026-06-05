@@ -1,0 +1,42 @@
+QA Report
+___________________________________________________
+
+1) coldwellbankerinternational_2026_06_05.json
+----------------------------------
+
+*Row count mismatch
+* Not able to access the web url
+
+_____________________________________________________
+
+2) century21_us_2026_06_05.json
+--------------------------------
+
+*Row count mismatch
+* for profile_url https://www.century21.com/ca/san-luis-obispo/agents/kari-schultz/aid-P00200000GoicDrkGRgPnkIC1awCr96XavRBhdJI  not able to open image_url given in the json file, but image is openable from the website.
+* image_url are empty for around 15 records (eg: profile_url --> https://www.century21.com/tx/the-woodlands/agents/connie-reddington/aid-P00200000Gl9FyiEK4Wd1jXzVSSUWnIA8jLq0a6l)
+* email field is completely filled accross the dataset
+* title field is empty for only 5836 records in the dataset. All other records have title value
+* social field is occupied for 4945 records in the dataset 
+* country value is "America" for record with profile_url https://www.century21.com/ca/valley-springs/agents/tiffany-arana/aid-P00200000GeZxJO9WhN61OTDeUw5eL9D4EM3SAMn"
+
+
+____________________________________________________
+
+3) bhgre_2026_06_05.json
+
+* Row count mismatch
+* profile_url "https://www.bhgre.comNone" is wrong
+* office phone_no and agent_phone_no mismatch for profile_url https://www.bhgre.com/agent/detail/jam/city-unavailable/agents/edwin-wint/aid-P00200000FDdqSekqCfO4OyzqGu2mbNGsFTEcVYL
+* 4 records have country value other than 'United States', which are listed below
+	- "NE" (https://www.bhgre.com/ne/elkhorn/agents/angela-hunter/aid-P00200000GsRUdd57CDbfH7Gkhkw2PKanHx3ItfW")
+	- "Jamaica" (https://www.bhgre.comNone, https://www.bhgre.com/jam/city-unavailable/agents/better-homes-and-gardens-real-estate-jamaica/aid-P00200000FDdscdXBZtMRb3oSgOQD9P9S6pLBP1I, https://www.bhgre.com/jam/city-unavailable/agents/edwin-wint/aid-P00200000FDdqSekqCfO4OyzqGu2mbNGsFTEcVYL)
+
+
+_____________________________________________________
+
+4) sutton_2026_06_05.json
+
+* Row count mismatch
+* state and some of the phone numbers not listed in the website (eg: https://sutton.com/ca/agent/marlene-hope-109437)
+
