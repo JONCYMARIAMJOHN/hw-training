@@ -1,0 +1,32 @@
+QA Report
+___________________________________________________
+
+1) lazada_2026_06_07.csv
+---------------------------
+
+	* Only 1184 rows found, but requirement specifies 14223 as datacount.
+	* 6 images are captured in the dataset. But more than 6 are available in the website for some products.
+	* Unique Id ---> 22756920601, selected_variant and shade are having value '260 Cashmere' in the csv file. But it is '150 Lace' in the website.
+	* There are some more fields in the dataset : 
+		seller_tags, seller_rating,vouchers, product_specifications, rating, reviews, sale, shipping_details, offer_validity
+	* Some promotion_descriptions are dot separated. But it is dot separated in the website too.
+	* regular_price and selling price are in integer/1f/2f format.
+	
+___________________________________________________
+
+2) sephora_2026_06_07.csv
+---------------------------
+
+	* 689 rows found.
+	* 6 images are captured in the dataset. But more than 6 are available in the website for some products.
+	* regular_price, selling_price are integer type.
+	
+	
+3) shopee_2026_06_07.csv
+-------------------------
+
+	* Only 955 rows found, but requirement specifies 959 as datacount.
+	* pdp_url is not accessible. Some urls demands login, while some other is causing bad request.
+	* regular_price, selling_price, price_was, promotion_price are in integer/1f/2f format.
+	* product_description is not in dictionary format.
+	
