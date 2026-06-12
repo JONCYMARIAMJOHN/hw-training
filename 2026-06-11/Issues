@@ -1,0 +1,24 @@
+QA Report
+___________________________________________________
+
+1) DataHut_AU_Coles_FullDump_20260610.csv
+-----------------------------------------
+
+* duplicate unique_id are presemt in the dataset.
+* duplicate pdp_url are present in the dataset.
+* regular_price, selling_price, price_per_unit are empty for several columns evenif it is available in website (eg: UniqueId --> 6845675
+ to 8127923
+* producthierarchy_level4, producthierarchy_level5, regular price, barcode contain values, while promotion_valid_upto, file_name_1, features, suitable_for, environmental are empty across the dataset.
+* No field named location, but store_na,me field includes the mentioned locations in the requirement
+* selling_price field type is integer/1f/2f
+* image_url contain .jpg format files too
+* rating field includes values of type integer/ 1f/ 2f
+* review is in numeric type
+* Data count is 748507
+_____________________________________________________
+
+2) DataHut_CH_Migros_FullDump_20260611.csv
+------------------------------------------
+
+* Several fileds contain empty values (e.g., store_name, store_addressline1, store_addressline2, store_suburb, store_state, store_postcode, and store_addressid).
+* The selling_price and regular_price fields are in integer/ 1f/ 2f format.
