@@ -1,0 +1,51 @@
+QA Report
+___________________________________________________
+
+1) DataHut_AT_Billa_PriceExtractions_20260616.CSV
+-------------------------------------------------
+
+* UniqueIds --> 00-240470, 00-424344, 00-567341, 00-714378, 00-714753, 00-95497, 00-95499, 00-95782, 00-95781 site_shown_uom is missing in the csv file, while it is avaialable in the url.
+* Doubt : For somecases, if promotion description present, promotion_price is equal to selling_price (eg:UniqueId -> 00-11738). In some other cases, if promtion description present, promotion_price is not equal to selling_price, but selling_price & regular_price are different.(eg:UniqueId -> 00-10907)
+* UniqueId --> 00-101513 grammage_quantity and grammage_unit is '1 stuck' in the CSV file, but it is '20 Beutel Packung' in the website.
+* UniqueId --> 00-101511 grammage_quantity and grammage_unit is '1 stuck' in the CSV file, but it is '40 Beutel Packung' in the website.
+* UniqueId --> 00-102255 grammage_quantity and grammage_unit is '1 stuck' in the CSV file, but it is '2 m Packung Medizinprodukt' in the website.
+* Similar issue is visible for almost all rows with '1 stuck' value.
+* No other issues found
+____________________________________________________
+
+
+2) DataHut_AT_Dm_PriceExtractions_20260616.CSV
+----------------------------------------------
+
+* Datacount is 16682, which is more than the requirement.
+* No other issues found.
+____________________________________________________
+
+
+3) DataHut_AT_Spar_PriceExtractions_20260616.CSV
+--------------------------------------------------
+
+* Data count is 39706, which is more than the requirement.
+* UniqueIds--> 2020003798603, 2020005399334 grammage_quantity and unit not available on the website, but it is recorded as '1 stück' in the CSV file
+* UniqueId--> 2020003691744 price is '8.99' and price_per_unit is 'Per 1 l 11.99' in the website. But these fields are empty in the CSV file.
+* UniqueId--> 2020005796201 price is '14.99' and price_per_unit is 'Per 1 kg 142.76' in the website. But these fileds are emplty in the CSV file.
+* UniqueId--> 2020005618824 price is '9.99' and price_per_unit is 'Per 1 kg 13.32' in the website. But these fileds are emplty in the CSV file.
+* UniqueId--> 2020006194235 price is '14.99' and price_per_unit is 'Per 1 kg 142.76' in the website. But these fileds are emplty in the CSV file.
+________________________________________________________
+
+4) DataHut_SI_Dm_PriceExtractions_20260616.CSV
+-----------------------------------------------
+
+* Datacount is 11523, which is more than the requirement.
+* UniqueId --> 5010622005029 grammage_quantity and grammage_unit is '1 kos' in the CSV file, but it is '50 m' in the weburl.
+* UniqueId--> 4066447989984 grammage_quantity and grammage_unit is '1 kos' in the CSV file, but it is '20 vr' in the weburl.
+* Similar varaiation found in several products --> [4009175968616, 9000101808506, 9000101566697, 4070765058802, 8006530170666, 4066447969870, 3830049641011, 4058172622410, 4066447792911, 4066447484519, 4066447792997, 4066447989922, 4066447369731, 4009175941787, 4066447989984, 5010622005029, 5000204254945, 3830049640274, 4066447888393, 4066447791181, 4066447791198, 4066447791495, 4066447791204, 4066447792935, 4066447791211, 7046110052457, 4066447791501, 4066447791228, 4066447791174, 9000101563603, 4066447793208, 4066447793222, 4066447792188, 4066447791235, 4066447792959, 4067796212853, 4066447951325, 4066447861297, 8700216722940, 4066447896886, 4070765022018, 4066447899436, 4066447231854, 9000101808445, 4066447896824, 4066447369755, 4066447877984, 9000101801255, 4058172172199, 4066447903584]
+
+
+
+
+
+
+
+
+
