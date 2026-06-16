@@ -1,0 +1,35 @@
+QA Report
+___________________________________________________
+
+1) DataHut_SI_Dm_PriceExtractions_20260615.CSV
+-------------------------------------------------
+
+* 11522 rows found in the CSV file, but requirement is 13268
+* UniqueId --> 5010622005029 grammage_quantity and grammage_unit is '1 kos' in the CSV file, but it is 50 m in the weburl.
+* No other issues found
+
+
+2) autoonderdelen24_2026_06_15.csv
+-----------------------------------
+
+* URL --> https://www.autoonderdelen24.be/ina-7782441.html - Net price mismatch. "13.72" in CSV file, but "14,24" in url.  
+* No issues found.
+
+3) autodoc_2026_06_15.csv
+-------------------------
+
+* Doubt : Usualy the last part of the url is recorded as Part number. eg : if "https://www.autodoc.be/vag/27372194" is the url, then 27372194 is the part number. But in this csv file, the header of the url is taken as Part number and mostly it is same as Ref_no_space.
+* No other issues found.
+
+
+4) autoteiledirekt_2026_06_15.csv
+---------------------------------
+
+* The field name is 'Stock' instead of 'Availability' in the CSV file.
+* No other issues found.
+
+
+
+
+
+
