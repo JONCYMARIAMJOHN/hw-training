@@ -1,0 +1,150 @@
+Report - MongoDB for QA
+========================
+
+Loading Data into MongoDB
+--------------------------
+Two methods :
+	1) Importing using query :
+	mongoimport --db dbname --collection tablename --type csv --headerline --file filename
+	2) Importing using Python code :
+	import pandas as pd
+	from pymongo import MongoClient
+
+	df = pd.read_csv("filename", sep="|")
+
+	client = MongoClient("mongodb://localhost:27017/")
+	db = client["dbname"]
+
+	db.tablename.insert_many(df.to_dict("records"))
+
+Basic QA Checks
+===================
+Data Count :
+----------------
+	db.tablename.countDocuments()
+
+Fieldname list :
+-----------------
+	Object.keys(db.tablename.findOne())
+
+Find duplicates in a field :
+---------------------------
+	db.tablename.aggregate([
+	  {
+		$group: {
+	  	_id: "$fieldname",
+	  	count: { $sum: 1 }
+		}
+	  },
+	  {
+		$match: {
+	  	count: { $gt: 1 }
+		}
+	  },
+	  {
+		$sort: {
+	  	count: -1
+		}
+	  }
+	])
+
+
+Find count of null values in a field:
+-------------------------------------
+	db.tablename.countDocuments({
+	    fieldname: {
+		$exists: false,
+		$nin: [null, "", NaN]
+	    }
+	})
+
+Regex Validation:
+-------------------
+	Value Check :
+	db.tablename.find({
+	    fieldname: {
+		$not: /^value$/
+	    }
+	})
+
+
+
+	Email Validation :
+
+	db.tablename.find({
+		email: {
+	    	$not: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
+		}
+	})
+	
+Check Allowed Values :
+--------------------
+	db.tablename.find({
+	    fieldname: {
+		$nin: [
+		    "value 1",
+		    "value 2",
+		    "value 3"
+		]
+	    }
+	})
+
+Business Rules : If promotion_description exists, promotion_price = selling_price
+----------------------------------------------------------------------------------
+
+	db.tablename.find({
+	    promotion_description: {
+		$exists: true,
+		$ne: ""
+	    },
+	    $expr: {
+		$or: [
+		    {
+		        $ne: [
+		            "$promotion_price",
+		            "$selling_price"
+		        ]
+		    },
+		    {
+		        $ne: [
+		            "$selling_price",
+		            "$regular_price"
+		        ]
+		    }
+		]
+	    }
+	})
+
+Distinct Value Analysis:
+------------------------
+	db.tablename.distinct("fieldname")
+	
+Check Negative Prices:
+----------------------
+	db.tablename.find({
+	    selling_price: {
+		$lt: 0
+	    }
+	})
+	
+List out completely null fields
+--------------------------------
+
+	const coll = db.coop;   // replace with your collection name
+
+	const totalDocs = coll.countDocuments();
+
+	const sampleDoc = coll.findOne();
+
+	for (const field in sampleDoc) {
+
+	    const nonEmptyCount = coll.countDocuments({
+		[field]: {
+		    $nin: [null, "", NaN]
+		}
+	    });
+
+	    if (nonEmptyCount === 0) {
+		print(field);
+	    }
+	}

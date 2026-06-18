@@ -1,0 +1,24 @@
+---QA Report---
+===============
+
+1)  DataHut_CH_Coop_FullDump_20260618.CSV
+-----------------------------------------
+	- UniqueId-->4674091, producthierarchy_level3 is 'Fleisch & Fisch'& price_per_unit is '2.97/100g', then selling_price & regular price are expected to be 2.97, but it is 4.75 and also grammage_quantity & site_shown_uom are expected to be 100g, but it is 160g.
+	- UniqueId-->3064606, producthierarchy_level3 is 'Fleisch & Fisch'& price_per_unit is '3.25/100g', then selling_price & regular price are expected to be 3.25, but it is 5.2 and also grammage_quantity & site_shown_uom are expected to be 100g, but it is 160g.
+	- UniqueId-->3877877, producthierarchy_level3 is 'Fleisch & Fisch'& price_per_unit is '3.41/100g', then selling_price & regular price are expected to be 3.41, but it is 3.75 and also grammage_quantity & site_shown_uom are expected to be 100g, but it is 110g.
+	- This kind of mismatch found in several UniqueIds --> 7220035, 3481749, 7220031, 3481704 etc.
+	- UniqueId--> 6850515, webpage is 'Not Found'
+	- UniqueId--> 3080329, percentage_discout is 47 in the file & 23% in the url
+	- UniqueId--> 5836977, percentage_discount is 25 in the file, but not found in the url
+	- UniqueId--> 3090895, percentage_discount is 30 in the file, but not found in the url
+	- UniqueId--> 4574720, percentage_discount is 25 in the file, but not found in the url
+	- UniqueId -->6637190, producthierarchy_level3 is 'Fleisch & Fisch', producthierarchylevel4 is 'Abgepacktes Frischfleisch' & price_per_unit is '1.46/100g', then selling_price & regular price are expected to be 1.46, but regular_price is 1.95
+	
+2)  DataHut_CH_Denner_FullDump_20260618.CSV
+-------------------------------------------
+	- Datacount is 1498, while requirement is 1500
+	- price values showing mismatch
+	- UniqueId--> 1002860, grammage_quantity in url is '2 x 4 x 100', and in file is '4 x 100'
+	- UniqueId--> 1100499, percentage_discount is 24% in the file, but 28% in the url.
+	- UniqueId--> 1100628, grammage_quantity in url is '2 x 4 x 160', and in file is '4 x 160'
+
