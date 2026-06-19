@@ -1,0 +1,28 @@
+--- Report - QA using MongoDB ---
+=================================
+
+Data Loading
+------------
+	* Data from CSV, JSON, Parquet (after conversion), or API responses can be loaded into MongoDB collections.
+	* Once loaded, data can be viewed on MongoDB Compass and queried using mongosh
+	
+Schema Analysis in MongoDB Compass
+----------------------------------
+	* MongoDB Compass provides a Schema Analysis feature that define a collection and generates statistics for each field.
+	* It shows how frequently a field appears in documents.
+	* Analyse and report datatypes observed in each field and it's percentage.
+	* Schema analysis also reveals Null values, Missing values, Empty arrays, Empty objects
+	* It displays frequency distribution of field values too.
+	
+Drawbacks
+---------
+	* Schema analysis displays report of only 1000 records in the dataset, which can be inferred as the report of the whole dataset.
+	* Checking field order not possible in compass.
+	* For business rules analysis, pattern validation etc. we need to use mongosh and learn querying, anyway it is powerful and effective method to analyse data.
+	* For doing simple tasks like checking whether unique, null, finding distinct value etc. manual method using sublime is more productive.
+	
+Benefits
+--------
+	* Data count can be easily found using compass.
+	* Reduces human errors.
+	* If using mongosh and querying, the analysis process become more effective and productive.

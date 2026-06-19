@@ -1,0 +1,15 @@
+--- QA Issues ---
+=================
+
+1)   DataHut_SI_Mercator_PriceExtractions_20260619.CSV
+------------------------------------------------------
+
+	* Data count is 17011 which is more than requirement
+	* site not loading
+	
+2) DataHut_AT_Dm_PriceExtractions_20260619.CSV
+------------------------------------------------
+
+	* Data count is 16762 which is more than requirement
+	* No other issues found
+	
