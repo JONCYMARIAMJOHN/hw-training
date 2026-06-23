@@ -1,0 +1,25 @@
+------------   QA Issues    ----------------
+============================================
+
+1) DataHut_AT_Spar_PriceExtractions_20260619.CSV
+------------------------------------------------
+	* Data count is 39763, which is greater than the requirement.
+	* No other issues found
+	
+	
+2) bahrainfinder_bah_2026_06_046-22/.json
+------------------------------------------
+	* Field names are correct, but order has some slight variation. 'details' is not the exact secondlast key in the json file.
+	* In field 'Furnished', no record with value 'Fully Furnished'. So many records have the value empty
+	* No other issues found
+	
+3) dari_ae_2026_06_04.json
+--------------------------
+	* email field contain invalid values like '--@--.COM' and empty strings too, which are same values  as in the website. (eg: url--> https://www.dari.ae/en/app/directory/profession?id=28677)
+	* profession field includes 3 values : 'Brokers', 'Broker Employee', 'Evaluator', which violates the requirement.
+	* Field name is correct, but field order is slightly different. 'company_employees' is the last field in the json file
+	* No other issues found
+	
+4) nawy_egp_2026_06_04.json
+---------------------------
+	* No issues found

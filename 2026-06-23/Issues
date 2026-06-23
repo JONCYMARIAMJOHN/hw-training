@@ -1,0 +1,23 @@
+---- QA Issues ------
+=====================
+
+1) dubizzle_bah_2026_06_04.json
+--------------------------------
+	* No specific isuues found
+	
+2) opensooq_bah_2026_06_04.json
+-------------------------------
+	* Datacount is 817, which is lesser than the requirement.
+	* 'sub_category_1' field is also empty, which is not entioned in the requirement.
+	* id --> 282863716, broker_display_name is "Aydın Baran"and broker is "AYDIN BARAN", The 'i' in 'Aydin' is not a proper lowercase.
+	
+3) bayut_bah_2026_06_04.json
+----------------------------
+	* No specific issues found
+	
+4) dubizzle_uae_2026_06_04.json
+-----------------------------
+	* Data count is 500k+ in the json file, which is more than the latest requirement is 495.9K
+	* Iteration number is "2026-06-04" iun the json file, but '2026_06_03' is hte requirement;.
+	* The value "سنويا" given in the requirement of price_per field is not found on the json file.
+	* No other issues found

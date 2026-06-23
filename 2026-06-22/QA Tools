@@ -1,0 +1,61 @@
+Common QA tools for simplifying works
+======================================
+
+1. MongoDB Compass
+--------------------
+GUI tool for exploring and validating MongoDB data. Very beginner-level tool for Schema analysis, finding null values, checking field types etc.
+
+2. DBeaver
+----------
+Free open-source database client. Supports MySQL, PostgreSQL, MongoDB, SQLite, SQL Server, etc. and useful for running SQL queries, data validation, exporting data, comparing datasets etc.
+
+3. Jupyter Notebook
+-------------------
+Excellent for Data QA using Python, it can be used to create reusable validation scripts for null checks, duplicate checks, schema validation, generating QA reports etc.
+
+4. OpenRefine
+--------------
+Extremely useful for cleaning and profiling CSV/Excel files. it features are cluster similar values, find inconsistent spellings, remove duplicates, transform columns etc. and it is great for non-programmers.
+
+
+5. Great Expectations
+----------------------
+Highly recommended for Data QA. We can automatically validate null percentages, data types, value ranges, uniqueness, regex patterns etc.
+
+6. Apache Superset
+------------------
+Useful for visually spotting data anomalies and trends.
+
+7. KNIME Analytics Platform
+---------------------------
+It s a visual drag-and-drop data analytics and QA platform.
+
+
+------------ OpenRefine -------------
+=====================================
+
+By creating a project and loading data into it , we can easily find Rows, Columns, Sort, Facets and Text filters .
+a) Check null values - Column → Facet → Customized Facets → Facet by Blank
+b) Count unique values - Column → Facet → Text Facet
+c) Detect Invalid Categories - Use facets
+d) Find duplicate values - Column → Facet → Text Facet
+e) Filter rows - Column → Text Filter
+f) Numeric QA - Column → Facet → Numeric Facet
+g) Sort Data - Column → Sort
+e) Regex valdation - Column → Text fiter → Enable regular expression → Give regex and enter
+
+
+Advantages
+----------
+* No coding
+* Easy profiling
+* Powerful Faceting and Filtering
+* Handle large dataset (500K–2M rows for 16 GB RAM)
+*
+
+Limitations
+-----------
+* Difficult to validate business rules
+* Entire dataset is loaded locally
+* Limited automation
+
