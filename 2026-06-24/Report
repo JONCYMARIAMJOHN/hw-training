@@ -1,0 +1,131 @@
+Zepto Data Analysis Project Report
+=================================
+
+1) Project Objective
+---------------------
+
+	- Assess and improve the quality, consistency, and completeness of Zepto grocery product listing data.
+	- Identify anomalies, inconsistencies, missing information, duplicates, and pricing irregularities across products, categories, stores, and locations.
+	- Provide actionable insights to improve product information accuracy and customer experience.
+
+
+2) Dataset Overview
+--------------------
+
+	- Source: zepto_2026_06_23.csv
+	- Shape: 19,034 rows × 31 columns
+	- Key fields analyzed include product_name, brand_name, category, store_id, city, item_mrp, item_selling_price, discount_in_percent, package_type, product_type, unit_price, product_url, and inventory flags.
+	
+	
+3) Data Profiling Findings
+---------------------------
+
+	- unit_price is completely empty across the dataset.
+	- Only 5 columns contain missing values: product_type, product_grammage, package_type, variants, unit_price.
+	- No single column is globally unique.
+	- A unique key combination of ['unique_id', 'store_id', 'product_id_upc_ean'] was found to be unique.
+	
+	
+4) Duplicate Analysis
+----------------------
+	- Exact duplicate rows doesn't exist in the dataset.
+	- 1,243 duplicate entries were found for the same store_id + product_name.
+	- The duplicate products differ by net_quantity and discount_in_percentage, indicating valid product variants or data inconsistencies rather than pure duplicate records.
+	
+	
+5) Missing Value Insights
+--------------------------
+	- Missingness is present but distributed across stores and cities, suggesting a scraping or mapping issue rather than a single-location problem.
+	- Zepto Cafe category shows 100% missing values for the critical analyzed columns, implying a separate backend or inconsistent data schema.
+	- Missingness by category is uneven, highlighting potential category-specific data quality issues.
+	
+	
+6) Category and Hierarchy Consistency
+-------------------------------------
+	- Department → Category and Category → Subcategory mappings were reviewed.
+ 	- Subcategory → Product Type mapping was also checked.
+	- No major structural inconsistencies were noted from the grouping analysis.
+	
+	
+7) Suspicious Value Detection
+------------------------------
+	- Suspicious values were searched in key text fields such as product_name and brand_name.
+	- No common bad values found included null-like strings, numeric-only entries, and overly short text entries.
+	- This helps isolate entries that may have malformed or placeholder data.
+	
+	
+8) Price Anomaly Checks
+-------------------------
+
+	- Price fields were validated for negatives and zeros.
+	- No major price anomalies were detected in item_mrp, item_selling_price, product_price, or promo_offer_price.
+	- Discount logic was validated: discounted prices are generally consistent with MRP.
+	- promo_offer_description generally aligns with the presence of promo_offer_price.
+	
+	
+9) URL Quality
+----------------
+
+	- URL completeness and uniqueness were checked.
+	- 11,482 duplicate URLs were observed, often linked to the same product across different stores or prices.
+	- URL format validation revealed most URLs are correctly structured, but duplicate coverage is high.
+	
+	
+10) Location-Level Metrics
+--------------------------
+	
+	- City, store, and pincode analyses were performed for:
+		* Missing value percentage
+		* Stockout percentage
+		* Average discount percentage
+		* Unique product count
+	- Findings:
+		* Bangalore shows higher stockout rates and discount levels.
+		* Certain pincodes (411027, 411017) have unusually high stockout or low product availability.
+		* Distribution of missing data is relatively consistent across geography.
+		
+		
+11) Price Variation and Outliers
+---------------------------------
+
+	- Identified products with large price variation across locations.
+	- Many high-variation cases were due to different product_grammage values rather than pure pricing errors.
+	- Outlier detection using IQR was applied to:
+		item_mrp
+		item_selling_price
+		discount_in_percent
+		stock_count
+		net_quantity
+		Sample outliers were examined for potential data quality issues.
+		
+		
+12) Key Issues and Risks
+---------------------------
+	- unit_price missing completely: critical field absent in source extraction.
+	- Inconsistent package_type and product_type data quality.
+	- Duplicate product records with differing attributes need deeper investigation.
+	- High duplicate URL count suggests product-page reuse across stores or inconsistent URL assignment.
+	- Category-specific missingness indicates mixed data feeds or special-case categories (e.g., Zepto Cafe).
+	
+	
+13) Recommendations
+-------------------
+
+	- Fix the scraping/mapping process for unit_price immediately.
+	- Standardize package_type, product_type, and product_grammage values.
+	- Investigate duplicate product entries to determine whether they represent:
+		valid variants,
+		incorrect deduplication,
+		or inconsistent product records.
+	- Clean and normalize URLs while preserving store-specific product variants.
+	- Apply category-specific validation rules, especially for Zepto Cafe and other anomalous categories.
+	
+	
+14) Overall Conclusion
+-----------------------
+
+	This project successfully identified both broad and specific data quality issues in the Zepto grocery dataset. The analysis shows that the dataset is largely usable for product and price analytics, but it needs targeted fixes in scraping, pricing fields, and category-specific schema handling to reach reliable production quality.
+	
+	
+	
+	
