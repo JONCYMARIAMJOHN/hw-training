@@ -24,6 +24,7 @@ Zepto Data Analysis Project Report
 	- Only 5 columns contain missing values: product_type, product_grammage, package_type, variants, unit_price.
 	- No single column is globally unique.
 	- A unique key combination of ['unique_id', 'store_id', 'product_id_upc_ean'] was found to be unique.
+	- store_id has 5 distinct values, while store_name_location has 9 distinct values, which is suspicious. Means same store_id is assigned to multiple stores.
 	
 	
 4) Duplicate Analysis
@@ -101,6 +102,9 @@ Zepto Data Analysis Project Report
 		
 12) Key Issues and Risks
 ---------------------------
+	
+	- No column is available to set as primary key to uniquely identify rows, which is a critical issue.
+	- Same store_id is assigned to multiple stores, which is suspicious
 	- unit_price missing completely: critical field absent in source extraction.
 	- Inconsistent package_type and product_type data quality.
 	- Duplicate product records with differing attributes need deeper investigation.
@@ -110,8 +114,8 @@ Zepto Data Analysis Project Report
 	
 13) Recommendations
 -------------------
-
-	- Fix the scraping/mapping process for unit_price immediately.
+	
+	- Fix the scraping/mapping process for unit_price.
 	- Standardize package_type, product_type, and product_grammage values.
 	- Investigate duplicate product entries to determine whether they represent:
 		valid variants,
