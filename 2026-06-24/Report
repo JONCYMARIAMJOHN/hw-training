@@ -16,7 +16,7 @@ Zepto Data Analysis Project Report
 	- Shape: 19,034 rows × 31 columns
 	- Key fields analyzed include product_name, brand_name, category, store_id, city, item_mrp, item_selling_price, discount_in_percent, package_type, product_type, unit_price, product_url, and inventory flags.
 	
-	
+
 3) Data Profiling Findings
 ---------------------------
 
@@ -28,10 +28,13 @@ Zepto Data Analysis Project Report
 	
 	
 4) Duplicate Analysis
-----------------------
-	- Exact duplicate rows doesn't exist in the dataset.
-	- 1,243 duplicate entries were found for the same store_id + product_name.
-	- The duplicate products differ by net_quantity and discount_in_percentage, indicating valid product variants or data inconsistencies rather than pure duplicate records.
+
+	- No exact duplicate rows exist in the dataset.
+	- 1,531 duplicate products found with the same store_id and same product_name. However these duplicate products differ by net_quantity and discount_percentage.
+	- Again checked whether same product exist in same store with same product_grammage and item_selling_price and identified one such product. But the pakage_type, mrp, url, stock etc. of that duplicate is different. So such issue identified.
+	- Again checked whether same product exist in same store under different categories and no such duplicates could be found.
+	- So finalized no duplicate product exist on same store.
+
 	
 	
 5) Missing Value Insights
