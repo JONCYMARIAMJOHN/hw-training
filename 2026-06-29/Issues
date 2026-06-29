@@ -1,0 +1,130 @@
+-----Issues------
+=================
+
+1) bayut_uae_2026_06_04.json
+----------------------------
+
+	- Data count is 623915 (623k), which exceeded than the requirement.
+	- Additional dat fields found on the data set which are orn_number','adm_number','3d_live','3d_image','2d_image','ded_number_2','ded_number_3','ded_number_4','trucheck_on','trubroker','property_of_the_week','bln_number','quality_lister','email','rating','no_of_reviews'"
+	- iteration_number is 2026_06_04
+	- package_type 'free' and "" couldn't found on the dataset
+	- only found currency: 'AED'
+	
+	
+	
+2) bayut_uae_project_2026_06_04.json
+------------------------------------
+
+	- Data count is 2794 which exceeded than the requirement
+	- No other issues found.
+	
+	
+3) robertsbrothers_2026_07_05.json
+----------------------------------
+	
+	- Order of columns is different from the requirement
+	- Data count is 178, which is less than the requirement
+	- office_phone_numbers is empty list accross the entire dataset, "office_phone_numbers": []
+	- profile_url --> https://www.robertsbrothers.com/bio/apriljohnston ,  the beginning of the description is missing.
+	
+	
+4) iowarealty_2026_07_05.json
+-----------------------------
+
+	- Field order is different from the requirement.
+	- Empty string present in state field.
+	- For following profile_urls, , the entire value of Name is assigned to first_name, not split into first_name, middle_name and last_name.
+		* https://www.iowarealty.com/bio/krzysztofchrzaszcz
+		* https://www.iowarealty.com/bio/SteveB
+		* https://www.iowarealty.com/bio/olivias-realestate-team
+		* https://www.iowarealty.com/bio/carinbirtrealestateteam
+	- For profile_url--> https://www.iowarealty.com/bio/dhampton, instagram url is available on website, but not captured in dataset.
+	- For profile_url --> https://www.iowarealty.com/bio/patbeck, office phone no is taken as agent_phone_number
+	
+	
+5) woodsbros_2026_07_05.json
+----------------------------
+
+	- Mismatch in field order from the requirement.
+	- Data count is 175 , which is less than the requirement.
+	- As per the requirement languages should be empty field, but it is not empty. However email is empty field.
+	- profile_url field in the dataset captured listing page instead of profile page in exactly 4 rows. 
+		* https://www.woodsbros.com/roster/agents/1
+		* https://www.woodsbros.com/roster/agents/4
+		* https://www.woodsbros.com/roster/agents/9
+		* https://www.woodsbros.com/roster/agents/19		
+	- Found incorrect profile urls
+		* https://AscendNE.woodsbros.com
+		* https://MarcyTeply.woodsbros.com (The url includes the names, images and details of two founders. But the json file contains that of one of them.)		
+	- For following profile_urls, , the entire value of Name is assigned to first_name, not split into first_name, middle_name and last_name.
+		* https://agedamontesdeoca.woodsbros.com
+		* https://AmyandKaren.woodsbros.com
+		* https://theateam.woodsbros.com
+		* https://luxe.woodsbros.com
+		* https://ClientCare.woodsbros.com
+		* https://capitalcity.woodsbros.com
+		
+6) harrynorman_2026_07_05.json
+------------------------------
+
+	- Mismatch in field order from the requirement.
+	- Data count is 562, which is less than the requirement.
+	- On state field empty string "" also present, other than value 'GA'.
+	- profile_url field in the dataset captured listing page instead of profile page in exactly 4 rows. 
+		* https://www.harrynorman.com/roster/agents/4
+		* https://www.harrynorman.com/roster/agents/15
+		* https://www.harrynorman.com/roster/agents/45
+		* https://www.harrynorman.com/roster/agents/46
+	- For following profile_urls, , the entire value of Name is assigned to first_name, not split into first_name, middle_name and last_name.
+		* https://www.harrynorman.com/bio/CREGroup
+		* https://www.harrynorman.com/bio/wattspfistergroup
+		* https://www.harrynorman.com/bio/pageandcarlhenry
+		* https://www.harrynorman.com/bio/cookmorgangroupweb
+		* https://www.harrynorman.com/bio/barocasfeldmanteamweb
+		* https://www.harrynorman.com/bio/robinblassgroup
+		* https://www.harrynorman.com/bio/janandrockyteam
+		* https://www.harrynorman.com/bio/thejudyfunkteam
+		* https://www.harrynorman.com/bio/gadebusch
+	
+7) ewm_2026_07_05.json
+----------------------
+
+	- Mismatch in field order from the requirement.
+	- For following profile_urls, , the entire value of Name is assigned to first_name, not split into first_name, middle_name and last_name.
+		* https://www.ewm.com/agents/1776740/Debbie+Lazoff%2C+P.+A.
+		* https://www.ewm.com/agents/1776841/Alessandra+Lante+della+Rovere
+		* https://www.ewm.com/agents/1776814/Catarina+Z.+Teles+Da+Silva
+		* https://www.ewm.com/agents/1776905/Evelyn+TRINIDAD%2C+MS%2C+REALTOR
+		* https://www.ewm.com/agents/1776789/Flor+Irina+Garcia+Soto
+		* https://www.ewm.com/agents/1776956/Frank+Ashburn+Kissel%2C+Jr.
+		* https://www.ewm.com/agents/1776902/George+Edward+Teichholz%2C+P.A.
+		* https://www.ewm.com/agents/1779429/Ivy+Carneiro+da+Cunha
+		(etc.  Total 29 such values are present on the dataset)
+	- profile_url --> https://www.ewm.com/agents/1776965/Vanessa+Mazzeo, social media links like facebook, x, instagram, youtube are available on the url, but not captured in the dataset.
+	- profile_url --> https://www.ewm.com/agents/1776696/Adam+Walder, social media links like facebook, x, instagram, youtube are available on the url, but only the facebook link is captured in the dataset.
+	- As evaluated several records, the social links available just below the profile photo is only captured on the dataset. But some links are available at the top right corner of the web page. They are not properly captured.
+	
+	
+8) rector_hayden_2026_07_05.json
+--------------------------------
+
+	- Mismatch in field order from the requirement.
+	- Data count is 143, which is less than the requirement.
+	- https://www.rhr.com/bio/thejusticegroup --> the long name is assigned to first_name, not split into first_name, middle_name and last_name.
+	- https://thehamiltonmontgomerygroup.rhr.com --> The url includes the names, images and details of two founders. But the json file contains that of one of them.
+	- http://www.makinglexingtonkyhome.com --> the url includes the details of the foundation, while, json file contains that of a single founder of the foundation.
+	- https://www.riddellsmithgroup.com --> mismatch found on first_name, last_name, images etc.
+	
+	
+9) sedd_uae_2026_07.json
+------------------------
+
+	- broker_licenses is a single dictionary, not a list of dictionary as mentioned in the requirement.
+	- url value is the same accross the entire dataset and it is not accessible.
+	
+10) wasalt_ksa_2026_07.json
+---------------------------
+
+	- number_of_photos mismatch found in several rows (eg: id--> 5876776, 5876761)
+	- No other issues found.
+
