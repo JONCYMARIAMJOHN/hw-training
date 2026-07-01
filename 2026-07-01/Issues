@@ -1,0 +1,90 @@
+-----Issues------
+=================
+
+1) emlakjet_tur_2026_07.json
+----------------------------
+
+	- Not able to access the url.
+	- No other issues found
+	
+	
+2) hepsiemlak_tur_2026_07.json
+------------------------------
+
+	- no_of_photos mismatch (eg: id--> 141911-128)
+	- No other issues found
+	
+	
+	
+3) bayut_bah_2026_07.json
+-------------------------
+
+	- No issues found
+	
+	
+4) home_realestate_2026_07_05.json
+----------------------------------
+
+	- Field order is different from the requirement
+	- languages is not empty field as mentioned in the requirement
+	- city value 'Lincoln' only available. No 'Kearney' avaialable.
+	- Exactly 3 profile_urls are directing to profile listing page (https://www.homerealestate.com/roster/agents/3, https://www.homerealestate.com/roster/agents/12, https://www.homerealestate.com/roster/agents/13)
+	- image_url mismatch in profile_url--> https://www.searcyteam.com. 
+	- image_url mismatch in profile_url--> https://shawndelandmarion.homerealestate.com
+	- The whole name is saved into first_name, not split into first, middle and last name in several rows (eg: https://gregganddebbieboosalis.homerealestate.com, https://KimMarieSchraderEberspacher.homerealestate.com)
+	
+	
+5) semonin_realtors_2026_07_05.json
+-----------------------------------
+
+	- Field order is different from the requirement
+	- Data count is 340, which is lesser than the requirement.
+	- The whole name is saved into first_name, not split into first, middle and last name in several rows (eg: https://corporaterelocation.semonin.com, https://MOVERealEstateGroup.semonin.com)
+	- image_url mismatch in profile_url--> https://hattonharristeam.semonin.com
+	
+	
+6) reecenichols_2026_07_05.json
+-------------------------------
+
+	- Field order is different from the requirement.
+	- office_phone_numbers_ field is not empty as mentioned in the requirement
+	- 39 profile_url values are directing to profile_listing pages (eg: https://www.reecenichols.com/roster/agents/2, https://www.reecenichols.com/roster/agents/3 )
+	- The whole name is saved into first_name, not split into first, middle and last name in several rows ( https://www.reecenichols.com/bio/budkebudke, https://www.reecenichols.com/bio/edgar)
+
+	
+	
+7) houlihanlawrence_2026_07_05.json
+-----------------------------------
+
+	- Field order is different from the requirement.
+	- No empty string noticed in State field
+	- Wrong image_url is given on the json file for profile_url--> https://www.houlihanlawrence.com/bio/bfayethorpe
+	- Wrong image_url is given on the json file for profile_url--> https://www.houlihanlawrence.com/bio/AndrewSmith
+	
+	
+8) century21_us_2026_07_05.json
+-------------------------------
+
+	- Field order is different from the requirement.
+	- Data count is 38117, which is lesser than the requirement
+	- No empty fields are there in the dataset, while requirement specifies email, title, social fields are empty
+	- No other issues found
+	
+	
+9) compass_2026_07_05.json
+--------------------------
+
+	- profile_url--> https://www.compass.com/agents/kristina-betancourt/, one more 'other_url' is present on the website https://www.compass.com/agents/the-mandile-lorimer-group/, but missing on the json file.
+
+	
+	
+10) bhgre_2026_07_05.json
+-------------------------
+
+	- Field order is different from the requirement.
+	- Data count is 10083, which is lesser than the requirement
+	- country field contains 2 values 'Jamica' and  'United States'
+	- profile_url--> https://www.bhgre.com/in/greenwood/agents/ayo-akinlade/aid-P00200000GvOHBxcSa5P3o1VmTULIVah8jPGX1zc, image is not avaliable on the website, but image_url is present in the json file.
+	
+	
+	

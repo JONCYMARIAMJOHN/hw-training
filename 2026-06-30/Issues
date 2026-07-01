@@ -1,0 +1,23 @@
+-----Issues------
+=================
+
+1) haraj_ksa_2026_07.json
+----------------------------
+
+	- number_of_photos mismatch (eg: id--> 11182952031)
+	- No other issue found
+	
+	
+2) aqar_ksa_2026_07.json
+------------------------
+
+	- currency is empty string in 513 rows
+	- 2 values avaliable in scraped_ts : 2026-06-23, 2026-06-24
+	- No other issues found.
+	
+	
+3) servicesbahrain_bah_2026_07.json
+-----------------------------------
+
+ 	- url is a single value accross the dataset, which is the official website of e-services of Govt. of Bahrain
+ 	- legal_type values are Corporate CR and Individual CR
