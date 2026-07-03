@@ -1,0 +1,72 @@
+
+-------------Issues----------------
+==================================
+	
+1) longandfoster_2026_07_05.json
+--------------------------------
+
+	* Mismatch in field order
+	* Data count is 5260, which is lesser than the requirement
+	* 'title' field is not empty, but requirement specifies it is empty.
+	* Extra space found on the address of profile_url--> https://www.longandfoster.com/bio/kristyodendhal
+	
+	
+2) alliebeth_2026_07_05.json
+----------------------------
+
+	* Mismatch in field order
+	* Data count is 449, which is greater than the requirement
+	* One profile_url is directing to listing page https://www.alliebeth.com/roster/agents/8
+	
+	
+3) realtysouth_2026_07_05.json
+------------------------------
+
+	* Mismatch in field order
+	* Data count is 718, which is lesser than the requirement
+	* Some office_numbers are dot separated and it is not showing on the website eg:
+		- https://www.realtysouth.com/bio/annettedunn
+		- https://www.realtysouth.com/bio/aprilbucki
+	* 20 profile_urls in the dataset are directing to profile listing page. eg :
+		- https://www.realtysouth.com/roster/agents/4
+		- https://www.realtysouth.com/roster/agents/5
+	* Lengthy names are not splitting into middle_name and lastname. eg: 
+		- https://www.realtysouth.com/bio/themagnoliarealtygroup
+		- https://www.realtysouth.com/bio/siowrealestategroup
+	
+	
+	
+4) royallepage_2026_07_05.json
+------------------------------
+
+	* Mismatch in field order
+	* Data count is 17545, which is lesser than the requirement.
+	* A phone number under the head 'FAX' is available on most of the profile pages, but it is not getting listed into agent_phone_numbers or office_phone_numbers in the dataset.
+	
+	
+5) evrealestate_2026_07_05.json
+-------------------------------
+
+	* Data count is 5533, which is lesser than the requirement
+	
+	* description of profile_url --> https://www.evrealestate.com/en/our-advisors/sara-kuzecki/803b3547-282f-49d2-9095-51ec419cacd2?userId=803b3547-282f-49d2-9095-51ec419cacd2, some invalid text like '&amp.', missing spaces etc. found, but this miostake is present in website too.
+	* Same issue found on following rows too:
+		- https://www.evrealestate.com/en/our-advisors/madison-ashton/9ee6306d-6de4-413c-9606-66deb49d1801?userId=9ee6306d-6de4-413c-9606-66deb49d1801
+		- https://www.evrealestate.com/en/our-advisors/madeline-bowser/7a3c7379-baed-461d-b6eb-5dd634e4898f?userId=7a3c7379-baed-461d-b6eb-5dd634e4898f
+		
+	* Around 72 invalid urls found. These urls are accessible if we remove some strings with back slash like '\u00e9', '\u00f4' eg: 
+		- https://www.evrealestate.com/en/our-advisors/marie-he/u0301le/u0300ne-poulin/ef3e8c1c-223f-4129-9319-0e2b21ac84e5?userId=ef3e8c1c-223f-4129-9319-0e2b21ac84e5
+		- https://www.evrealestate.com/en/our-advisors/marie-andr/u00e9e-b/u00e9gin/abd9f6b9-cfea-40e7-b579-c85bfabe8ab6?userId=dfa0e835-37ab-456a-a8e2-b9cc32904a1f
+		- https://www.evrealestate.com/en/our-advisors/alexandre-bagla\u00ef/54de6995-9e65-4618-beb2-5f02e6dab2ba?userId=99485dc4-859c-4682-8a2c-051ed9c21185
+	
+	* first_name of profile_url--> https://www.evrealestate.com/en/our-advisors/marie-hélène-poulin/ef3e8c1c-223f-4129-9319-0e2b21ac84e5?userId=ef3e8c1c-223f-4129-9319-0e2b21ac84e5 contains special character "-", but it is present in website too
+	
+	* unwanted trailing space found on address of url: https://www.evrealestate.com/en/our-advisors/aaron-allred/cc2bac91-8a1a-49cf-80fb-8b0db880183e?userId=cc2bac91-8a1a-49cf-80fb-8b0db880183e
+	* unwanted leading space found on address of url: https://www.evrealestate.com/en/our-advisors/aaron-bond/36b0c7f4-46f4-4648-b41d-87c87ec21689?userId=36b0c7f4-46f4-4648-b41d-87c87ec21689
+	* Same problems in address found on around 2063 rows.
+
+	
+	
+	
+
+

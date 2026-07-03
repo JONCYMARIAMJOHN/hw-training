@@ -1,0 +1,50 @@
+
+-------------Issues----------------
+==================================
+	
+1) coldwellbankerinternational_2026_07_05.json
+----------------------------------------------
+	* Field order mismatch
+	* Data count 4052, which is lesser than the requirement
+	* Lengthy names are not splitting into middle_name and last_name. The entire value is saved into first_name. (eg: https://www.coldwellbankerinternational.com/agent/QxYzUD2j, https://www.coldwellbankerinternational.com/agent/JznadhVNN)
+	
+	
+2) DataHut_AT_Dm_PriceExtractions_20260703.CSV
+----------------------------------------------
+	* Data count is 16735, while the requirement is 16642.
+	* No specific issues found
+
+	
+	
+3) DataHut_AT_Spar_PriceExtractions_20260703.CSV
+------------------------------------------------
+	* Data count is 40142, while the requirement is 39065.
+	* No specific issues found
+	
+	
+	
+4) DataHut_SI_Dm_PriceExtractions_20260703.CSV
+----------------------------------------------
+	* Data count is 10759, while the requirement is 13268.
+	* Found mismatch in grammage_quantity and grammage_unit in url and csv file for several products (eg: 4066447903584, 4058172172199)
+	
+	
+5) DataHut_SI_Mercator_PriceExtractions_20260703.CSV
+----------------------------------------------------
+	* Data count is 16919, while the requirement is 16067.
+	* pdp_url not accessible
+	
+	
+6) DataHut_SI_Spar_PriceExtractions_20260703.CSV
+------------------------------------------------
+	* Data count is 17108, while the requirement is 17473.
+	* percentage_discount coulumn is also empty, which is not mentioned in the requirement
+	
+	
+	
+7) kentwood_2026_07_05.json
+----------------------------
+	* Field order mismatch
+	* city include values 'Dillon' and 'Colorado Springs' too.
+	* Lengthy names are not splitting into middle_name and last_name. The entire value is saved into first_name. (eg: https://www.kentwood.com/bio/BrinckerhoffEmery, https://www.kentwood.com/bio/uhl)
+	
