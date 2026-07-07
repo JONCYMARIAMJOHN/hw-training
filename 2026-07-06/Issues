@@ -1,0 +1,25 @@
+-------------Issues----------------
+==================================
+    
+1) DataHut_AT_Billa_PriceExtractions_20260706.CSV
+--------------------------------------------------
+    * For several products, site_shown_uom is empty evenif it is present on the website (eg: 00-240470, 00-424344)
+    * No other issues found
+    
+    
+2) DataHut_SI_Dm_PriceExtractions_20260706.CSV
+----------------------------------------------
+    * Data count is 10621, where requirement is 13268
+    * Mismatch in grammage_quantity and grammage_unit in several rows (eg:  4066447903584, 4058172172199)
+    
+    
+3) DataHut_SI_Mercator_PriceExtractions_20260706.CSV
+----------------------------------------------------
+    * Data count is 16821, where requirement is 16067
+    * pdp_url not accessible.
+    
+    
+4) DataHut_SI_Spar_PriceExtractions_20260706.CSV
+------------------------------------------------
+    * Data count is 16976, where the requirement is 17473
+    * percentage_discount is also empty, which is not mentioned in the requirement

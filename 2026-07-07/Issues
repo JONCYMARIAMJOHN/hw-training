@@ -1,0 +1,46 @@
+------------Issues--------------
+================================
+
+
+1) aqarmap_egp_2026_07_01.json
+-------------------------------
+	* Data count is 348k+
+	* 'depth', 'seller_role','listing_type' doesnot contain expected values, because they are empty fields
+	* website is not reachable
+
+
+
+2) qatarliving_qat_2026_07_01.json 
+-----------------------------------
+	* No specific issues found
+
+
+3) dari_ae_2026_07_01.json
+---------------------------
+	* Value of profession is 'broker', but there is a nested dictionary inside the employee field, it includes profession key and have two additional values,'Broker Employee', 'Evaluator'
+	* No other issues found.
+
+
+4) bahrainfinder_bah_2026_07_01.json
+-------------------------------------
+	* "Furnished","Semi Furnished","Unfurnished","مفروشة بالكامل","غير مفروش","مفروشة جزئيًا" These are the unique values for furnished field.
+	* No other issues found.
+	
+	
+5) nawy_egp_2026_07_01.json
+----------------------------
+	* Data count is 18039, while requirement is 18047
+	* In cases of value of finishing is 'fully finished' on website, it is captured as 'finished' in the dataset. (eg: https://www.nawy.com/compound/1445-stoda/property/118512-apartment-for-sale-in-stoda-with-2-bedrooms-in-central-cairo-by-il-cazar-developments, https://www.nawy.com/compound/276-allegria-residence/property/67035-apartment-for-sale-in-allegria-residence)
+	
+	
+
+
+6) dubizzle_bah_2026_07_01.json
+--------------------------------
+	* No specific issues found
+
+
+7) dubizzle_qat_2026_07_01.json 
+--------------------------------
+	* No specific issues found
+
