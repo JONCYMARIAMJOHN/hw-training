@@ -1,0 +1,51 @@
+--- QA Issues ---
+=================
+
+1) DataHut_AT_Billa_FullDump_20260709.CSV
+-----------------------------------------
+	* Data count is 12419 while the requirement is 12043
+	* The following fields are unexpectedly empty : 
+	"promotion_description","special_nutrition_purpose","file_name_1","file_name_2","file_name_3","file_name_4","file_name_5","file_name_6","retail_limit"
+	* "age_of_the_product" and "packaging" fields are required to be empty but are not actually empty.
+	
+	
+2) DataHut_AT_Dm_FullDump_20260709.CSV
+------------------------------------------------
+	* Data count is 16642
+	* The following fields are unexpectedly empty : 
+	"producthierarchy_level5","file_name_1","file_name_2","file_name_3","file_name_4","file_name_5","file_name_6"
+	* "barcode" and "retail_limit" fields are required to be empty but are not actually empty.
+	* '|' values found in dataset on nutritional_information field. It is not replaced with '\|' as mentioned in the requirement.
+	
+	
+3) DataHut_AT_Spar_FullDump_20260709.CSV
+----------------------------------------
+	* Data count is 40303, while the requirement is 32076
+	* 'age_of_the_product' is expected to be empty, but it si actually not.
+	* No other specific issues found.
+	
+
+4) DataHut_SI_Mercator_FullDump_20260709.CSV
+--------------------------------------------
+	* Data count is 16871, while the requirement is 16926
+	* Not able to access the site.
+	
+5) DataHut_SI_Spar_FullDump_20260709.CSV
+----------------------------------------
+	* Data count is 16920, while the requirement is 13048
+	* The following fields are unexpectedly empty : 
+	"preparationinstructions","country_of_origin","age_recommendations","flavour","labelling","packaging","special_information","label_information","dimensions","color","material","tasting_note","rating","review","file_name_1","file_name_2","file_name_3","file_name_4","file_name_5","file_name_6","competitor_product_key","features","retail_limit"
+	* The following fields are required to be empty but are not actually empty :
+	"barcode","promotion_valid_upto","promotion_description","alchol_by_volume","netweight","price_was","promotion_price"
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+

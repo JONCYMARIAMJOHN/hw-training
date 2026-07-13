@@ -1,0 +1,29 @@
+------------Issues----------------
+==================================
+
+DataHut_IT_Eurospin_PriceExtractions_20260708.CSV
+--------------------------------------------------
+	* Out of 44301 products, 43963 products have duplicate urls, ie, there is only 4539 unique pdp_urls are there in the dataset.
+	* Out of 44301 products, 43961 products have unique_id, ie, there is only 4538 unique unique_ids are there in the dataset.
+	* Checked, duplicate urls, and found multiple entries with same url, unique_id, site_shown_uom, but different store_addressline1 and price values.
+	For eg: pdp_url: 'https://online.eurospin.com/product/avocados-200g', has 11 records in the dataset with difference in price values and store_addressline1.
+	* For the record with pdp_url : https://online.eurospin.com/product/lamponi-125g1 , unique_id : 1026821 , and store_addressline1 : VIA MAFFEO BAGAROTTI 5, site_shown_uom is empty
+	* For the record with pdp_url : https://online.eurospin.com/product/insetticida-ragniragnatele-400ml, unique_id : 1067256 and store_address_line1 : VIA DEI MISSAGLIA ANGOLO VIA DE ANDRÈ, regular_price and selling_price is missing in the csv file.
+	
+	
+DataHut_IT_Esselunga_PriceExtractions_20260708.CSV
+--------------------------------------------------
+	* Out of 240727 rows, 240449 products have duplicate unique_ids. ie, only 20528 unique unique_ids are there in the dataset.
+	* Out of 240727 rows, 240449 products have duplicate pdp_urls. ie, only 20528 unique pdp_urls are there in the dataset.
+	* Checked, duplicate urls, and found multiple entries with same url, unique_id, site_shown_uom, but different store_addressline1.
+	For eg: pdp_url : 'https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/572259/cynar-liquore-al-carciofo-e-erbe-70-cl', unique_id: 572259 has 13 records with differences in store_address
+	* grammage_quantity and grammage_unit is empty for record with pdp_url : https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/676342/dixan-power-caps-color-2x44-pezzi, unique_id : 676342 and store_name: VIA BORGO PALAZZO
+	
+
+	
+	
+	
+	
+	
+	
+

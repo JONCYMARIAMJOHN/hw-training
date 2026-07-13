@@ -1,0 +1,8 @@
+-------Issues---------
+======================
+
+DataHut_SI_Dm_PriceExtractions_20260708.CSV
+-------------------------------------------
+	* Data count is 10433, while the requirement is 13268
+	* unique_id --> 4066447903584 grammage is 20 vr in the website, but 1 kos in the dataset
+	* unique_id--> 4058172172199 grammage is 12m in the website, but 1 kos in the dataset
