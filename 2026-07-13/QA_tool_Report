@@ -1,0 +1,35 @@
+Openrefine
+----------
+	OpenRefine is a free, open-source tool used to clean, organize, and improve the quality of data. It provides a simple spreadsheet-like interface that allows users to identify and fix issues such as duplicate records, missing values, inconsistent formatting, and spelling mistakes without requiring programming knowledge.
+	
+Merits : 
+	* As it is with no code, it can be useful for data analysts.
+	* Most data cleaning and validation tasks can be performed through the GUI.
+	* Faceting, filtering, and clustering help quickly identify missing values, duplicate records, inconsistent spellings, invalid formats etc.
+	* Easy to validate eEmpty values, regex patterns, numeric ranges, date formats, length constraints etc.
+	* Transformation history is recorded. So it is easy to undo/redo and history can be exported and reused
+	
+Demerits :
+	* It has a limited option for automation
+	* Not suitable for complex business rules
+	* No built-in scheduler for recurring QA jobs.
+	
+	
+QA using python coding
+----------------------
+Python is a powerful programming language widely used for automating data quality (QA) checks. Using libraries such as Pandas and NumPy, users can write reusable scripts to validate, clean, transform, and analyze data automatically.
+
+Merits :
+	* Fully automates repetitive QA checks.
+	* Suitable for implementing complex business validation rules.
+	* Easily handles large datasets.
+	* Generates detailed validation reports automatically.
+	* Scripts can be reused across multiple datasets and projects.
+	* Can be integrated with file formats like CSV, Excel, JSON, etc.
+	* Easy to maintain using version control systems like Git.
+	
+Demerits :
+	* Requires programming knowledge.
+	* Initial development takes more time than GUI-based tools.
+ 	* Scripts need maintenance when validation rules or data formats change.
+	* Debugging can be challenging for beginners.
