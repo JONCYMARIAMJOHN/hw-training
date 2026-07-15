@@ -1,4 +1,7 @@
-Openrefine
+DATA QA AUTOMATION TOOLS
+========================
+
+1) Openrefine
 ----------
 	OpenRefine is a free, open-source tool used to clean, organize, and improve the quality of data. It provides a simple spreadsheet-like interface that allows users to identify and fix issues such as duplicate records, missing values, inconsistent formatting, and spelling mistakes without requiring programming knowledge.
 	
@@ -15,7 +18,7 @@ Demerits :
 	* No built-in scheduler for recurring QA jobs.
 	
 	
-QA using python coding
+2) QA using python coding
 ----------------------
 Python is a powerful programming language widely used for automating data quality (QA) checks. Using libraries such as Pandas and NumPy, users can write reusable scripts to validate, clean, transform, and analyze data automatically.
 
@@ -33,3 +36,10 @@ Demerits :
 	* Initial development takes more time than GUI-based tools.
  	* Scripts need maintenance when validation rules or data formats change.
 	* Debugging can be challenging for beginners.
+	
+Github links for toolkits developed:
+https://github.com/JONCYMARIAMJOHN/hw-training/blob/main/2026-07-13/report.py
+https://github.com/JONCYMARIAMJOHN/hw-training/blob/main/2026-07-13/new_Code.ipynb
+
+
+

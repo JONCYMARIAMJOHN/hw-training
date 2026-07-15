@@ -1,0 +1,60 @@
+_____________Issues____________
+===============================
+
+
+1) qatarliving_qat_2026_07_02.json
+----------------------------------
+	* Data count is 24774
+	* id--> 145484, price_per field have value "SQM" in dataset, while square meter on website.
+	
+	
+2) nawy_egp_2026_07_02.json
+---------------------------
+	* Data count is 18240
+	* price and max_price available on website but missing on dataset for the following 4 records :
+	https://www.nawy.com/compound/1201-lagoona-la-vista-ras-el-hekma/property/55521-chalet-for-sale-in-la-vista-ras-el-hekma-with-4-bedrooms-in-ras-el-hekma-by-la-vista-developments
+	https://www.nawy.com/compound/1954-el-patio-jade/property/114791-villa-standard-villa-5-bedrooms-for-sale-in-el-patio-jade-by-la-vista-developments
+	https://www.nawy.com/compound/1287-the-butterfly/property/126177-Studio-for-sale-in-The-Butterfly-with-9-bedrooms-in-Mostakbal-City-by-Madinet-Masr
+	https://www.nawy.com/compound/1335-downtown-extension/property/125772-Apartment-for-sale-in-Downtown-Extension-with-21-bedrooms-in-Al-Alamein-by-City-Edge-Developments
+	
+	
+3) dubizzle_uae_2026_07_02.json
+-------------------------------
+	* 'trakheesi_url', an extra column found on dataset
+	* Data count is 521635.
+	* Missing price_per value سنويا
+	
+		
+4) dubizzle_qat_2026_07_02.json
+-------------------------------
+	* No issues found.
+
+
+5) dubizzle_egp_2026_07_02.json
+-------------------------------
+	* "" also exists in currency field
+	* id--> 503683427, details is empty in dataset, but website has value 98 m²
+	* id--> 503683427,property_type is captured as "(View Phonenumber)", furnished is captured as 'No' and also fileds including bedrroms, bathrooms, price, currency, details etc. are missing.
+	
+
+6) dubizzle_bah_2026_07_02.json
+-------------------------------
+	* No issues found
+
+
+7) bahrainfinder_bah_2026_07_02.json
+------------------------------------
+	* No value 'Fully furnished' in furnished field
+	
+
+8) aqarmap_egp_2026_07_02.json
+------------------------------
+	* id--> 6845153, value of broker is 'EHAB EL SSŐSS' and broker_display_name is 'Ehab EL ßőß'
+	* Site is not accessible.
+	* price value is missing for 1765 rows
+	* seller_role is empty.
+	* depth, seller_role, listing_type fields are empty, but not mentioned in the empty list in requirement.
+	* phone_number field contains invalid values like '+20109280xxxx', '+20112294xxxx', '+20127822xxxx' etc.
+	* bedrooms and bathrooms field contains arabic nummerics (eg: ١, ٢)
+	
+

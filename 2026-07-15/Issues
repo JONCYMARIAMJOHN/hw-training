@@ -1,0 +1,59 @@
+__________Issues___________
+===========================
+
+
+1) DataHut_AT_Spar_PriceExtractions_20260715.CSV
+________________________________________________
+	* Data count is 40400, while requirement is 39065
+	* No other issues found.
+	
+2) DataHut_SI_Dm_PriceExtractions_20260715.CSV
+______________________________________________
+	* Data count is 10496
+	* When the grammage_unit is 'pranj', 'vr' or 'list' in the website it is recorded as kos in the file. eg: 4070765004052, 3830049641011, 4058172622410)
+	
+3) DataHut_SI_Mercator_PriceExtractions_20260715.CSV
+____________________________________________________
+	* Data count is 16870
+	* website not accessible.
+	* For 7 rows, promotion_description is empty, but promotion_price have value (unique_ids--> ['34755', '20014827', '19558450', '20108087', '20101820', '19974789', '19611809'])
+	* For 2400 rows, promotion_description has value, but promotion_price is empty (eg: '14425024', '5129711', '17164308', '14425444')
+	
+4) autodoc_2026_07_15.csv
+_____________________________
+
+	* https://www.autodoc.be/elring/23696407 --> 'In stock' in website, but 'Out of Stock' in CSV file.
+	* No other issues found
+
+	
+	
+5) autoonderdelen24_2026_07_15.csv
+______________________________________
+
+	* No issues found
+	
+
+6) autoteiledirekt_2026_07_15.csv
+_____________________________________
+
+	* The field name is 'Stock' instead of 'Availability' in the CSV file.
+	* Description field is also partialy empty
+	
+	
+7) mister_auto_2026_07_15.csv
+_________________________________
+
+	* Data count mismatch, 20518
+	* The webpage is seems to be rendering without css, js files
+	* Net price is 0 for 520 records (eg urls: https://www.mister-auto.be/fr/rivet-a-expansion-febi-bilstein-101-100601-p/, https://www.mister-auto.be/fr/rivet-a-expansion-febi-bilstein-101-100516-p/, https://www.mister-auto.be/fr/fil-de-bougie-faisceau-allumage-valeo-021-346416-p/)
+	* Stock field contains values 'In Stock'/'Out of Stock'
+	
+	
+8) winparts_2026_07_15.csv
+______________________________
+	
+	* Data count mismatch, 20950
+	* Stock field contains values 'In Stock'/'Out of Stock'
+	* Website access blocked
+	
+

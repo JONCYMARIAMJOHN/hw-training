@@ -1,0 +1,35 @@
+   ____________Issues_______________
+==================================
+
+1) DataHut_SI_Dm_PriceExtractions_20260713.CSV
+----------------------------------------------
+	* Data count is 10667, while the requirement is 13268
+	* unique_id --> 4070765004052, site_shown_uom is '40 pranj', but grammage_quantity and unit is recoreded as '1 kos'.
+	* unique_id --> 3830049641011, site_shown_uom is '25 vr',  but grammage_quantity and unit is recoreded as '1 kos'.
+	* Similar mismatches found in several records( eg: uniqe_id--> 4009175968616, 9000101566697, 9000101567281, 8008970055206, 9000101808506, 4070765058802 etc.)
+	* units like pranj, m, vr are wrongly recorded as kos in the dataset.
+	
+	
+2) Datahut_SI_SPAR_PriceExtraction_20260713.CSV
+-----------------------------------------------
+	* Filename is 'Datahut_SI_SPAR_PriceExtraction_20260713'. A slight variation from the requirement, in the letters casing
+	* Data count is 16803, while the requirement is 17473
+	* percentage_discount field is also empty, which is not mentioned in the empty list in requirement.
+	* unique_id --> 278912, regular_price is 0.99 in the website, but empty in the dataset.
+	* unique_id is not unique. Value '680073' is repeated in the dataset.
+	* unique_id--> 663147, the grammage_quantity is 0.02.5 in the dataset, which is an invalid value, while it is '25g' in the website 
+	* unique_id--> 23854, grammage_quantity and unit are recorded as '1 kos', but it is 6.3M in the website.
+	* unique_id--> 499529, grammage_quantity and unit are recorded as '1 kos', but it is 33M in the website.
+	* Similar mismatches found in several records, with grammage_unit 'M'. (eg: 467779, 14210, 14211, 14217, 15630 etc.)
+
+3) DataHut_Si_Mercatar_PriceExtraction_20260713.CSV
+---------------------------------------------------
+	* Filename is 'DataHut_Si_Mercatar_PriceExtraction_20260713.CSV'. A slight variation from the requirement, in the letters casing.
+	* Data count is 16877, while the requirement is 16067.
+	* Fieldname is 'extraction_date' and value is in format yyyy_mm_dd.
+	* unique_id--> 5715251, breadcrump field is empty.
+	* unique_id--> 18605771, currency is wrongly recorded as 'EAR' instead of 'EUR'. Also the fieldname is 'currancy'
+	* site_shown_uom captured the product_name value accross the dataset, evenif the grammage_quantity and grammage_unit is available.
+	
+	
+
