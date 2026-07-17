@@ -1,0 +1,61 @@
+__________Issues_____________
+=============================
+
+1) DataHut_AT_Billa_FullDump_20260716.CSV
+_________________________________________
+
+	- Data count is 12439
+	- Unnecessary space found in site_shown_uom. (eg: '1 000 g' in unique_id : 00-13418, '1 650 ml Packung' in unique_id : 00-885822). Found 198 such records.
+	- Unnecessary space found also in corresponding grammage_unit. Anyway the space is present in website too.
+	- product_description is not newline by line as mentioned in the requirement
+	- site_shown_uom is missing for 9 records : unique_ids : 00-424344, 00-714378, 00-714753, 00-95497, 00-95499, 00-95781, 00-95782, 00-240470, 00-567341 
+	- The first condition violates on 962 rows:
+	eg: unique_id: 00-101513--> site_shown_uom is '20 Beutel Packung', but grammage_unit is 'stück', not 'btl'
+	unique_id : 00-116129--> site_shown_uom is '200 g Beutel', but grammage_unit is 'g', not 'btl'
+	unique_id : 00-103992 --> site_shown_uom is '1 kg Beutel', but grammage_unit is 'kg', not 'btl'
+	
+
+2) DataHut_AT_Dm_FullDump_20260716.CSV
+_______________________________________
+	
+	* Following fields are actually empty, but not listed in requirement : producthierarchy_level5, file_name_1, file_name_2, file_name_3, file_name_4, file_name_5, file_name_6
+	* Following fields are actually not empty, but listed as empty in requirement : barcode, retail_limit
+	* grammage_quantity is having unwanted space like '1 000' (same as in website)
+	(eg:
+	row 438 - https://www.dm.at/p/d/3117626/pampers-feuchttuecher-99-prozent-water-18-x-60
+	row 1221- https://www.dm.at/p/d/3122237/pantene-pro-v-shampoo-moisture-recharge)
+
+
+3) DataHut_CH_Coop_FullDump_20260616.CSV
+_________________________________________
+
+	* As the extraction_date is 2026-07-16, filename should be DataHut_CH_Coop_FullDump_20260716.CSV, But actually it is DataHut_CH_Coop_FullDump_20260616.CSV (mismatch in month)
+	* regular_price empty for 89 records (eg: unique_ids--> 3051254, 3051104, 6987020, 4880441, 5902478 etc.
+	* selling_price empty for 18 rows (eg: 9901075, 9901073 , 9903445, 9902302, 9901076, 9902730 etc.
+	* Incorrect grammage_quantity : grammage_unit is actually 'g' but recorded as 'p' in the csv file for pdp_url - https://www.coop.ch/de/lebensmittel/fruechte-gemuese/fruechte/exotische-fruechte/weitere-exotische-fruechte/fairtrade-passionsfrucht-ca/p/4343881 (row 13)
+	* Several rows violates the rule, 'if regular price in data - promotion price is selling price'--> eg: 7060421, 7073486, 3090545 etc.
+	* site_shown_uom is empty for 7092 records (eg: unique_ids--> 7539867, 7428482, 7535870, 7535869, 7539142 
+	
+4) DataHut_CH_Lidl_FullDump_20260717.CSV
+________________________________________
+
+	* As the extraction_date is 2026-07-16, filename should be DataHut_CH_Lidl_FullDump_20260716.CSV, But actaully it is DataHut_CH_Coop_FullDump_20260617.CSV (mismatch in day)
+	* competitor_name error : for pdp_url : https://sortiment.lidl.ch/de/catalog/product/view/id/16787/s/branches-classic-5112010/category/54/ ,(row 12)
+, competitor_name is 'lidi', while it should be 'lidl' as per the requirement
+	* promotion_valid_from,promotion_valid_upto and price_valid_from are in In YYYY.MM.DD format (same as in the website)
+	* Several rows exists with promotion_description has value, but promotion_valid_from is empty (eg: url - https://sortiment.lidl.ch/de/catalog/product/view/id/21787/s/milka-choco-snack-1801482/category/54/, (row 44))
+	
+5) DataHut_CH_Migros_FullDump_20260716.csv
+__________________________________________
+
+	* competitor_name error: for pdp_url : https://www.migros.ch/de/product/271708513200 (row 17), competitor_name is 'mgiros', while it should be 'migros'
+	* site_shown_uom is missing on 4242 records (eg: pdp_url : https://www.migros.ch/de/product/717494200000 (row 9656))
+	* filename field is completely empty.
+	
+	
+
+
+	
+	
+	
+

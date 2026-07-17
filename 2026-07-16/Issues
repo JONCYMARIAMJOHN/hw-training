@@ -1,0 +1,53 @@
+______________Issues________________
+====================================
+
+
+
+1) DataHut_SI_Mercator_FullDump_20260716.CSV
+____________________________________________
+	
+	- Data count is 16870
+	- Site not accessible
+	- For 7 records, promotion_description is empty, but promotion_price has value. unique_ids : ['975419', '20014827', '20108087', '19558450', '20101820', '19974789', '19611809']
+	- For 2474 records, promtion_description has value, but promotion_price is empty. example unique_ids : ['876835', '16611409', '876847', '17164308', '8897248' etc.]
+	- 
+
+
+2) DataHut_SI_Dm_FullDump_20260716.CSV
+______________________________________
+	
+	- Data count is 10637
+	- price_was', 'promotion_price' fields are empty, but not mentioned in requirement.
+	- price_valid_from amd promotion_valid_from fields are in YYYY.MM.DD format as shown in site.
+	- if unit is 'pranj', 'vr' or 'list' on site, grammage_unit is taken as 'kos'
+
+
+
+3) DataHut_SI_Spar_FullDump_20260716.CSV
+________________________________________
+
+	- Following fields are empty, but not mentioned as empty in requirement : variants, preparationinstructions, flavour, labelling, packaging, special_information, label_information, dimensions, color, material, tasting_note, rating, review, features, retail_limit
+	- Following fields are not actually empty, but mentioned as empty in requirement : barcode, promotion_valid_upto, promotion_description, price_was, promotion_price, alchol_by_volume, netweight
+	- price_valid_from amd promotion_valid_from, promotion_valid_upto fields are in YYYY.MM.DD format as shown in site.
+	- if unit is 'M' on site, grammage_unit is taken as 'kos'
+	- pdp_url : https://online.spar.si/p/omaka-cocktail-felix-250ml-471274--> promotion_description and two prices 3.49 and 2.49 is present in the website. But on the csv file 3.49 is recorderd as regular_price and selling_price, and promotion_price is empty.
+	- Similar issue found on following urls too : https://online.spar.si/p/sladka-cili-omaka-felix-240-ml-660116, https://online.spar.si/p/sladko-kisla-omaka-felix-240ml-471267, https://online.spar.si/p/omaka-bbq-original-felix-240ml-600706, https://online.spar.si/p/omaka-steakhouse-felix-240ml-600705 
+
+
+4) DataHut_AT_Spar_FullDump_20260716.CSV
+__________________________________________
+
+	- Data count 40535
+	- age_of_the_product field is actually not empty, but mentioned as empty in the requirement.
+	- pdp_url : https://www.spar.at/produktwelt/null-sparkling-tea-rose-alkoholfrei-p2020004999153--> product_name on website is 'null Sparkling Tea Rosé alkoholfrei', on csv file brand_name is taken as 'null'.
+	- Same issue on pdp_url--> https://www.spar.at/produktwelt/null-sparkling-tea-blanc-alkoholfrei-p2020005975286
+	- Page not found on pdp_url : https://www.spar.at/produktwelt/spar-natur-pur-bio-roggen-vollkornbrot-leinsamen-p2020003059742 and most of the field values are available on csv file, but image_url_1 field is empty.
+	- 
+
+
+
+
+
+
+
+
