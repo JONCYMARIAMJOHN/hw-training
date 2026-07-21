@@ -1,0 +1,51 @@
+______________Issues_________________
+=====================================
+
+
+1) aqarmap_egp_2026_07_03.json
+______________________________
+
+	* As the date field is '2026-07-17', the file name is supposed to be 'aqarmap_egp_2026_07_17', but it is 'aqarmap_egp_2026_07_03'
+	* Datacount is 343K+
+	* url -https://aqarmap.com.eg/en/listing/6845153-for-sale-cairo-15th-of-may-mjwr-11/ (row- 236339 and id- 6845153), broker is 'EHAB EL SSŐSS' and broker_display_name is 'Ehab EL ßőß'
+	* iteration_number format is correct, but value is expected to be '2026_07_17', but it is '2026_07_03'
+	* url: https://aqarmap.com.eg/en/listing/6794852-for-sale-cairo-new-cairo-ain-el-sokhna-rd/ (row 35156 & id 6794852), details field is empty
+	* seller_role is empty accross the dataset
+	* depth, seller_role, listing_type fields are empty, which is not mentioned in the requirement
+	* website is not accessible
+	* phone_number is empty for url : https://aqarmap.com.eg/en/listing/7113643-for-sale-alexandria-sydy-bshr-shr-mlk-hfny/ (row: 217355, id: 7113643)
+	* broker and broker_display_name missing for 11131 records.
+	* price and currency missing for 1741 records
+	* title is empty for 557 records
+	* bedrooms and bathrooms values are arabic numerics for url: https://aqarmap.com.eg/en/listing/6989431-for-sale-cairo-faisal-el-talbeya/ (row: 25849, id: 6989431)
+	* description field contains unexpected value like '???????' eg: url : https://aqarmap.com.eg/en/listing/7080690-for-rent-port-said-kmbwnd-fy-bwr-s-yd-porto-said-compound-amer-group/ (row: 11, id: 7080690)
+	* description field contains unexpected value like '======' eg: url : https://aqarmap.com.eg/en/listing/7092971-for-rent-north-coast-resorts-mrsy-marina-west-marassi/ (row: 26, id: 7092971)
+	* invalid characters (xxx) found in phone_number (eg: url : https://aqarmap.com.eg/en/listing/7086296-for-rent-jnwb-syn-dahb-nadira-compound-dahab/ (row: 1, id: 7086296)
+	
+	
+2) bahrainfinder_bah_2026_07_03.json
+____________________________________
+
+	* As the date field is '2026-07-20', the file name is supposed to be 'bahrainfinder_bah_2026_07_20', but it is 'bahrainfinder_bah_2026_07_03'
+	* Data count is 4750
+	* iteration_number format is correct, but value is expected to be '2026_07_20', but it is '2026_07_03'
+	* No value 'fully furnished' found in furnished field
+	* values like '-----', '_______' found in description field, but it is present in website too. eg: url : https://bahrainfinder.bh/en/property/penthouse-for-sale-in-amwaj-island-4949.html(row: 18, id: 11111b3e544dc0966f0b5dfc02b8c3a3)
+	url: https://bahrainfinder.bh/en/property/penthouse-for-sale-in-seef-district-5628.html(row:26 , id: fa276e73f7568d4407f6f175919dadf5)
+	
+	
+3) dubizzle_bah_2026_07_03.json
+_______________________________
+
+	* As the date field is '2026-07-20', the file name is supposed to be 'dubizzle_bah_2026_07_20', but it is 'dubizzle_bah_2026_07_03'
+	* iteration_number format is correct, but value is expected to be '2026_07_20', but it is '2026_07_03'
+	* description not completely recorded and extra long trailing space found in url : https://www.dubizzle.com.bh/en/ad/villa-for-rent-in-arad-fully-furinshed-with-maid-room-ID105602421.html(row: 45). The Second floor details in the description on website is not included in the description in json file.
+	* description contain unwanted long trailing space in url: https://www.dubizzle.com.bh/en/ad/large-showroom-restaurant-two-floors-ID105715866.html (row: 218)
+	* description value is 'Hghgfdssssddddffghhhhjjjj' for url : 'https://www.dubizzle.com.bh/en/ad/%D9%84%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84-32018882-ID105092155.html'(row: 73) (same as in the website)
+	
+	
+
+	
+
+
+
