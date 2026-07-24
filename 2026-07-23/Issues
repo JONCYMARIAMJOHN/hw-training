@@ -1,0 +1,110 @@
+____________Issues_____________
+===============================
+
+1) DataHut_AT_Dm_FullDump_20260723.CSV
+______________________________________
+
+	* Following fileds are actually empty, but niot mentioned in the requirement: 'producthierarchy_level5', 'file_name_1', 'file_name_2', 'file_name_3', 'file_name_4', 'file_name_5', 'file_name_6'
+	
+	* 'barcode' and 'retail_limit' fields are not empty, but mentioned as empty in the requirement.
+	
+	* On 5 entries in the variants column, '|' is not replaced with '\|' 
+	pdp_urls :  
+	https://www.dm.at/p/d/1843706/nur-die-seidenfein-strumpfhose-teint-15-den-gr-44-48 (row 14853)
+	https://www.dm.at/p/d/1611237/nur-die-seidenfein-strumpfhose-amber-15-den-gr-40-44 (row 14855)
+	https://www.dm.at/p/d/1611241/nur-die-seidenfein-strumpfhose-amber-15-den-gr-44-48 (row 14856)   
+	https://www.dm.at/p/d/1611233/nur-die-seidenfein-strumpfhose-amber-15-den-gr-38-40 (row 14857)  
+	https://www.dm.at/p/d/1611234/nur-die-seidenfein-strumpfhose-bronze-15-den-gr-38-40 (row 14860)
+	https://www.dm.at/p/d/1611243/nur-die-seidenfein-strumpfhose-schwarz-15-den-gr-44-48 (row 14861)
+	https://www.dm.at/p/d/1843705/nur-die-seidenfein-strumpfhose-teint-15-den-gr-40-44 (row 14864)
+	https://www.dm.at/p/d/1611242/nur-die-seidenfein-strumpfhose-schwarz-15-den-gr-44-48 (row 14865)
+	https://www.dm.at/p/d/1843699/nur-die-seidenfein-strumpfhose-teint-15-den-gr-38-40 (row 14667)
+	https://www.dm.at/p/d/1611239/nur-die-seidenfein-strumpfhose-schwarz-15-den-gr-40-44 (row 14868)
+	
+	* grammage_quantity and site_shown_uom is having unwanted space like '1 000' in 17 records (same as in website)
+	(eg:
+	https://www.dm.at/p/d/3117626/pampers-feuchttuecher-99-prozent-water-18-x-60 (row 446)
+	https://www.dm.at/p/d/1917558/old-spice-duschgel-captain (row 1427)
+	
+	* grammage_quantity and grammage_unit is '100 Bl' on website, but '1 stück' on csv file. pdp_url: https://www.dm.at/p/d/1292653/soft-und-sicher-taschentuecher-box-4-lagig-sortiert 
+	
+	
+2) DataHut_AT_Billa_FullDump_20260723.CSV
+_________________________________________
+
+	* Data count is 12351
+	
+	* age_of_the_product and packaging fileds are not empty
+	
+	* Following fields are actually empty, but not listed in the requirement : file_name_1, file_name_2, file_name_3, file_name_4, file_name_5, file_name_6, retail_limit.
+	* site_shown_uom empty for following 9 records:
+	https://shop.billa.at/produkte/ja-natuerlich-hendlruecken-00240470 (row 435) 
+	https://shop.billa.at/produkte/ja-natuerlich-hendlfilet-00424344 (row 2907)
+	https://shop.billa.at/produkte/ja-natuerlich-hendl-suppenfleisch-00567341 (row 4733)
+	https://shop.billa.at/produkte/ja-natuerlich-huhninnenfilet-00714753 (row 6281)
+	https://shop.billa.at/produkte/ja-natuerlich-huehnerschnitzel-00714378 (row 6287)
+	https://shop.billa.at/produkte/ja-natuerlich-huehnerfluegerl-0095499 (row 11906)
+	https://shop.billa.at/produkte/ja-natuerlich-huehnerkeulen-0095497 (row 11915)
+	https://shop.billa.at/produkte/ja-natuerlich-hendl-oberkeulen-0095781 (row 11922)
+	https://shop.billa.at/produkte/ja-natuerlich-hendlunterkeulen-0095782 (row 11931)
+	
+	* product_description is not in newline by line format
+	
+	* For 82 rows, which contians "Waschgang" in site_shown_uom, the grammage_unit must be 'wg' as per the requirement. But it is actually "stück" in the file. Eg: 
+	https://shop.billa.at/produkte/clever-vollwaschmittel-fluessig-00352456 (row 1689) 
+	https://shop.billa.at/produkte/clever-colorwaschmittel-fluessig-00352454 (row 1691)
+	
+	* For 949 rows, which contains "Teebeutel Packung", "Teebeutel", "Beutel", "Btl", "Teebeutel Karton", "Teebeutel Paket", "Packung Beutel", the grammage_unit must be 'btl' as per the requirement. But it is actually 'stück' 'g' 'kg' 'ml' 'l' in the file. Eg:
+	https://shop.billa.at/produkte/toppits-gefrierbeutel-1l-00101511 (row 31)
+	https://shop.billa.at/produkte/kinder-schokobons-00116129 (row 32)
+	
+	* grammage_quantity and site_shown_uom is having unwanted space like '1 000' in 197 records (same as in website)
+	(eg:
+	https://shop.billa.at/produkte/cambozola-orginal-0010763 (row 83)
+	https://shop.billa.at/produkte/rinderzunge-gekocht-0014030 (row 108)
+
+
+3) DataHut_CH_Coop_FullDump_20260723.CSV
+________________________________________
+
+	* regular_price is empty for 87 records. Eg: 
+	https://www.coop.ch/de/kiosk/spirituosen/alle-spirituosen/rum-cachaca/rum/captain-morgan-spiced-gold/p/4009752 (row 7858)
+	https://www.coop.ch/de/kiosk/spirituosen/alle-spirituosen/whisky/aus-schottland/blended-scotch/whisky-ballantine-s-scotch/p/5670953 (row 7942)
+	
+	* regular_price is 0 for 137 records. (same as in the website)  Eg: 
+	https://www.coop.ch/de/lebensmittel/getraenke/soft-drinks/cola-limonaden/uebrige-limonaden/gratis-sprite-zero/p/7587868 (row 8384)
+	https://www.coop.ch/de/lebensmittel/getraenke/mineralwasser/mit-aroma/gratis-focus-water-mind/p/7587807 (row 8423)
+	
+	* selling_price is empty for 18 records. (same as in the website) Eg: 
+	https://www.coop.ch/de/kiosk/geschenkkarten/geschenkkarte-universal-congrats-wert-variabel-aufladbar/p/9901076 (row 15339)
+	https://www.coop.ch/de/kiosk/geschenkkarten/geschenkkarte-universal-happy-birthday-wert-variabel-aufladbar/p/9901074 (row 15340)
+	
+	* selling_price is 0 for 137 records. (same as in the website) Eg: 
+	https://www.coop.ch/de/lebensmittel/getraenke/soft-drinks/cola-limonaden/uebrige-limonaden/gratis-sprite-zero/p/7587868 (row 8384) 
+	https://www.coop.ch/de/lebensmittel/getraenke/mineralwasser/mit-aroma/gratis-focus-water-mind/p/7587807 (row 8423)
+	
+	* site_shown_uom missing for 7089 records. Eg:
+	https://www.coop.ch/de/lebensmittel/fruechte-gemuese/salatgemuese/gurken/gurke/p/7563817 (row 6) 
+	https://www.coop.ch/de/lebensmittel/fruechte-gemuese/fruechte/exotische-fruechte/weitere-exotische-fruechte/prix-garantie-granatapfel/p/7539867 (row 12)
+	
+	
+4) DataHut_CH_Denner_FullDump_20260723.CSV
+__________________________________________
+
+	* Data count is 1440
+	
+	* For 131 records selling_price is null (same as in the website) Eg:
+	https://www.denner.ch/de/aktionen-und-sortiment/Elements-luna-laudun-cotes-du-rhone-villages~p057438?variant=2371f07d-31d7-4b46-a6de-1619ca8e3054 (row 736) 
+	https://www.denner.ch/de/aktionen/gris-blanc-pays-d-oc-igp~p1108199?variant=6455ed42-dce3-4d80-b60f-103bbdf4cdf0 (row 740) 
+	
+	* For 131 records regular_price is null (same as in the website) Eg:
+	https://www.denner.ch/de/aktionen-und-sortiment/Elements-luna-laudun-cotes-du-rhone-villages~p057438?variant=2371f07d-31d7-4b46-a6de-1619ca8e3054 (row 736) 
+	https://www.denner.ch/de/aktionen/gris-blanc-pays-d-oc-igp~p1108199?variant=6455ed42-dce3-4d80-b60f-103bbdf4cdf0 (row 740) 
+	
+	
+
+
+
+
+
+

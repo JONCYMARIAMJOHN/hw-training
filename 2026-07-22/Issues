@@ -1,0 +1,80 @@
+_____________Issues________________
+===================================
+
+
+1) DataHut_AT_Billa_PriceExtractions_20260722.CSV
+_________________________________________________
+
+	* "If site_shown_uom contains "Teebeutel Packung" , "Teebeutel" , "Beutel", "Btl" ,"Teebeutel Karton" , "Teebeutel Paket" or "Packung Beutel", then grammage unit should be "btl"---> This condition violates for 949 rows. Eg: 
+	pdp_url : https://shop.billa.at/produkte/toppits-gefrierbeutel-6-liter-00101513 (unique_id: 00-101513) , site_shown_uom: "20 Beutel Packung", grammage_unit : "stück"
+	pdp_url : https://shop.billa.at/produkte/vegeta-wuerzmischung-00103992 (unique_id: 00-103992),  site_shown_uom: "1 kg Beutel", grammage_unit : "kg"
+	* The keyword  "wg", "Waschgänge" or "Waschgang" then grammage unit should be  "wg"--> this condition violates for 82 records. Eg:
+	pdp_url : https://shop.billa.at/produkte/clever-colorwaschmittel-fluessig-00352454 (uniqUe_id : 00-352454), site_shown_uom : "40 Waschgang Flasche",  grammage_unit : "stück"
+	* regular_price is empty for all records with promotion_decription "AKTION"
+	
+2) DataHut_SI_Spar_PriceExtractions_20260722.CSV
+________________________________________________
+
+	* Data count is 16687
+	* percentage_discount field is empty, which is not mentione din the requirement
+	* All records with site_shown_uom ends with 'M', the grammage_quantity and grammage_unit is '1 kos'. Eg: 
+	pdp_url: https://online.spar.si/p/obojestranski-lepilni-trak-scotch-12mm-x-63m-23854, grammage is '1 kos', while site_shown_uom is '6.3 M'
+	pdp_url: https://online.spar.si/p/barvna-girlanda-360cm-simpex-celebration-11-596156, grammage is '1 kos', while site_shown_uom is '3.6 M'
+	* price_per_unit is empty for two records where the site shows value '0,00 €/KOS'
+	pdp_urls: https://online.spar.si/p/vatirane-palcke-papirnate-100-bombaz-brez-klora-beauty-kiss-1601-591906, https://online.spar.si/p/vatirane-palcke-papirnate-100-bombaz-brez-klora-beauty-kiss-3001-591908
+	* promotion_price is greater than regular_price for one record (same as in the website)--> pdp_url: https://online.spar.si/p/prvi-tobogan-za-otroke-paradiso-673133
+
+
+3) DataHut_SI_Dm_PriceExtractions_20260722.CSV
+______________________________________________
+
+	* Data count is 10538
+	* For records with site_shown_uom contains 'pranj', gramage_quantity and grammage_unit are recorded as '1 kos'. Eg:
+	pdp_url: https://www.dm.si/p/d/1410877/denkmit-tekoci-detergent-za-pranje-obcutljivega-perila-black-sensation, site_shown_uom: '40 pranj', grammage : '1 kos'
+	pdp_url: https://www.dm.si/p/d/3058547/frosch-baby-tekoci-detergent-za-pranje-perila  , site_shown_uom: '22 pranj', grammage : '1 kos'
+	
+4) DataHut_SI_Mercator_PriceExtractions_20260722.CSV
+____________________________________________________
+
+	* Data count is 16857
+	* Website not accessible
+	* For 8 records, promotion_ description is empty, but promotion_price has value. Eg: pdp_urls--> https://mercatoronline.si/izdelek/975419/kanadski-whiskey-canadian-club-40-alkohola-0-7-l, https://mercatoronline.si/izdelek/19558450/gugalnik-siv-bologna etc.
+	* For 2491 records, promotion_description has value, but promotion_price is empty. Eg: pdp_urls--> https://mercatoronline.si/izdelek/876835/cvrsti-jogurt-3-2-m-m-mu-180-g, https://mercatoronline.si/izdelek/16611409/tekoci-jogurt-2-8-m-m-z-bregov-1-l etc. 
+	* site_shown_uom has value of product_name accross the entire dataset
+	
+	
+	
+5) DataHut_IT_Esselunga_PriceExtractions_20260722.CSV
+_____________________________________________________
+
+	* unique_id is not unique. Out of 240180 rows, only 20760 unique values exists in the column
+	* pdp_url is also not unique. Out of 240180 rows, only 20760 unique values exists in the column 
+	* extraction_date is '2026-07-21', but filename is 'DataHut_IT_Esselunga_PriceExtractions_20260722.CSV'
+	* For two records, selling_price and promotion_price are greater than regular_price of the product. pdp_url of both the records is 'https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/721042/formaggio-grana-padano-dop-oltre-16-mesi' and the website shows 'The product you are looking for is no longer available'.
+	* For 8346 records, promotion_price is empty, while promotion_description has value. No price is available on the website in such cases.
+	
+
+6) DataHut_IT_Eurospin_PriceExtractions_20260722.CSV
+____________________________________________________
+
+	* Data count is 43351
+	* pdp_url is not unique. Out of 43351 rows, only 4783 unique values exists in the column 
+	* unique_id is not unique. Out of 43351 rows, only 4783 unique values exists in the column 
+	* extraction_date is '2026-07-21', but filename is 'DataHut_IT_Eurospin_PriceExtractions_20260722.CSV'
+	* For 11 records, site_shown_uom value is '℮)' (same as in the website). pdp_url: https://online.eurospin.com/product/pate-gatto-assto-multibox-12x100g1
+	
+
+7) DataHut_SI_Spar_FullDump_20260723.CSV
+________________________________________
+
+	* Filename structure is correct, but the name is 'DataHut_SI_Spar_FullDump_20260723' which is a date ahead
+	* Data count is 16687
+	* Following fields are actually empty, but not mentioned as empty in requirement : packaging, label_information, color, material, tasting_note, rating, review, file_name_1, file_name_2, file_name_3, file_name_4, file_name_5, file_name_6, features, alchol_by_volume
+	* Following fields are not actually empty, but mentioned as empty in requirement : promotion_valid_upto, promotion_description, price_was, promotion_price, barcode, netweight
+	* Format of extraction_date is correct, but the value is a date ahead.
+	* Only instock true products is included in the dataset.
+	* Records with site_shown_uom contains 'M', grammage_quantity and grammage_unit is '1 kos' (eg: https://online.spar.si/p/obojestranski-lepilni-trak-scotch-12mm-x-63m-23854 , https://online.spar.si/p/zobna-nitka-sensodyne-30m-280997  )
+	* For one record, promotion_price and selling price are greater than regular price (pdp_url: https://online.spar.si/p/prvi-tobogan-za-otroke-paradiso-673133 )
+	
+	
+	
