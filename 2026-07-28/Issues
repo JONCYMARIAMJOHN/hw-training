@@ -1,0 +1,79 @@
+__________Issues_____________
+=============================
+
+1) dari_ae_2025_07_04.json
+__________________________
+
+	* Filename error : Year is 2025 instead of 2026
+	* profession value 'Brokers ' has an extra trailing space for the record --> url : https://www.dari.ae/en/app/directory/profession?id=34134
+	* license_end_date is empty for url : https://www.dari.ae/en/app/directory/profession?id=31486 , where the value is available on the website as '30/12/2026'
+	* Invalid license_start_date : the field value is '5660549' for url : https://www.dari.ae/en/app/directory/profession?id=30097, where the value on the website is '20/10/2025'
+	* Data count is 1080
+	* email field empty for 4 records (same as in the website)
+	https://www.dari.ae/en/app/directory/profession?id=34802   
+	https://www.dari.ae/en/app/directory/profession?id=32161   
+	https://www.dari.ae/en/app/directory/profession?id=34212   
+	https://www.dari.ae/en/app/directory/profession?id=32803  
+	* Invalid email value: the field value is "971506600279" for url : https://www.dari.ae/en/app/directory/profession?id=30097, where the value in website is "misss.kb10@gmail.com"
+	* 'https:'  missing in url:www.dari.ae/en/app/directory/profession?id=27940 (Anyway the value is valid and accessible)
+	
+	
+	
+2) Dubizle_qatar_2026_07_04.json
+________________________________
+
+	* Filename error: the format is "dubizzle_qat_YYYY_MM_WW.json". So the file name should be dubizzle_qat_2026_07_04. Casing and spelling error found.
+	* The suffix is in the file name is _qatar_ instead of _qat_
+	* iteration_number field have 2 different values: "2026_07_03" and "2026_07_04"
+	* scraped_ts have 2 different values '2026-07-20', '2026-07-27' where the dates have a gap around one week.
+	* unwanted long white space found in description field of url : https://www.dubizzle.qa/en/ad/shop-for-rent-in-al-duhail-area-ID120350029.html
+	* Bedrooms and bathrooms values are recorded as 'TWO' in the json file, while they are '2' in the website for url : https://www.dubizzle.qa/en/ad/family-2bhk-apartment-in-mansoura-ID120353096.html
+	
+	
+3) bayut_bah-2025_07_04.json
+____________________________
+
+	* Filename error: Year is '2025' instead of '2026' and also found '-' instead of '_'
+	* Data count is 2820
+	* Category value is 'SALE' in url : https://www.bayut.bh/en/property/details-105600986.html
+	* package_type value is empty string in url : https://www.bayut.bh/en/property/details-500132301.html
+	* currency value is 'bhd' in url : https://www.bayut.bh/en/property/details-105098591.html, while it is 'BHD' on the website
+	* furnished field value is 'fully furnished' for url : https://www.bayut.bh/en/property/details-101658709.html , while the value is 'furnished' in the website.
+	
+4) bahrainfinder_2026_07_04.json
+________________________________
+
+	* Filename error: suffix _bah_ is missing
+	* Currency value is 'AED' for url : https://bahrainfinder.bh/ar/property/أرض-للبيع-في-كرانة-3519.html , where the value in website is 'Dinar', means BHD
+	* category have value 'sale' only.
+	* No value 'fully furnished' found in furnished field.
+	* 'price_per' field have value 'monthly'for one record : https://bahrainfinder.bh/ar/property/أرض-للبيع-في-مقابة-4660.html 
+	* 'https' missing for one record : ://bahrainfinder.bh/en/property/apartment-for-sale-in-saraya-2-5731.html , however the link is accessible.
+	
+	
+	
+1) qatarliving_qat_2026-07-04.json
+_________________________________
+
+	* Filename error : Unexpected '-' instead of '_' found in the filename. The expected name is 'qatarliving_qat_2026_07_04'
+	* scraped_ts format is YYYY_MM_DD which is invalid
+	* iteration_number format is YYYY-MM-DD, which is invalid
+	* broker value is empty for url : https://qlp.qatarliving.com/en/properties/rent/residential/villa/5br_compound_villa_pool_gym_play_area/262677, where the expected value is 'CAMELIA HOMES'.
+	* id duplicate found: The value '244666' is found in two rows 16279, 16280. The id value corresponding to the url https://qlp.qatarliving.com/en/properties/rent/residential/villa/large_4br_maid_for_rent_in_al_waab/244676 should be '244676' (row 16279)
+	
+
+2) dubizzle_egp_2025_07_04.json
+_______________________________
+
+	* File name error: Year value is '2025' instead of '2026'. So the filename should be 'dubizzle_egp_2026_07_04'
+	* scraped_ts have 3 values : '2026-07-25', '2026-07-26', '2026-07-27'
+	* iteration_number value is '2026_07_03' instead of '2026_07_04'
+	* price_per field has value 'daily' on one record with url : https://www.dubizzle.com.eg/en/ad/apartment-for-sale-in-al-borouj-compound-phase-orion-ID503770224.html
+	* 'https' missing for url : //www.dubizzle.com.eg/en/ad/%D8%B4%D9%82%D8%A9-%D8%AF%D9%88%D8%A8%D9%84%D9%8A%D9%83%D8%B3-%D8%A8%D8%A7%D9%84%D8%B4%D8%B1%D9%88%D9%82-%D9%A1-%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9-%D8%A7%D9%84%D8%B1%D8%A7%D8%A8%D8%B9%D8%A9-ID208412726.html The urlis inaccessible
+	* property_type is '(View phone number)' in json file, but 'Apartment' in the website for url : https://www.dubizzle.com.eg/en/ad/apartment-for-sale-in-al-obour-city-8th-neighborhood-al-obour-park-first-residence-ID503742797.html
+	* property_type is'Roof' in json file , but 'Studio' on website for url : https://www.dubizzle.com.eg/en/ad/studio-for-sale-wadi-el-beyda-dahab-20-metre-square-ID208361996.html
+	
+
+
+	
+	

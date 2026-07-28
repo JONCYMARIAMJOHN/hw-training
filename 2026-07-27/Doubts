@@ -1,0 +1,107 @@
+
+____Doubts - TCS_____
+============
+
+AUSTRIA
+--------
+
+1) dm_fulldump
+___________
+
+	* Empty field requirement should be updated, as mismatches reccuringly found on several QA.
+	* grammage_unit 'Bl' on website, taken as 'stück' into the csv.
+	* Grammage_quantity has unwanted space like '1 000' in several records, anyway it exists in website too. Is this an issue?
+	
+2) billa_fulldump
+_________________
+
+	* Empty field requirement should be updated, as mismatches reccurringly found on several QA.
+	* site_shown_uom - grammage_unit requirement is getting reccuringly violated on several QA.
+	
+3) spar_fulldump
+________________
+
+	* Empty field requirement should be updated, as mismatches reccuringly found on several QA.
+	
+4) billa
+________
+	
+	* Grammage_quantity has unwanted space like '1 000' in several records (same as in the website).  Is this an issue?
+	* site_shown_uom - grammage_unit requirement is getting reccurringly violated on several QA.
+	
+5) dm
+______
+	* promotion_valid from format is DD.MM.YYYY, want to confirm whether the correct format is YYYY.MM.DD ?
+
+5) spar
+_______
+(no doubts)
+
+_____________________________________________
+
+SWITZERLAND
+-----------
+
+1) coop-fulldump
+________________
+
+	* In several cases, found regular_price, selling_price values are empty. In cases of regular_price empty, a single price is present in the website, but in the case of selling_price empty, price in the website also missing. Is this is an issue?
+	
+2) migros-fulldump
+__________________
+(no doubts)
+
+3) denner_fulldump
+__________________
+(no doubts)
+
+4) Lidl_fulldump
+_________________
+	* promotion_valid_from & promotion_valid_upto format is DD.MM.YYYY, want to confirm whether the correct format is  YYYY.MM.DD ?
+	* promotion dates are expected to generate form history, but it is not.
+	
+_______________________________________________
+
+	
+SLOVENIA
+---------
+
+1) dm-daily
+___________
+	* Reccuringly observed grammage_unit-site_shown_uom mismatch
+	
+2) spar-daily
+_____________
+	* Empty field requirement needs to update
+	* Reccuringly observed grammage_unit-site_shown_uom mismatch
+
+3) mercator-daily
+_________________
+(site always inaccessible)
+
+4) mercator-fulldump
+____________________
+(site always inaccessible)
+
+5) spar-fulldump
+________________
+	* Empty field requirement needs to update
+	* site_shown_uom, grammage_unit mismatch issue (if unit is 'M' on site, grammage_unit is taken as 'kos')
+	
+6) dm-fulldump
+______________
+	* Empty field requirement needs to update
+	* For products with units such as "pranj" and "vr", the  unit are  taken as "kos" in the CSV
+
+_________________________________________________________________
+
+ITALY
+------
+
+1) eurospin
+___________
+	* url, unique_id duplication occurs reccuringly
+
+2) esselunga
+____________
+	*  url, unique_id duplication occurs reccuringly

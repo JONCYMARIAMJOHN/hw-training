@@ -1,0 +1,52 @@
+______________Issues_________________
+=====================================
+
+
+1) DataHut_SI_Mercator_PriceExtractions_20260727.CSV
+____________________________________________________
+
+	* Data count is 16866
+	* website not accessible
+	* promotion_price is empty even if promotion_description present in 2439 rows. Eg:
+	https://mercatoronline.si/izdelek/5123130/jogurt-3-2-m-m-mu-500-g  (row 38)
+	https://mercatoronline.si/izdelek/5123122/tekoci-jogurt-1-3-m-m-mu-500-g (row 55)
+	* promotion_price is present even if promotion_description is empty in 8 rows. Eg:
+	https://mercatoronline.si/izdelek/975419/kanadski-whiskey-canadian-club-40-alkohola-0-7-l (row 5383)
+	https://mercatoronline.si/izdelek/34755/sivi-pinot-vrhunsko-belo-vino-jeruzalem-ormoz-0-75-l (row 5884)
+	
+	
+2) DataHut_SI_Dm_PriceExtractions_20260727.CSV
+______________________________________________
+
+	* Data count is 10673
+	* In case where site_shown_uom end with values 'pranj', 'vr', 'list', grammage_quantity and grammage_unit is '1 kos'. Eg:
+	https://www.dm.si/p/d/1410877/denkmit-tekoci-detergent-za-pranje-obcutljivega-perila-black-sensation (row 147)
+	https://www.dm.si/p/d/2247085/herba-medica-bio-caj-za-dojece-mamice (row 497)
+	
+	
+3) DataHut_AT_Spar_PriceExtractions_20260727.CSV
+________________________________________________
+
+	* Data count is 40644
+	* regular_price and selling_price empty in 20 records (same as in the website) Eg: 
+	https://www.spar.at/produktwelt/kirnbauer-phantom-cuvee-magnum-2022-p2020005452459 (row 40626)
+	https://www.spar.at/produktwelt/rex-sturzglas-370-ml-3er-set-p2020004157584 (row 40627)
+	
+4) DataHut_AT_Billa_PriceExtractions_20260727.CSV
+_________________________________________________
+
+	* site_shown_uom missing for 9 records. Eg:
+	https://shop.billa.at/produkte/ja-natuerlich-hendlruecken-00240470 (row 389)
+	https://shop.billa.at/produkte/ja-natuerlich-hendlfilet-00424344 (row 2889)
+	* If site_shown_uom contains "Teebeutel Packung" , "Teebeutel" , "Beutel", "Btl" ,"Teebeutel Karton" , "Teebeutel Paket" or "Packung Beutel", then: grammage unit should be "btl". This rule violates in 948 records. The grammage_units are 'stück' 'g' 'kg' 'ml' 'l' instead of 'btl'. Eg:
+	https://shop.billa.at/produkte/toppits-gefrierbeutel-1l-00101511 (row 13) 
+	https://shop.billa.at/produkte/toppits-gefrierbeutel-6-liter-00101513 (row 17)
+	* The keyword  "wg", "Waschgänge" or "Waschgang" then: grammage unit should be  "wg". This rule violates in 82 rows, where the grammage_unit is 'stück' instead of 'wg'. Eg:
+	https://shop.billa.at/produkte/clever-colorwaschmittel-fluessig-00352454 (row 1677)
+	https://shop.billa.at/produkte/clever-vollwaschmittel-fluessig-00352456 (row 1679)
+	* grammage_quantity contain unwanted space like '1 000' in 197 records (same as in the website). Eg:
+	https://shop.billa.at/produkte/rinderzunge-gekocht-0014030 (row 91)
+	https://shop.billa.at/produkte/bauchspeck-0015389 (row 110)
+
+	
+
