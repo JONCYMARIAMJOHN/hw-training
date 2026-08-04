@@ -1,0 +1,117 @@
+_____________QA Issues_______________
+=====================================
+
+1) reecenichols_2026_08_05.json
+_______________________________
+
+	* Field order is not same as in the requirement
+	* office_phone_numbers is not empty, but email is empty
+	* 36 profile_urls are listing pages, not profile page. Eg :
+	https://www.reecenichols.com/roster/agents/2 (row 1)
+	https://www.reecenichols.com/roster/agents/4 (row 2)
+	
+	* description is available onn website but empty in the json file for following 24 records :
+	https://www.reecenichols.com/bio/brendaw (row 94)
+	https://www.reecenichols.com/bio/andybabel (row 256)
+	https://www.reecenichols.com/bio/dirkwatkins (row 452)
+	https://www.reecenichols.com/bio/alanlin (row 656)
+	https://www.reecenichols.com/bio/cindyz (row 693)
+	https://www.reecenichols.com/bio/debbyehenderson (row 699)
+	https://www.reecenichols.com/bio/claire (row 762)
+	https://www.reecenichols.com/bio/dimitrarhudy (row 801)
+	https://www.reecenichols.com/bio/maddy (row 1186)
+	https://www.reecenichols.com/bio/jennifert (row 1319)
+	https://www.reecenichols.com/bio/lindathorell (row 1478)
+	https://www.reecenichols.com/bio/thefergusongroup (row 1492)
+	https://www.reecenichols.com/bio/sherricjacobson (row 1561)
+	https://www.reecenichols.com/bio/matttextor (row 1637)
+	https://www.reecenichols.com/bio/lynn (row 1734)
+	https://www.reecenichols.com/bio/majidghavami (row 1897)
+	https://www.reecenichols.com/bio/thorellhometeam (row 2051)
+	https://www.reecenichols.com/bio/sclapp (row 2397)
+	https://www.reecenichols.com/bio/will (row 2426)
+	https://www.reecenichols.com/bio/jonkempin (row 2569)
+	https://www.reecenichols.com/bio/shirleyzhang (row 2620)
+	https://www.reecenichols.com/bio/sueduncan (row 2644)
+	https://www.reecenichols.com/bio/kendontroyer (row 2646)
+	https://www.reecenichols.com/bio/kathleenmarkham (row 2834)
+	
+	* extra white space found in first_name of two records :
+	profile_url : https://www.reecenichols.com/bio/ericcraigteam (row 715), first_name : 'Eric Craig  Real Estate Team'
+	profile_url : https://www.reecenichols.com/bio/johnv (row 1579), first_name : 'John  Van De Voort  '
+
+
+2) dubizzle_bah_2026_08_01.json
+________________________________
+
+	* Data count is 2989
+	* Found unwanted white space in title field on 320 rows. Eg :
+	url : https://www.dubizzle.com.bh/en/ad/commercial-address-offices-for-rent-ID105694722.html (row 24) , title : 'COMMERCIAL  ADDRESS OFFICES FOR RENT '
+	url :https://www.dubizzle.com.bh/en/ad/5-bedroom-private-villa-with-swimming-pool-for-rent-in-mahooz-ID105728001.html  (row 61), title : '5-Bedroom  Private Villa with Swimming Pool for Rent in Mahooz'
+	* Found unwanted white space in description field on several rows:
+	url : https://www.dubizzle.com.bh/en/ad/2bhk-fully-furnished-in-juffair-inclusive-ID105607968.html (row 2)
+	url : https://www.dubizzle.com.bh/en/ad/room-bed-space-available-ID105688950.html (row 2952)
+	
+
+
+3) bayut_uae_project_2026_08_01.json
+____________________________________
+
+	* Data count is 2948
+	* Some extra space found in between of developer_name in url : https://www.bayut.com/for-sale/off-plan/property/abu-dhabi/al-shamkha/al-reeman-1/nourwatan (row 1962)
+	* No other issues found
+	
+
+4) dubizzle_qat_2026_08_01.json
+_________________________________
+
+	* Some extra space found in between of title in several records. Eg :
+	https://www.dubizzle.qa/en/ad/new-factory-in-the-industrial-area-land-area-5000-sqm-ID120349731.html (row 6)   
+	https://www.dubizzle.qa/en/ad/warehouse-for-rent-in-birkat-al-awamer-land-area-1000-sqm-ID120360192.html (row 8)\
+	* No other issues found
+	
+5) bayut_bah_2026_08_01.json
+____________________________
+
+	* Data count is 2745
+	* agent_name is '. . . . .' for 2 records (same as in the website)
+	https://www.bayut.bh/en/property/details-105727599.html (row 19)
+	https://www.bayut.bh/en/property/details-105727172.html (row 23)
+	* agent_name contain somany invalid names such as 'tgh', 'dzxvz', 'vfgj', 'herf', 'nmfh', 'htyii' etc. (Same as in the website)
+	* No other issues found
+	
+	
+6) coldwellbankerinternational_2026_08_05.json
+______________________________________________
+
+	* Field order is not same as in the requirement
+	* Data count is 6409
+	* For several records city, zipcode, state available on website, but empty on json file. Eg : 
+	https://www.coldwellbankerinternational.com/agent/wrLe9IXoS (row 3717) 
+	https://www.coldwellbankerinternational.com/agent/2fDFwJJy (row 3732)
+	https://www.coldwellbankerinternational.com/agent/zoebrva (row 3817)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+	

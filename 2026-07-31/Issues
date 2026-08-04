@@ -1,0 +1,97 @@
+____________QA Issues________________
+=====================================
+
+
+1) wasalt_ksr_2025_08.json
+__________________________
+
+	* Filename error : Expected name is 'wasalt_ksa_2026_07.json'. The suffix, year and month values are wrong in the actual filename
+	* Country suffix error : value is 'ksr', while the expected value is 'ksa'
+	* Data count is 46816
+	* iteration_number value error : expected value is 2026_07, but it is 2026_08
+	* category value is 'SALE' for one record : https://wasalt.com/en/property/sale/apartment-with-2-bedrooms-5822701 (line 12718)
+	* price and currency is empty for url : https://wasalt.com/en/property/sale/apartment-135-sqm-with-2-bedrooms-5743817 (line 5953) (same as in the website)
+	* currency value is in lowercase('sar') for one record : https://wasalt.com/en/property/sale/floor-2499-sqm-with-4-bedrooms-5878491 (line 8313)
+	
+	* bathrooms value is '+9' in the file, but '9+ in the website for 2 records :
+	https://wasalt.com/en/property/sale/villa-379-sqm-with-3-apartments-facing-north-5876958 (line 12207) 
+	https://wasalt.com/en/property/sale/villa-379-sqm-with-3-apartments-facing-south-5840479 (line 13079)
+	
+	* bathrooms value is '2A2' in the file, but not available in the website for url : https://wasalt.com/en/property/rent/apartment-85-sqm-with-1-bedroom-5887716 (line 45548)
+	
+	* seller_role is empty for one record : https://wasalt.com/en/property/sale/apartment-135-sqm-with-2-bedrooms-5743817 (line 5953)
+	
+	* price value error : currency value is added along with price value as '299000 SAR ' for one record : https://wasalt.com/en/property/sale/apartment-1588-sqm-with-3-bedrooms-5851913 (line 16684)
+	
+	
+	
+	
+2) baity_bh_2026_08.json
+________________________
+
+	* Filename error: expected name is 'baity_bah_2026_07' but it is 'baity_bh_2026_08', the suffix and month values are incorrect
+	* Country suffix is 'bh' instead of 'bah'
+	* id is empty for url : https://baity.bh/properties/apartment-in-manama-15989 (line 536), where the referenece number is '15989'
+	* iteration_number is '2026_08', where the expected value is '2026_07' (month value is incorrect)
+	* broker_display_name is empty for url : https://baity.bh/properties/apartment-in-sanabis-31054 (line 5), where the broker value is 'BEST LOCATION'
+	* currency is empty for https://baity.bh/properties/apartment-in-al-juffair-43214 (line 31)
+	
+3) bayut_sa_2026_08.json
+_________________________
+
+	* Filename error : expected name is 'bayut_ksa_2026_07', but it is 'bayut_sa_2026_08'. The suffix and month values are incorrect.
+	* Country suffix in the filename is '_sa_' instead of '_ksa_'
+	* scraped_ts value is '2025-07-30' for one record, in which the date is of previous year for the url : https://www.bayut.sa/en/property/details-87912301.html (line 49626)
+	* One of the scraped_ts value is '2025-07-30', where the date is of previous year for the url : https://www.bayut.sa/en/property/details-87912301.html (line 49626)
+	* iteration_number is '2026_08', while the expected value is '2026_07' (month value should be '08' for August
+	* Includes completion_status value 'Completed' for one record : url - https://www.bayut.sa/en/property/details-87987462.html (line 39184)
+	* advertiser_designation value is 'Agent' for one record : url -https://www.bayut.sa/en/property/details-88022005.html  (line 7)
+	* furnished value is wrongly recorded as 'semi-furnished' for one url :  https://www.bayut.sa/en/property/details-87795331.html (line 59320), where the website shows 'Unfurnished'
+	* price value is comma separated, not dot separated
+	* completion_status is 'Completed' in the file, while 'Ready' in the website for url : https://www.bayut.sa/en/property/details-87987462.html (line 39184) . (The field possess value 'Completed' for this one record only)
+	
+	
+4) blinkit_2026_07_31.csv
+_________________________
+
+	* empty fields : 'store_name_location', 'product_type', 'product_description', 'package_type', 'net_quantity', 'unit_price', 'product_image_urls'
+	* None of the fields are unique
+	* brand_name is 15% empty and variants is 87% empty and all the other fields are either completely not null or completely null
+	* item_selling_price, product_price and promo_offer_price field are 0 for 2 records : https://blinkit.com/prn/nexxus-promend-oil-resurrection-hair-serum/prid/1373229 (line 332460, 788318). The item is out of stock in the website
+	* item_selling_price and product_price are having exactly same values throughout the data
+	* promo_offer_price is equal to item_mrp for 329485 rows. Eg :
+	(row 3) https://blinkit.com/prn/aashirvaad-shudh-chakki-atta-100%25-atta%2C-0%25-maida/prid/15481   
+	(row 6) https://blinkit.com/prn/aashirvaad-boga-atta/prid/674714 
+	* Same unique_id assigned to different product_name. Eg:
+	(row 102 and 123) https://blinkit.com/prn/nutrela-soya-mini-chunks-meal-maker/prid/1
+	* For 60 records out_of_stock_flag value is 'Yes' evenif stock_count value is greater than 0. Eg :
+	(row 35778) https://blinkit.com/prn/pilgrim-25%25-aha%2C-2%25-bha%2C-5%25-pha-peeling-solution/prid/764575   
+	(row 40166) https://blinkit.com/prn/tekcool-derma-roller-for-hair-and-skin-black/prid/721481
+	
+	
+5) dubailand_uae_2026_07_30_05.csv
+__________________________________
+
+	* Website values are null for 9424 records and invalid for several records. Eg :
+	Row : 7, Value : 'Mohammad Rafie'
+	Row : 10, Value : 'Mahoud Khalil'
+	* Email is empty for 25 records
+	* Phone number is empty for 7880 records
+	
+6) swiggy_instamart_2026_07_27.csv
+__________________________________
+	
+	* Missing brand_name are only on 4 categories : ‘Atta, Rice and Dal’, ‘Baby Care ’,‘Makeup’ and ‘Ice Creams and Frozen Desserts’
+	* Store_id completely changed. All stores from the previous data replaced with new storeids
+	* New cities added. There were only 2 cities in the previous data. Added 45 more cities in the current one.
+	* Stockout percentage is 100% on city - St. Thomas Mount Cantonment. Suspecting whether it is a valid city or not.
+	* High price variation found with products in the same store with same grammage and same url. Eg : 
+	{product_name: 'Mtr Gulab Jamun Mix', store_id: 1404958, product_url:'https://www.swiggy.com/instamart/item/64ZRJ9ZC2N', product_grammage: '500 g' }
+	* Sub_category ‘Fresh Bakery’ was missing in previous data, but added in the new one
+
+
+	
+
+
+
+	

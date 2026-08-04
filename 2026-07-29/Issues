@@ -1,0 +1,70 @@
+______________Issues________________
+====================================
+
+1) opensooq_bh_2026_07_04.json
+______________________________
+
+    * Spelling mistake : 'refarence_number' is the field name on json file
+    * Suffix is wrong : value 'bh' on the filename, while expected value is 'bah'
+    * Data count is 807
+    * iteration_number value error : the value is 2026_07_03, but the expected value is 2026_07_04
+    * Filename error : value is 'opensooq_bh_2026_07_04', but the expected value is 'opensooq_bah_2026_07_04'
+    * Suspicious value on broker_display_name field : broker is 'AYDIN BARAN' and broker_display_name is 'Aydın Baran' for url - https://bh.opensooq.com/en/search/282863716 . The 'i' in broker_display_name is not a proper lowercase of I'
+    * currency value empty for 4 records
+    * published_at field is in yyyy-mm-dd format
+    * Found future dates in published_at field : it includes following future dates : 2026-08-06, 2026-08-07, 2026-09-06, 2026-09-07, 2026-10-06, 2026-10-07, 2026-11-06, 2026-11-07, 2026-12-06, 2026-12-07 (suspected to be in yyyy-dd-mm format)
+    Eg:
+    2026-08-06 - https://bh.opensooq.com/en/search/281965616
+    2026-08-07 - https://bh.opensooq.com/en/search/283788632
+    2026-12-07 - https://bh.opensooq.com/en/search/283983232
+    * Value error : furnished value is 'zzz' in josn file, while 'Unfurnished' on the website for url : https://bh.opensooq.com/en/search/284008540
+    * Value empty : furnished value is empty for 272 records (same as in the website)
+    * url : https://bh.opensooq.com/en/search/284661534 --> site showing 'This listing is either sold or no longer available'
+    * invalid url : the value is 'https://' for the record with id: 284002094 (row 477)
+
+
+2) dubizzle_bah_2026_07_03 (3).json
+____________________________________
+
+    * Filename error: As the iteration_number is 2026_07_04, the expected filename is 'dubizzle_bah_2026_07_04', but the actual filename found is 'dubizzle_bah_2026_07_03 (3)'
+    * id is empty for https://www.dubizzle.com.bh/en/ad/august-1-room-available-for-sharing-ID105687338.html
+    * bathrooms value is 'Seven' in the json file, while '4' in the website.
+    * description includes long white space for https://www.dubizzle.com.bh/en/ad/large-showroom-restaurant-two-floors-ID105715866.html
+    
+3) bayut_uae_projects_2026_07_05.json
+_____________________________________
+
+    * Filename error : expected file name is 'bayut_uae_project_2026_07_05'    but actal value is 'bayut_uae_projects_2026_07_05' (an extra character 's' found)
+    * Data count is 2912
+    * Two values found in iteration_number - 2026_07_04 and 2026_07_05    
+    
+4) bayot_egp_2026_08_04.json
+____________________________
+
+    * completion_status and ownership fields are in the json file, but missing in the requirement
+    * Filename error : expected value is 'bayut_egp_2026_07_04', but spelling and itration_number part are incorrect in 'bayot_egp_2026_08_04'
+    * Data count is 231666
+    * broker and broker_display_name are not completely empty fields as metioned in the requirement.
+    * price_per field includes values 'Daily', 'Yearly' and 'Weekly' too
+    * furnished field includes value 'Not Furnished' too
+    * currency value is 'egp' for one record with url : https://www.bayut.eg/en/property/details-503760500.html
+    * id is just a 9 digit numeric value, which doesn't have any relation with reference number
+    * bedrooms and bathrooms values are '3A' in the json file, while actual value on website is '3' for url https://www.bayut.eg/en/property/details-503742556.html
+    * furnished field value is 'Not furnished' in jsonfile, while 'Unfurnished on the website for url : https://www.bayut.eg/en/property/details-502162150.html
+    * reference_number have 2911 duplicate values
+    
+    
+1) DataHut_IT_Esselunga_PriceExtractions_20260729.CSV
+______________________________________________________   
+
+	* no issues found
+	
+2) DataHut_IT_Eurospin_PriceExtractions_20260729.CSV
+____________________________________________________
+
+	* site_shown_uom is '500' in csv file while '500 ℮' in the website for 19 records. Eg : https://online.eurospin.com/product/orecchiette-fresche-500g2 , https://online.eurospin.com/product/ditalini-rigati-per-minestra-500g2
+	* site_shown_uom is '℮)' for 11 records (same as in the website). Eg : https://online.eurospin.com/product/pate-gatto-assto-multibox-12x100g1
+
+	
+	
+

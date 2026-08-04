@@ -1,0 +1,121 @@
+____________QA Issues____________
+=================================
+
+1) rector_hayden_2026_08_05.json
+________________________________
+
+	* Field order is not same as in the requirement
+	* Data count is 142
+	* profile_url - https://www.riddellsmithgroup.com (row 76), name is 'Justin Riddell' in the json file, but 'Riddell Smith Group' in ther website.
+	* profile_url : https://thehamiltonmontgomerygroup.rhr.com (row 50), name is 'Barbera Hamilton' in the json file, but 'The Hamilton Montgomery Group' in the website.
+	* profile_url : http://www.makinglexingtonkyhome.com (row 37), name is 'Nancy Bell' in the json file, but 'The Bells Group' in the website.
+	* Lengthy name is not splitted up into first_name, middle_name and last_name for one record
+	Row : 89, profile_url : https://www.rhr.com/bio/thejusticegroup , first_name : "The Justice Group at Rector Hayden Realtors"
+	* description empty for 8 records, which are not available pn the website too
+	* languages null values are recorded as [] . Eg :
+	profile_urls : https://www.rhr.com/bio/andreaclemons (row 1), https://carolynmcdonald.rhr.com (row 3) etc.
+	* social null values are recorded as {} . Eg :
+	profile_urls : https://www.rhr.com/bio/andreaclemons (row 1), https://brianwebb.rhr.com (row 2) etc.
+	* agent_phone_numbers null values are recorded as [] . Eg :
+	https://kimberlyMullins.rhr.com (row 29), https://kristinhalfhill.rhr.com (row 30)
+----------------------------------
+	
+2) huff_realty_2026_08_05.json
+______________________________
+
+	* Field order is not same as in the requirement
+	* email field is completely empty
+	* Lengthy name is not splitted up into first_name, middle_name and last_name for 13 records. Eg :
+	https://www.cindybruner.com  (row 6),   https://maryjorothdisalvo.huff.com (row 33)
+	* An underscore found in office_name value ('_Reliance Setup Office') in 3 rows . address, city, zipcode fields are also missing for these 3 records :
+	https://www.huff.com/bio/skdep (row 328)
+	https://sarahmorrison.huff.com (row 357)
+	https://www.huff.com/bio/pmolony (row 396)
+	* https://www.buyandsellwithneffpatel.com (row 26)--> This profile_url is not accessible
+	* https://www.huff.com/roster/agents/48 (row 42) --> This url is not a profile_url. it is a listing page (The website va;ue is empty for this particular record)
+	* http://Cincinnatihomebuyers.com (row 44) --> This is a webpage for gaming, not a profile_url
+	* https://KimStoll.huff.com (row 205) --> This profile_url is not accessible
+	* first_name possess unwanted whitespace in between for profile_url : https://www.huff.com/bio/sherryregenbogen (row 165)
+--------------------------------	
+	
+3) compass_2026_08_05.json
+__________________________
+
+	* Data count is 35133
+	* Invalid website values found in 3 records with unicode '\u201c' or double inverted comma (\") attached to it:
+	https://www.compass.com/agents/kevin-roche/ (row 18051) 
+	https://www.compass.com/agents/jennifer-dombrowski/ (row 23724)
+	https://www.compass.com/agents/thepinnacleteam/ (row 33875)
+	* image_url value is 'test' for https://www.compass.com/agents/trung-dang/ (row 21048)
+	* Invalid email value 'brandon.walls@compass.com | DRE# 01806256' found in profile_url : https://www.compass.com/agents/brandon-walls/ (row 252187)
+	* unwanted white space found in title field for several records. Eg :
+	https://www.compass.com/agents/danielle-revelins/ (row 4034)
+	https://www.compass.com/agents/alissa-razansky-robinson/ (row 10830)
+	https://www.compass.com/agents/patricia-zurla/ (row 17451)
+	* title field is completely invalid for https://www.compass.com/agents/the-creative-collective-team/ (row 33090)
+	* email value attached with title with along white space in profile_url https://www.compass.com/agents/cloe-birchett/ (row 9822) Description value also includes huge unwanted characters and whitespace for this record.
+	* Lengthy name is not splitted up into first_name, middle_name and last_name for several records. Eg :
+	https://www.compass.com/agents/nicole-blair/ (row 212)
+	https://www.compass.com/agents/mario-rodriguez/ (row 431)
+	* Some records with completely invalid data found
+	(row 31326) profile_url : https://www.compass.com/agents/doliodds/ , first_name : 'a', last_name : 's' 
+	(row 31439) profile_url : https://www.compass.com/agents/hanysd/ ,  first_namee : 'a', last_name : 'a'
+	(row 32030) profile_url : https://www.compass.com/agents/hanysd/ , first_name : test, last_name : 'test1'
+	* For 2 records website value is same as profile_url :
+	https://www.compass.com/agents/melissa-mitchell/ (row 22366)
+	https://www.compass.com/agents/tinnie-sassano-team/ (row 32412)
+	* Multiple email values found in 3 records (Same as in the website ) :
+	https://www.compass.com/agents/south-oc-beach-homes/ (row 33115)
+	https://www.compass.com/agents/amy-%26-augustine-um/ (row 33373)
+	https://www.compass.com/agents/jani-spencer-company/  (row 34358)
+	* middle_name possess values such as '-', '+', '|' (same as in the website) Eg :
+	https://www.compass.com/agents/carl-gambino-ny/ (row 32261)
+	https://www.compass.com/agents/marga-justine/ (row 32531)
+-----------------------------------
+	
+4) firstweber_2026_08_05.json
+_____________________________
+
+	* Field order is not same as in the requirement
+	* Data count is 845
+	* state value is ''  and 'MN for profile_urls http://jenniferfeldman.phmloans.com/ (row 224), https://www.phmloans.com/mortgageconsultant/tylertraeger (row 656) correspondingly
+	* Name and Address are recorded as description for http://amyking.phmloans.com/ (row 2)
+	* description is available on the website but empty in the file for https://www.priority-title.com (row 1)
+	* website value is empty for https://www.firstweber.com/roster/agents/15 (row 32). The url is not a profile url, but a listing page of employees.
+	* Lengthy name is not splitted up into first_name, middle_name and last_name for several records. Eg :
+	https://www.firstweber.com/bio/ChelseySteeleTeam (row 36) 
+	https://www.firstweber.com/bio/cyndiebrownandmichellesimsteam (row 72)
+	
+5) woodsbros_2026_08_05.json
+_____________________________
+	
+	* Field order is not same as in the requirement
+	* Data count is 174
+	* languages is not empty , but email is empty
+	* Lengthy name is not splitted up into first_name, middle_name and last_name for several records. Eg :
+	https://ClientCare.woodsbros.com (row 63)
+	https://agedamontesdeoca.woodsbros.com (row 122)
+	* 3 records posess urls of listing page, not profile_url (website filed of all the three is empty) :
+	https://www.woodsbros.com/roster/agents/1 (row 1_
+	https://www.woodsbros.com/roster/agents/6 (row 7)
+	https://www.woodsbros.com/roster/agents/9 (row 13)
+	* https://www.gihomes.com (row 10) --> This url not able to access
+--------------------------------------	
+	
+6) iowarealty_2026_08_05.json
+_____________________________
+
+	* Field order is not same as in the requirement
+	* state value empty for two records : https://www.iowarealty.com/roster/agents/12 (row 22), https://www.iowarealty.com/roster/agents/17 (row 75)
+	* Two profile_urls possess url of listing pages (website, address, city, state, zipcode, image_url fields are empty for these 2 records) :
+	https://www.iowarealty.com/roster/agents/12 (row 22), 
+	https://www.iowarealty.com/roster/agents/17 (row 75)
+	* Lengthy name is not splitted up into first_name, middle_name and last_name for 5 records. Eg :
+	https://www.iowarealty.com/bio/olivias-realestate-team (row 201)
+	https://www.iowarealty.com/bio/carinbirtrealestateteam (row 223)
+	* image is available on website, but image_url value is empty in json file for 2 records :
+	https://www.iowarealty.com/bio/RyleeGrace (row 39)
+	https://www.iowarealty.com/bio/MelindaSigler (row 256)
+	 
+	
+

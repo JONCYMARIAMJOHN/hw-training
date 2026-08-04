@@ -1,0 +1,153 @@
+____________QA Issues______________
+===================================
+
+
+1) DataHut_CH_Coop_FullDump_20260730.CSV
+________________________________________
+
+	* regular price is 0 for 137 records. Eg: 
+	https://www.coop.ch/de/lebensmittel/vorraete/salatsaucen-kalte-saucen/mayonnaise/gratis-karl-s-trueffel-mayonnaise/p/7501443  (line 3375)
+	https://www.coop.ch/de/lebensmittel/getraenke/kaffee/kaffeekapseln/nespresso-kompatibel/gratis-naturaplan-lungo-30-kapseln/p/7588454 (line 8841)
+	
+	* if regular_price in data - promotion_price is not selling_price, but empty for several records. Eg:
+	https://www.coop.ch/de/weine/alle-weine/rotweine/chateau-les-jonqueyres-blaye-cotes-de-bordeaux/p/5798795003 (line 35296)
+	https://www.coop.ch/de/weine/alle-weine/neuchatel-aoc-chasselas-cave-des-saint-martin/p/1018724002 (line 35297)
+	
+	* percentage_discount mismatch : the value is '20' in the csv file, but not present in the website for pdp_url : https://www.coop.ch/de/lebensmittel/fruechte-gemuese/kohlgemuese/broccoli-blumenkohl/spargel-broccoli-bimi/p/7003348 (line 39)
+	
+	* product_description is ';' for 4 records:
+	27036  https://www.coop.ch/de/haushalt-tier/haushalt-kueche/servietten-party-zubehoer/servietten/servietten-blaetter-haengen-33x33cm-20-stueck/p/6601562 (line 27038)  
+	https://www.coop.ch/de/haushalt-tier/haushalt-kueche/uebrige-haushaltsartikel/eichenkunstblaetter-6-stueck/p/4982308 (line 27137)  
+	https://www.coop.ch/de/haushalt-tier/haushalt-kueche/servietten-party-zubehoer/servietten/servietten-igel-33x33cm-20-stueck/p/6368746 (line 28400)  
+	https://www.coop.ch/de/haushalt-tier/haushalt-kueche/servietten-party-zubehoer/servietten/servietten-zwei-kuerbisse-33x33cm-20-stueck/p/6368743 (line 30208)
+
+	* ingredients is '.' for 5 records : 
+	https://www.coop.ch/de/lebensmittel/fleisch-fisch/abgepacktes-frischfleisch/rind/ojo-de-agua-rinds-filetsteak-ca/p/4228415 (line 2074)
+	https://www.coop.ch/de/lebensmittel/fleisch-fisch/abgepacktes-frischfleisch/rind/ojo-de-agua-rindsentrecote-ca/p/4228417 (line 2085) 
+	https://www.coop.ch/de/lebensmittel/fleisch-fisch/abgepacktes-frischfleisch/rind/ojo-de-agua-rindshuft-steak-ca/p/4228412 (line 2121)  
+	https://www.coop.ch/de/weine/alle-weine/champagner/champagne-aoc-mumm-cordon-rouge-brut/p/3170442  (line 18938) 
+	https://www.coop.ch/de/alle-weine-in-literqualitaet/terres-du-midi-igp-grain-de-gris-rose-listel-bag-in-box/p/3533401 (line 25932)
+
+	* product_heirarchy_level2, breadcrumb and product_name : '|' character is replaced with '\|' Eg:
+	https://www.coop.ch/de/haushalt-tier/haushalt-kueche/kerzen-anzuendhilfen/anzuendhilfen-kerzenhalter/anzuendhilfen/flamino-zuendhoelzer-lang--20-cm--50-stueck/p/4952464 (line 10477)
+	https://www.coop.ch/de/haushalt-tier/haushalt-kueche/kerzen-anzuendhilfen/anzuendhilfen-kerzenhalter/anzuendhilfen/flamino-bbq-anzuendkamin--27--17--315-cm/p/6661980 (line 11008)
+	
+	* site_shown_uom missing for 10 records. Eg:
+	https://www.coop.ch/de/lebensmittel/fruechte-gemuese/fruechte/melonen/melone-mantovano/p/7040799 (line 74)
+	https://www.coop.ch/de/lebensmittel/fruechte-gemuese/fruechte/melonen/honigmelone/p/7450654 (line 85)
+	
+	
+	
+	
+2) DataHut_AT_Billa_FullDump_20260730.CSV
+_________________________________________
+
+	* age_of_the_product and packaging fileds are not empty
+
+	* Following fields are actually empty, but not listed in the requirement : file_name_1, file_name_2, file_name_3, file_name_4, file_name_5, file_name_6, retail_limit
+	
+	* product_description is not in newline by line format as mentioned in the requirementt
+	
+	* regular_price empty for 10 records. Eg:
+	https://shop.billa.at/produkte/alnatura-tomatensauce-basilikum-00317777 (line 1309) 
+	https://shop.billa.at/produkte/lindt-lindor-kugeln-dark-00381753 (line 1940)
+	
+	* promotion_description present and selling_price is not equal to promotion_price for one record : url - https://shop.billa.at/produkte/leibniz-zoo-0017973 (line 207), promotion_description : 'Bei 3 Packungen je'
+	
+	* site_shown_uom empty for 9 records. Eg :
+	https://shop.billa.at/produkte/ja-natuerlich-hendlruecken-00240470 (line 396)  
+	https://shop.billa.at/produkte/ja-natuerlich-hendlfilet-00424344 (line 3000)
+	
+	* storage_instructions is '- -' for 2 records :
+	https://shop.billa.at/produkte/billa-langkornreis-00299558 (line 1096)
+	https://shop.billa.at/produkte/clever-langkornreis-00309662 (line 1171)
+	
+	* nutritional_information is wrongly formated Eg :
+	contains '}}}' 
+	https://shop.billa.at/produkte/wiesbauer-polnische-spezial-00101122 (line 4)
+	https://shop.billa.at/produkte/ruegenwalder-muehle-teewurst-fein-00101068 (line 6)
+	
+	* selling_price, regular_price and promotion_price have equal value in 4 records :
+	https://shop.billa.at/produkte/ja-natuerlich-hendlfilet-00424344 (line 3000) 
+	https://shop.billa.at/produkte/goesser-bio-stoff-00742269  (line 7593)
+	https://shop.billa.at/produkte/billa-instant-nudeln-rind-00764413 (line 8490)
+	https://shop.billa.at/produkte/billa-instant-nudeln-huhn-00764414 (line 8492)
+	
+3) DataHut_SI_Dm_FullDump_20260730.CSV
+______________________________________
+
+	* price_was and promotion_price fields are empty, but not mentione din the requirement
+	* The competitor_product_key is extracted directly from the dm Product Number found on the website
+	
+	* Unwanted white space found in storage_instructions of two records :
+	https://www.dm.si/p/d/3149875/lekobeba-vetrovne-kapljice-prehransko-dopolnilo (line 116)  
+	https://www.dm.si/p/d/3149350/lekobeba-krema-za-ritko	(line 126)
+	
+	* preparationinstructions contain '...' at the end (same as in the website. url : https://www.dm.si/p/d/2200490/drobtinka-mesanica-za-pripravo-napitka-macaccino
+	
+	* instructionforuse is '/' for 15 records (same as in the website) Eg :
+	https://www.dm.si/p/d/2022914/oral-b-elektricna-zobna-scetka-vitality-pro-protect-x-clean (line 4076)
+	https://www.dm.si/p/d/2277974/oral-b-nadomestne-glave-za-elektricno-zobno-scetko-pro-precision-clean (line 4847)
+	
+	* instructionforuse is '-' for 14 records (same as in the website) Eg :
+	https://www.dm.si/p/d/3050861/sabrina-carpenter-meglica-za-telo-sweet-tooth-caramel-dream (line 7361)
+	https://www.dm.si/p/d/3050849/sabrina-carpenter-parfumska-voda-za-zenske-sweet-tooth-pink (line 7363)
+	
+	* instructionforuse ends with '...' for url : https://www.dm.si/p/d/2195404/drobtinka-kakavov-napitek (line 6574)
+	
+	* nutritional_information is not completely captured . All records ends with the details of 'beta-carotene, provitamin A', but some more additional details are available in the website. Eg : 
+	https://www.dm.si/p/d/3115316/mivolis-karoten-15-mg-kapsule-za-zascito-koze-in-celic (line 525)
+	https://www.dm.si/p/d/3104226/mivolis-premium-curcuma (line 841)
+	
+	* unwanted white space found in warning filed for 144 records . Eg : 
+	https://www.dm.si/p/d/3123931/apinature-prehransko-dopolnilo-junior-iron-mix  (line 32)
+	https://www.dm.si/p/d/3123983/apinature-prehransko-dopolnilo-junior-omega-3 (line 48)
+	
+	* '\'is not replace with '\|' in ingredients field for 92 records. Eg :
+	https://www.dm.si/p/d/3126235/balea-balzam-za-lase-hydra-volume (line 10)
+	https://www.dm.si/p/d/3135500/saubar-kopalna-kroglica-s-presenecenjem (line 89)
+
+	* '\'is not replace with '\|' in instructionforuse field for 3 records :
+	https://www.dm.si/p/d/3101641/rimmel-london-tekoci-osvetljevalec-multi-tasker-turbocharged-glow-005-iconic-as-usual (line 9848)
+	https://www.dm.si/p/d/3101640/rimmel-london-tekoci-osvetljevalec-multi-tasker-turbocharged-glow-002-rosy-rebel (9853)
+	https://www.dm.si/p/d/3103852/rimmel-london-tekoci-osvetljevalec-multi-tasker-turbocharged-glow-006-it-s-giving-glow (line 9863)
+	
+	* preparationinstructions contain '...' at the end (same as in the website. url : https://www.dm.si/p/d/2200490/drobtinka-mesanica-za-pripravo-napitka-macaccino
+	
+	* instructionforuse is '/' for 15 records (same as in the website) Eg :
+	https://www.dm.si/p/d/2022914/oral-b-elektricna-zobna-scetka-vitality-pro-protect-x-clean (line 4076)
+	https://www.dm.si/p/d/2277974/oral-b-nadomestne-glave-za-elektricno-zobno-scetko-pro-precision-clean (line 4847)
+	
+	* instructionforuse is '-' for 14 records (same as in the website) Eg :
+	https://www.dm.si/p/d/3050861/sabrina-carpenter-meglica-za-telo-sweet-tooth-caramel-dream (line 7361)
+	https://www.dm.si/p/d/3050849/sabrina-carpenter-parfumska-voda-za-zenske-sweet-tooth-pink (line 7363)
+	
+	* instructionforuse ends with '...' for url : https://www.dm.si/p/d/2195404/drobtinka-kakavov-napitek (line 6574)
+	
+4) ajmanded_uae_2026_08.json
+____________________________
+
+	* Filename error: month value should be '07' for august. Expected filename : 'ajmanded_uae_2026_07.json'
+	* Unwanted leading space found in name field of url : https://eservices.ajmanded.ae/en/TradeLicense/License/ac2635f3-cf27-4793-82c7-595f0334c793 (line 112)
+	* Multiple consecutive internal spaces found in name field of 81 records, where the space not found in website. Eg :
+	https://eservices.ajmanded.ae/en/TradeLicense/License/078706b2-e4ea-414b-ae2f-a05fd7944efe (line 4)
+	https://eservices.ajmanded.ae/en/TradeLicense/License/23c94d4d-51a8-4cba-af5e-a10ab18f53c3 (line 19)
+	https://eservices.ajmanded.ae/en/TradeLicense/License/6c5acc8d-6f20-42ea-9d3b-b7b3e5cbc374 (line 95)
+	* license_expiry_date is empty for url : https://eservices.ajmanded.ae/en/TradeLicense/License/ac2635f3-cf27-4793-82c7-595f0334c793 (line 112)
+	
+	* unique_id duplicate error : One value in unique_id is duplicated : '078706b2-e4ea-414b-ae2f-a05fd7944efe' in two records in line 4 and line 7
+	urls : https://eservices.ajmanded.ae/en/TradeLicense/License/078706b2-e4ea-414b-ae2f-a05fd7944efe (line 4)
+	https://eservices.ajmanded.ae/en/TradeLicense/License/53b3f3b6-4841-4558-8ba1-dfddb08c6c78 (line 7)
+	As per the url value of line 7, the corresponding unique_id is expected to be '53b3f3b6-4841-4558-8ba1-dfddb08c6c78'
+	
+	* mobile_number not empty : have value '9098409509' for url : https://eservices.ajmanded.ae/en/TradeLicense/License/c12d312d-9c51-45f7-b47f-135045af1517 (line 157). The value couldn't be found on the website.
+	
+	* Multiple consecutive internal spaces found in building_number field of 28 records, where the space not found in website. Eg :
+	https://eservices.ajmanded.ae/en/TradeLicense/License/7a8126a7-24b5-4586-8a97-0da2192c49a5 (line 6)
+	https://eservices.ajmanded.ae/en/TradeLicense/License/1dd7ee88-ef9a-4486-a511-84f077893328 (line 101)
+	
+
+	
+	
+	
+	
