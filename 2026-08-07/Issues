@@ -1,0 +1,22 @@
+________ISSUES______________
+============================
+
+
+1) DataHut_AT_Spar_PriceExtractions_20260807.CSV
+_________________________________________________
+
+	* Data count is 40928
+	* No other issues found
+	
+2) DataHut_SI_Mercator_PriceExtractions_20260807.CSV
+____________________________________________________
+
+	* Data count is 16965
+	* https://mercatoronline.si/izdelek/18046565/jogurt-z-ziti-activia-4-x-115-g (line 32) --> Two prices available on site --> 2.19, 2.79. But dataset contian 2.79 as regular_price and selling_price and promotion_price is empty
+	* The above issue found in several urls. Eg :
+	line 49 - https://mercatoronline.si/izdelek/18046642/jogurt-kvinoja-in-soncnicna-semeni-activia-4-x-115-g  
+	line 80 - https://mercatoronline.si/izdelek/18046554/jogurt-3-5-m-m-activia-4-x-115-g  
+	line 96 - https://mercatoronline.si/izdelek/17164308/tekoci-jogurt-1-3-m-m-ego-1-kg 
+
+
+	

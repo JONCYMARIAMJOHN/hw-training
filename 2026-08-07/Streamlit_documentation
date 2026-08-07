@@ -1,0 +1,83 @@
+Streamlit for Data QA Automation
+________________________________
+
+* Introduction
+--------------
+Data quality assurance is the process of verifying whether a dataset satisfies a predefined set of quality requirements.
+In a data-scraping environment, QA is particularly important because scraped data can contain issues such as missing values, duplicate records, inavlid formats, whitespace, incorrect values etc. When QA is performed repeatedly on datasets generated from different websites, manually performing the same checks can become repetitive, time-consuming, and prone to human error. Automation can convert these repeated manual checks into a systematic and reproducible process.
+Streamlit is one possible technology for creating the user interface for such an automation system.
+
+* What is Streamlit?
+--------------------
+Streamlit is a Python framework used to create interactive web applications, particularly applications involving:
+-Data analysis
+-Data visualization
+-Machine learning
+-Data processing
+-Internal business tools
+-Data validation
+-Reporting
+
+Its major advantage is that developers can create interactive applications primarily using Python rather than developing a separate frontend using technologies such as JavaScript, React, Angular, HTML, and CSS.
+
+A Streamlit application can provide interfaces such as:
+-File upload
+-Dropdown selections
+-Buttons
+-Checkboxes
+-Tables
+-Charts
+-Status messages
+-Progress indicators
+-Download buttons
+-Filters
+This makes it suitable for creating an internal Data QA Dashboard or QA Automation Tool.
+
+* Why Use Streamlit for QA Automation?
+--------------------------------------
+
+A traditional QA automation application could require a complete web stack with front-end, backend, database, api layer, authentication, deployment etc.
+Streamlit simplifies this considerably with Python + Pandas + Streamlit -> Interactive QA Application
+Its major benefits are : minimal front-end, easy integration with Pandas, interactive validation, reusability etc.
+
+* Current prototype
+-------------------
+
+I have developed a sample prototype to genrate basic summary of a dataset quality
+It includes file input, dynamic column identification, null analysis, whitespace validation, numeric validation etc.
+
+* Handling multiple dataset
+----------------------------
+
+A major advantage of this approach is that one application can support multiple datasets. There is no need to build 20 independent Streamlit applications.
+
+* Shared Validation Library
+----------------------------
+
+Many requirements will probably occur across multiple datasets.For example:Duplicate check, Null check, Date validation, Numeric validation, Whitespace validation, URL validation. These should be implemented as reusable components. Dataset-specific modules can then select the validations they need.
+This follows the principle: Develop once, reuse many times. It also reduces maintenance effort.
+
+* Future Enhancement - Scheduled Automation
+-----------------------------------------
+
+Streamlit itself is primarily an interactive application.
+If the process eventually needs to happen automatically without human interaction, another automation layer can be introduced. This is where a tool such as n8n becomes valuable. Therefore: Streamlit = interactive QA interface and n8n = workflow automation. They can work together rather than being alternatives.
+
+
+* Limitations of Streamlit
+-------------------------
+
+Streamlit is not a perfect solution for every situation.
+Some limitations include:
+-It is primarily designed for interactive applications rather than complex enterprise systems.
+-Very large datasets may require careful memory management.
+-Complex authentication and authorization may require additional infrastructure.
+-It is not itself a workflow automation platform.
+-It is not a replacement for a database.
+-It is not an AI framework.
+
+Sample prorotype link :
+
+Streamlit can be installed with command : "pip install streamlit" and project can be simply run using "streamlit run project_name.py"
+
+

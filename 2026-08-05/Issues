@@ -1,0 +1,152 @@
+_____________QA Issues_______________
+=====================================
+
+1) DataHut_SI_Dm_PriceExtractions_20260805.CSV
+______________________________________________
+
+	* Data count is 10511
+	* units like 'pranj', 'vr' are recorded as 'kos' in grammage_unit
+	* No other issues found
+	
+2) DataHut_AT_Dm_PriceExtractions_20260805.CSV
+______________________________________________
+
+	* Data count is 16680
+	* units like 'St', 'Bl' are recorded as 'stück' in grammage_unit
+	* No other issues found
+----------------------------------------------	
+
+	
+3) bayut_properties_rent_commercial_2026_08_05.json
+___________________________________________________
+
+	* Data count : 29818
+	* No. of fields : 99
+	* Empty fields : 'projectNumber', 'floorPlan'
+	* ownerID and userExternalID values are the same
+	
+	* referenceNumber has a prefix 'Bayut -' in the website. But it is not recorded in the dataset.
+	* permitNumber is non-numeric for following 8 records :
+	row - 191, listing_url - https://www.bayut.com/property/details-5252725.html , premitNumber - SZR 0006
+	row - 534, listing_url - https://www.bayut.com/property/details-5771431.html , premitNumber - 240151W2015
+	row - 1652, listing_url - https://www.bayut.com/property/details-4819962.html , premitNumber - Landlord
+	row - 2853, listing_url - https://www.bayut.com/property/details-4840428.html , premitNumber - Landlord
+	row - 17925, listing_url - https://www.bayut.com/property/details-4819708.html , premitNumber - Landlord
+	row - 22773, listing_url - https://www.bayut.com/property/details-4840394.html , premitNumber - Landlord
+	row - 27401, listing_url - https://www.bayut.com/property/details-4978263.html , premitNumber - JLT-66497
+	row - 28786, listing_url - https://www.bayut.com/property/details-4816425.html , premitNumber - Landlord
+	
+	* description, description_l1, description_l2, description_l3, description_l4, description_l5, description_l6, description_l7, description_l8 field contains unwanted html tags like <strong>, <li>, <ul>, \n etc. for 747 rows. Eg :
+	row 1 - https://www.bayut.com/property/details-12655906.html  
+	row 2 - https://www.bayut.com/property/details-15256463.html  
+	row 3 - https://www.bayut.com/property/details-15370035.html 
+	
+	* title value is ': : . : . :' for https://www.bayut.com/property/details-13032616.html (row 506) (Same as in the website)
+	
+	* descriptionTranslated_l1, descriptionTranslated_l2, descriptionTranslated_l3 are null for several records. Eg :
+	row 1 - https://www.bayut.com/property/details-12655906.html  
+	row 2 - https://www.bayut.com/property/details-15256463.html  
+	row 3 - https://www.bayut.com/property/details-15370035.html 
+	
+	* 'createdAt', 'approvedAt', 'updatedAt', 'touchedAt', 'reactivatedAt' --> These fields are in numeric format, not in date format
+	
+	* 'baths' field type is float, not integor
+	
+	Distinct_values of important fields :
+	-------------------------------------
+	* sourceID value is '1' accross the dataset.
+	* state : ['active', 'inactive', 'rejected']
+	* purpose : 'for-rent'
+	* product : ['superhot', 'premium', 'hot']
+	* productLabel : ['default', 'developer']
+	* productVariant is null for 26599 rows
+	* rentFrequency : ['yearly', 'monthly', 'daily', 'weekly']
+	* furnishingStatus : ['furnished', None, 'unfurnished']
+	* type : 'property'
+	* completionStatus : 'completed'
+	* boolean type columns : ['descriptionTranslated', 'active', 'hasExactGeography', 'isVerified', 'hasMatchingFloorPlans', 'hidePrice']
+---------------------------------------------------	
+	
+4) DataHut_AU_Coles_FullDump_20260805.CSV
+_________________________________________
+
+	* Data count is 751796
+	* product_description is "Null" for 20 rows. (Same as in the website), where pdp_url value of all these records are the same : https://www.coles.com.au/product/milka-crispy-rice-chocolate-100g-9960228 (rows 654027 - 654046)
+	* producthierarchy_level4, producthierarchy_level5, regular price, barcode contain values, while promotion_valid_upto, file_name_1, features, suitable_for, environmental are empty across the dataset.
+	* No field 'locations' exists in the dataset. The field, store_name exactly includes the given locations in the requirement
+	* grammage_quantity and grammage_unit are empty if site_shown_uom has following values :
+	'1 Set', 'approx.', '30 meters', '60 Metres', 'CTN 24', 'Pack 6', 'CTN24', 'Pack 6', 'CTN24', 'Pack 10', '140 Page', '50 Metres', '1 kit', 'PERKG', 'Pack 30', '100 Sheets', 'Pack 4', '1000 Sheets', 'Each' 
+	* site_shown_uom is '750 ml | Each' in the website, but 'Each' in the dataset. grammage_quantity and grammage_unit are empty in this case. pdp_url : https://www.coles.com.au/product/jim-barry-watervale-riesling-cellar-release-(clr)-750ml-each-1534816 (row 390507)
+	* image_url_1 filed includes jpg format too. Eg :
+	row 751796 - https://www.coles.com.au/product/king-oscar-sardines-in-olive-oil-45g-6786099  
+	row 751797 - https://www.coles.com.au/product/king-oscar-sardines-in-olive-oil-45g-6786099
+	* labelling field includes following values only :
+	'SPECIAL', 'DOWNDOWN', 'EVERYDAY', 'NEW', 'FLYBUYS', 'CONTINUITYREDEEMABLE' 
+	385476 values are null in this field
+	* rating and review fields are numeric
+--------------------------------------------------------	
+	
+5) bayut_transactions_sold_2026_08_weekly01.json
+________________________________________________
+
+	* Filename format is bayut_transactions_sold_YYYY_MM_weeklyweeknumber.json
+	* Data count : 192113
+	* Number of fields : 35
+	* No url fields available. transaction_hash_id is the unique field in the dataset.
+	
+	* floor includes non-numeric data such as 'M', 'P', "D' etc. Eg :
+	row 1036 , transaction_hash_id - 3a2f30f1cb663e46
+	row 2086 , transaction_hash_id - 718a64228000623b
+	
+	* plot_area_sqm value is 0 for 26 rows. Eg:
+	transaction_hash_id - 4b672e2496fb8e17 (row 1176)
+	transaction_hash_id - c688cac9d90900a (row 2210)
+	
+	* balcony_area_sqm value is 0 for 37144 rows. Eg:
+	transaction_hash_id - 103db70ea37195b8 (row 1)
+	transaction_hash_id - 1027e0493ebecc26 (row 2)
+	
+	* 3780 empty values in builtup_area_sqm
+	* 164366 empty values in plot_ares_sqm
+	* empty fields : rent_contract_duration_months, contract_monthly_amount
+	
+	Distinct_values of important fields :
+	-------------------------------------
+	* transaction_category_l1_name : 'sale'
+	* rent_contract_renewal_status_name : 'Unknown'
+	* date_start_nk : '1979-01-01'
+	* property_completion_status_sk : ['off-plan', 'ready']
+	* sale_market_name : ['Secondary Resale', 'Primary First Sale']
+	* occupancy_status_name : ['Unknown', 'Vacant', 'Rented', 'Vacant On Transfer']
+	* has_kpi_value : ['True', 'False']
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+	

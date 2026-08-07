@@ -1,0 +1,50 @@
+_______________ISSUES__________________
+=======================================
+
+
+
+1) DataHut_CH_Migros_FullDump_20260806.CSV
+__________________________________________
+
+	* Data count is 38726
+	* file name fields are completely empty
+	* promotion_price is empty for 34726 records, even if regular_price exists
+	* grammage_quantity is '12x33' in the dataset, but '6 x 330' in the website for https://www.migros.ch/de/product/mo/10486098 (row 38555)
+	* grammage_quantity is '2x200' in the dataset, but '200' in the website for https://www.migros.ch/de/product/mo/12280298 (row 38575)
+	* grammage_quantity is '2x100' in the dataset, but '100' in the website for https://www.migros.ch/de/product/mo/7504941 (row 38618)
+	* grammage_quantity is '2x85' in the dataset, but '85' in the website for https://www.migros.ch/de/product/mo/17635345 (row 38696)
+	* grammage_quantity is '3x90' in the dataset, but '90' in the website for https://www.migros.ch/de/product/mo/15600363 (row 38724)
+	* label_information is taken form 'Legal designation / Product name' field in the website, but in some cases it is taken from 'Right Definition / Sachdeichnun' field. Eg :
+	https://www.migros.ch/de/product/120269000000 (row 6)
+	https://www.migros.ch/de/product/120117500000 (row 9)
+	* product_name missing for 3 products, which is missing in website too
+	row 31903 - https://www.migros.ch/de/product/658710100030  
+	row 32487 - https://www.migros.ch/de/product/658710100018  
+	row 32882 - https://www.migros.ch/de/product/658710100022  
+	* https://www.migros.ch/de/product/526634200000 (row 20) brand available on website, missing on dataset
+	* preparationinstructions have value '-' for 18 records, same as in the website. Eg:
+	row 2296 - https://www.migros.ch/de/product/130104600000
+	row 2305 - https://www.migros.ch/de/product/130193000000
+	* instructions have value '-' for 2 records, same as in the website. Eg:
+	row 2833 - https://www.migros.ch/de/product/210521200000
+	row 5740 - https://www.migros.ch/de/product/158504400000
+	
+2) DataHut_CH_Denner_FullDump_20260806.CSV
+__________________________________________
+
+	* Data count is 1620
+	* promotion_valid_from and price_valid_from are not actually empty
+	* regular_price and selling_price are null for 158 rows, where the price is not available on website too. some of the websites shows a message : "Attention! This offer no longer' avaialble'. Eg :
+	row 70 - https://www.denner.ch/de/aktionen/chandon-garden-spritz~p1028023?variant=987b3510-73cc-4cc8-988f-fdfe4d67c53b   
+	row 74 - https://www.denner.ch/de/aktionen/chemin-des-vignes-chablais-aoc~p1035599?variant=db2a51ac-510d-4f0b-9ff1-43fdff8aece4  
+	
+	
+3) DataHut_AT_Spar_FullDump_20260806.CSV
+________________________________________
+
+	* Data count is 40916
+	* 'age_of_the_product' not empty.
+	* product name is taken as site_shown_uom only in the case of site_shown_uom is not present in website, Otherwise it is the quantity and unit from the website
+	* All the price values are null for 19 records, same as in the website. Eg :
+	row 40899 - https://www.spar.at/produktwelt/hans-igler-vulcano-magnum-2020-p2020005391345
+	row 40900 - https://www.spar.at/produktwelt/rex-sturzglas-370-ml-3er-set-p2020004157584
