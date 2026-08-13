@@ -1,0 +1,237 @@
+________________ISSUES_____________
+====================================
+
+
+1) DataHut_SI_Mercator_FullDump_20260813.CSV
+____________________________________________
+
+* Data count is 16936
+* Found 1f format values in regular_price and selling_price. Eg:
+Row- 328, regular_price- 0.4, selling_price- 0.4, pdp_url- https://mercatoronline.si/izdelek/17720502/maslo-mu-cuisine-20-g 
+Row- 342, regular_price- 0.5, selling_price- 0.5, pdp_url- https://mercatoronline.si/izdelek/19119393/maslo-meggle-20-g
+* Found 1f format values in promotion_price. Eg:
+Row- 3584, promotion_price- 1.5, pdp_url- https://mercatoronline.si/izdelek/19901731/musli-cokolada-rise-amp-smile-750-g 
+Row- 3606, promotion_price- 1.0, pdp_url- https://mercatoronline.si/izdelek/19901764/hrustljavi-musli-sadje-rise-amp-smile-350-g
+* 2703 rows with nutritional_information doesn't contain all the keys. Eg :
+Row- 18, nutritional_information- '{'energijska vrednost': '661/158 kj/kcal'}', pdp_url- https://mercatoronline.si/izdelek/8755892/prepelicja-jajca-redek-18-1  
+Row- 91,  nutritional_information- '{'energijska vrednost': '230/54 kj/kcal', 'ogljikovi hidrati': '3 g', '— sladkorji': '3 g', 'beljakovine': '10,3 g', 'sol': '0,1 g'}',  pdp_url- https://mercatoronline.si/izdelek/19304161/grski-jogurt-0-m-m-fage-total-150-g 
+* percentage_discount is in 1f float format, not int. Eg:  20.0, 15.0, 11.0 etc.
+* Incomplete breadcrumb and producthierarchy_level4 values : 'VSI IZDELKI > SADJE IN ZELENJAVA > SUHO SADJE IN OREŠČKI > MEŠANICE SUHO SADJE, OREŠČKI,…'
+Eg:
+Row- 11126, pdp_url- https://mercatoronline.si/izdelek/5297860/mesani-orescki-z-rozinami-in-brusnicami-odlicno-250-g  
+Row- 11127, pdp_url- https://mercatoronline.si/izdelek/18450944/mesanica-suhega-sadja-in-oresckov-garden-good-180-g  
+Row- 11129, pdp_url- https://mercatoronline.si/izdelek/11500072/studentska-hrana-ultje-200-g  
+Row- 11132, pdp_url- https://mercatoronline.si/izdelek/17977841/studentska-hrana-ultje-150-g
+* review  is in 1f float format, not integer. Eg: 4.0, 1.0, 5.0, 6.0, 2.0, 3.0, 12.0, 7.0, 9.0, 8.0, 11.0
+
+2) DataHut_IT_Esselunga_PriceExtractions_20260812.CSV
+_____________________________________________________
+
+* Data count is 238296 (13 store)
+* extraction_date value : 2026-08-11, expected value : 2026-08-12
+* competitor_name : 'essalunga', expected value : 'esselunga'
+* pdp_url value is wrong accross the entire dataset. 'esselunga' is replaced with 'essalunga' and so site is not accessible.
+* unique_id is duplicated for 217686 records.
+* breadcrumb empty for one record https://spesaonline.essalunga.it/commerce/nav/drive/store/prodotto/676134/omino-bianco-detersivo-lavatrice-liquido-marsiglia-44-lavaggi-1760-ml (row 189), website shows value : 'Home > SUPERMERCATO > Cura Casa e Detersivi > Bucato >Detersivi Bucato > Liquidi e Polveri'
+* grammage_unit is 'gr' for https://spesaonline.essalunga.it/commerce/nav/drive/store/prodotto/114220/essalunga-filini-pasta-di-semola-di-grano-duro-n90-250-g (row 375)  
+* '|' is not replaced with '\|' in site_shown_uom. Eg:
+https://spesaonline.essalunga.it/commerce/nav/drive/store/prodotto/672021/omino-bianco-sbianca-lana-cotone-e-seta-5-x-20-g (row 141)
+https://spesaonline.essalunga.it/commerce/nav/drive/store/prodotto/212065/splendid-classico-10-100-capsule-caffe-compatibili-con-macchine-nespresso-original-520g (row 665)
+* Trailing space found in brand 'Soré'. Eg: 
+https://spesaonline.essalunga.it/commerce/nav/drive/store/prodotto/552165/sore-valtenesi-riviera-del-garda-classico-doc-75-cl (row 8986)   
+https://spesaonline.essalunga.it/commerce/nav/drive/store/prodotto/552165/sore-valtenesi-riviera-del-garda-classico-doc-75-cl (row 28383)
+* Default unit value 'pz' is taken for unit 'ml' in the website for several records. Eg :
+https://spesaonline.essalunga.it/commerce/nav/drive/store/prodotto/676331/dixan-liquido-classico-22-lavaggi-990-ml (row 38726)
+https://spesaonline.essalunga.it/commerce/nav/drive/store/prodotto/676332/dixan-liquido-color-22-lavaggi-990-ml (row 38729)
+
+
+3) DataHut_AT_Dm_FullDump_20260813.CSV
+______________________________________
+
+* Following fileds are actually empty, but niot mentioned in the requirement: 'producthierarchy_level5', 'file_name_1', 'file_name_2', 'file_name_3', 'file_name_4', 'file_name_5', 'file_name_6'
+* 'barcode' is not empty, but mentioned as empty in the requirement
+* regular_price: Found 1866 values not having exactly 2 decimal places
+* selling_price: Found 1868 values not having exactly 2 decimal places
+Row 12, regular_price- 28.9, selling_price- 28.9, pdp_url- https://www.dm.at/p/d/3148567/weleda-gesichtsoel-youth-power-granatapfel  
+Row 15, regular_price- 39.9, selling_price- 28.9, pdp_url- https://www.dm.at/p/d/1557001/braun-nasensauger-nasal-aspirator-1 
+* promotion_price: Found 7 values not having exactly 2 decimal places. Eg:
+Row- 9255, promotion_price- 8.9, pdp_url- https://www.dm.at/p/d/3085313/nur-die-periodenunterwaesche-slip-alles-geregelt-schwarz-gr-l  
+Row- 9268, promotion_price- 25.9, pdp_url- https://www.dm.at/p/d/1799677/ooia-badeoberteil-gruen-gr-s 
+* image_url1 is empty for one record : https://www.dm.at/p/d/1353257/schaebens-gesichtsmaske-hydrogel  (row 16430)
+* review  is in 1f float format, not integer. Eg: 140.0, 58.0, 290.0
+
+
+4) DataHut_SI_Dm_FullDump_20260813.CSV
+______________________________________
+
+* Data count is 10312
+* price_was and promotion_price fields are also empty
+* regular_price & selling_price: Found 2548 values not having exactly 2 decimal places. Eg:
+Row 13, value- 3.6, pdp_url- https://www.dm.si/p/d/1849953/alpro-rastlinski-napitek-mandelj-nesladkan  
+Row 16, value- 3.6, pdp_url- https://www.dm.si/p/d/1851715/alpro-rastlinski-napitek-kokos-z-rizem-nesladkan
+* The competitor product key is extracted directly from the dm Product Number found on the website
+* '|' is not repalced with '\|' in ingredients field. Eg:
+https://www.dm.si/p/d/3123738/balea-zascita-pred-drgnjenjem-koze-v-stiku-tropical-dream (row 110)   
+https://www.dm.si/p/d/3126235/balea-balzam-za-lase-hydra-volume (row 160)
+* whitespace found in storage_instructions in 9 records. Eg :
+https://www.dm.si/p/d/3149875/lekobeba-vetrovne-kapljice-prehransko-dopolnilo (row 615) 
+https://www.dm.si/p/d/1689987/pure-fun-bio-sadna-kasica-tacke-na-patrulji-jabolko-banana-jagoda (row 697)
+* country_of_origin is not only containing the country value. Along with some more text is included. Also found whitespace. Eg:
+https://www.dm.si/p/d/1494320/dmbio-bio-polnozrnati-pirini-krekerji (row 1813)  
+https://www.dm.si/p/d/3087841/sportness-beljakovinska-rezina-z-okusom-pomarance-in-temne-cokolade (row 1834)
+* description not in new line format.
+* warning field contains extra whitespace in between in 141 records:
+https://www.dm.si/p/d/3123931/apinature-prehransko-dopolnilo-junior-iron-mix (row 32)  
+https://www.dm.si/p/d/3123983/apinature-prehransko-dopolnilo-junior-omega-3 (row 37)
+
+5) DataHut_SI_Spar_FullDump_20260813.CSV
+________________________________________
+
+* Data count is 16638
+* Following fields are actually empty, but not mentioned as empty in requirement : 
+variants, preparationinstructions, country_of_origin, age_recommendations, flavour, labelling, packaging, special_information, label_information, dimensions, color, material, tasting_note, rating, review, file_name_1, file_name_2, file_name_3, file_name_4, file_name_5, file_name_6, competitor_product_key, features, retail_limit     
+* Following fields are not actually empty, but mentioned as empty in requirement :
+barcode, promotion_valid_upto, promotion_description, price_was, promotion_price, alchol_by_volume, netweight
+* instock is true accross the entire dataset
+* regular_price & selling_price : Found several values not having exactly 2 decimal places. Eg:
+https://online.spar.si/p/nastrgani-mandlji-spar-200g-274032 (row 407) , value- 2.2
+https://online.spar.si/p/fizol-pisani-s-budget-1kg-348544 (row 431) , value- 2.5
+* promotion_price: Found 292 values not having exactly 2 decimal places. Eg:
+https://online.spar.si/p/smetana-za-kuhanje-brzofino-dukat-500g-193922 (row 816) 
+https://online.spar.si/p/panceta-narezek-kras-100g-288830 (row 1953)
+* Unwanted space found in producthierarchy_level3 in 525 records, 
+value 'KONZERVIRANE  JEDI'. Url: https://online.spar.si/p/sardele-v-soncnicnem-olju-s-budget-125g-477694(row 7365)
+https://online.spar.si/p/sardine-v-rastlinskem-olju-srce-108g-423819 (row 7366)
+* Unwanted space found in producthierarchy_level4, 
+value - 'PAPIRNATI IN VLAŽILNI  ROBČKI', url - https://online.spar.si/p/univerzalni-robcki-s-budget-801-666299 (row 14377)  
+https://online.spar.si/p/papirnati-robcki-violeta-box-601-481120 (row 14378)
+* Unwanted space found in warning in 77 rows. Eg:
+https://online.spar.si/p/mleta-prazena-kava-moka-100-arabica-hausbrandt-250g-665396 (row 3032)   
+https://online.spar.si/p/kava-skinny-latte-starbucks-220ml-539884 (row 3173)
+* price_per_unit is null for 2 records, while site shows value '0,00 €/KOS'
+https://online.spar.si/p/vatirane-palcke-papirnate-100-bombaz-brez-klora-beauty-kiss-3001-591908 (row 11158) 
+https://online.spar.si/p/vatirane-palcke-papirnate-100-bombaz-brez-klora-beauty-kiss-1601-591906 (row 11159)
+
+
+6) DataHut_CH_Lidl_FullDump_20260813.CSV
+________________________________________
+
+* country_of_origin field is also empty
+* percentage_discount is in 1f format
+* regular_price: Found 856 values not having exactly 2 decimal places
+* selling_price: Found 661 values not having exactly 2 decimal places
+price=2.2, https://online.spar.si/p/nastrgani-mandlji-spar-200g-274032 (row 407) 
+price=2.5, https://online.spar.si/p/fizol-pisani-s-budget-1kg-348544 (row 431)
+* promotion_price is null in 3309 records, even if regular_price present in data. Eg:
+https://sortiment.lidl.ch/de/catalog/product/view/id/13737/s/schweizer-aepfel-rot-0080220/category/54/ (row 2)
+https://sortiment.lidl.ch/de/catalog/product/view/id/11808/s/schweizer-zucchetti-0082345/category/54/ (row 3)
+* price_was is null in 3309 records, even if regular_price has value. Eg:
+https://sortiment.lidl.ch/de/catalog/product/view/id/13737/s/schweizer-aepfel-rot-0080220/category/54/ (row 2)
+https://sortiment.lidl.ch/de/catalog/product/view/id/11808/s/schweizer-zucchetti-0082345/category/54/ (row 3)
+* promotion dates are null for 511 records, even if promotion_description presents. Eg:
+https://sortiment.lidl.ch/de/catalog/product/view/id/14079/s/montepulciano-d-abruzzo-doc-0151217/category/54/ (row 18)  
+https://sortiment.lidl.ch/de/catalog/product/view/id/14499/s/prosecco-valdobbiadene-docg-0149516/category/54/ (row 29)
+* '|' is not replaced with '\|' in product_description of 2 rows :
+https://www.lidl.ch/p/de-CH/pattex-kleber-sortiment/p10056998 (row 3358)   
+https://www.lidl.ch/p/de-CH/livarno-led-badleuchte/p10057002 (row 3364)
+* extra white space found in product_description for 112 records. Eg:
+https://www.lidl.ch/p/de-CH/lupilu-matsch-und-buddeloverall/p10057028 (row 3098)   
+https://www.lidl.ch/p/de-CH/crivit-premium-funktionsjacke/p10057298 (row 3099)
+* whitespace found in producthierarchy_level3 for one record :
+https://sortiment.lidl.ch/de/catalog/product/view/id/20869/s/mini-pizza-pancetta-provola-und-zwiebel-1015165/category/54/ (row 3498)
+* whitespace found in product_name for one record :
+https://sortiment.lidl.ch/de/catalog/product/view/id/20869/s/mini-pizza-pancetta-provola-und-zwiebel-1015165/category/54/ (row 3498)
+
+
+7) DataHut_AT_Billa_FullDump_20260813.CSV
+_________________________________________
+
+* Data count - 12273
+* Non empty fields - age_of_the_product, packaging
+Extra empty fields - file_name_1, file_name_2, file_name_3, file_name_4, file_name_5, file_name_6, retail_limit
+* product_description is not in newline by line format
+* site_shown_uom is empty for 9 records, where site shows values like 'Ab 0,8 kg', 'Ab 0,4 kg' etc. Eg:
+https://shop.billa.at/produkte/ja-natuerlich-hendlruecken-00240470 (row 573) 
+https://shop.billa.at/produkte/ja-natuerlich-hendlfilet-00424344 (row 2911)
+* regular_price: Found 307 values not having exactly 2 decimal places
+* selling_price: Found 323 values not having exactly 2 decimal places. Eg :
+Row 38, value- 47.9, pdp_url- https://shop.billa.at/produkte/hennessy-very-special-0011379  
+Row 132, value- 1.8, pdp_url- https://shop.billa.at/produkte/rauch-weizenmehl-extra-fuer-kuchen-0015865 
+* promotion_price: Found 27 values not having exactly 2 decimal places. Eg:
+Row 1455 , value- 4.0 , pdp_url- https://shop.billa.at/produkte/hardys-shiraz-cabernet-sauvignon-00336380  
+Row 2948, value- 3.8, pdp_url- https://shop.billa.at/produkte/bens-original-langkornreis-10-minuten-00423190 
+* All 3 prices are equal for 4 rows:
+ row  regular_price  selling_price  promotion_price  promotion_description
+4105           1.32           1.32             1.32      Bei 6 Flaschen je
+4898           1.32           1.32             1.32      Bei 6 Flaschen je
+6689           1.32           1.32             1.32      Bei 6 Flaschen je
+7896           3.32           3.32             3.32                 AKTION
+
+
+8) DataHut_DH_Denner_FullDump_20260813.CSV
+__________________________________________
+
+* Filename error: 
+Expected value - 'DataHut_CH_Denner_FullDump_20260813',
+Actual value - 'DataHut_DH_Denner_FullDump_20260813'
+Suffix is wrong
+* extraction_date - 2026.08.13 - format incorrect
+* Data count is 1635
+* Found regular_price and selling_price comma separated on one record:
+Row- 624, value- 1,95 , pdp_url - https://www.denner.ch/de/weinshop/villa-pieri-primitivo-di-puglia-igt-pet~p1028280 
+* Found integer and 1f format values in regular_price, selling_price and promotion_price
+regular_price samples :
+value- 45, pdp_url --> https://www.denner.ch/de/aktionen/le-voilier-morges-aoc-la-cote~p1026497?variant=f382a2bb-5723-43bc-888b-a62eb6d7f186 (row 3) 
+value- 27.9, pdp_url--> https://www.denner.ch/de/aktionen/corona-bier-extra~p1102028?variant=c40deb7e-6fe4-4e11-a39e-db2572fb4c82 (row 5)
+selling_price samples :
+value- 3, pdp_url --> https://www.denner.ch/de/aktionen/article/mmmh-nuesslisalat-6/ (row 1632) 
+value- 6.2, pdp_url --> https://www.denner.ch/de/aktionen-und-sortiment/escal-meeresfruechtemischung~p663974?variant=875783e1-81c8-4155-803c-4b3dbcc594e6 (row 1634)
+promotion_price sample :
+value- 29.7, pdp_url --> https://www.denner.ch/de/aktionen/le-voilier-morges-aoc-la-cote~p1026497?variant=f382a2bb-5723-43bc-888b-a62eb6d7f186 (row 3) 
+value- 7.4, pdp_url --> https://www.denner.ch/de/aktionen/denner-vollmilch~p1002592?variant=5d4795e8-9a18-44da-83cb-391a9718701c (row 7)
+* site_shown_uom is not same as product_description in 1184 records. Commas in description are replaced with dot in site_shown_uom. Also completely mismatched records found too. Eg:
+https://www.denner.ch/de/aktionen/bio-avocado~p1100307?variant=a980ea1f-14dc-42c4-b124-96c974d616e3 (row 4)
+https://www.denner.ch/de/aktionen/jp.chenet-cabernet/syrah-pays-d-oc-igp~p1027287?variant=b2f2b39a-6721-4be6-9fb0-f8237da77b09 (row 10)
+* promotion_valid_from and price_valid_from has value for 1 record : https://www.denner.ch/de/aktionen/article/denner-morcheln/ (row 873) 
+(The value not visible on website)
+* product_name is 'Denner Vollmilch', but brand is 'Manufacturer Brand' for  https://www.denner.ch/de/aktionen/denner-vollmilch~p1002592?variant=5d4795e8-9a18-44da-83cb-391a9718701c (row 7)
+* regular_price and selling_price null for 157 rows (same as in the website). Eg :
+https://www.denner.ch/de/aktionen-und-sortiment/schloss-bockfliess-gruener-veltliner-platzhirsch-dac-reserve~p057146?variant=040094fd-e88e-448a-b4e3-3dffe8dd2596  (row 740)
+https://www.denner.ch/de/aktionen-und-sortiment/grant-burge-barossa-ink-cabernet-sauvignon~p057505?variant=ef31fb54-88fb-4692-b99a-59736c710dd4 (row 750)
+* percentage_discount is in 1f format. Eg : (33.0, 34.0, 20.0 etc.)
+
+
+
+9) DatHut_AT_billa_FullDump_20260814.CSV
+________________________________________
+
+* Filename error: 
+Expected value - 'DataHut_AT_Billa_FullDump_20260814', Actual value - 'DatHut_AT_billa_FullDump_20260814'
+Error in spelling and casing
+* Non empty fields - age_of_the_product, packaging
+Extra empty fields - file_name_1, file_name_2, file_name_3, file_name_4, file_name_5, file_name_6, retail_limit
+* breadcrumb empty for one record, but value avaialble on website : https://shop.Billa.at/produkte/ferrero-kuesschen-0023596 (row 380)
+* product_description is not in newline by line format
+* competitor_name is 'Billa' (error in casing)
+* organictype values are [' ' , 'Organic']. A white space instead of value 'Non-Organic' found on 10798 records. Eg :
+https://shop.Billa.at/produkte/colgate-plax-mundspuelung-soft-mint-0022827 (row 12273)
+https://shop.Billa.at/produkte/starbucks-caramel-macchiato-eiskaffee-00721129 (row 12274)
+* regular_price: Found 307 values not having exactly 2 decimal places
+* selling_price: Found 323 values not having exactly 2 decimal places
+https://shop.Billa.at/produkte/hennessy-very-special-0011379 (row 38)
+https://shop.Billa.at/produkte/rauch-weizenmehl-extra-fuer-kuchen-0015865 (row 134)
+* promotion_price: Found 27 values not having exactly 2 decimal places
+https://shop.Billa.at/produkte/hardys-shiraz-cabernet-sauvignon-00336380 (row 1455) 
+https://shop.Billa.at/produkte/bens-original-langkornreis-10-minuten-00423190 (row 2948)
+* All 3 prices are equal for 4 rows:
+ row  regular_price  selling_price  promotion_price  promotion_description
+4105              1.32              1.32                    1.32      Bei 6 Flaschen je
+4898              1.32              1.32                    1.32      Bei 6 Flaschen je
+6689              1.32              1.32                    1.32      Bei 6 Flaschen je
+7896              3.32              3.32                    3.32                 AKTION
+
+
+
+
+
+

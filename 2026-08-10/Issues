@@ -1,0 +1,95 @@
+______QA Issues__________
+=========================
+
+
+1) DataHut_AT_Spar_PriceExtractions_20250807.CSV
+________________________________________________
+
+	* Filename error : Actual vcalue is 'DataHut_AT_Spar_PriceExtractions_20250807', but the expected value is 'DataHut_AT_Spar_PriceExtractions_20260807'. Year value is wrong.
+	* Data count is 40928.
+	* Extraction date format error : The expected format is 'yyyy-mm-dd', but actual is 'dd/mm/yyyy' (07/08/2026)
+	* competitor_name is 'SPAR' for 2 records :
+	https://www.spar.at/produktwelt/spar-vital-pure-haut-haar-naegel-60-kapseln-p2020005797918 (line 186)
+	https://www.spar.at/produktwelt/spar-wie-frueher-saatgut-bio-cocktailtomate-muehls-mini-p2020002324209 (line 218)
+	* Extra leading whitespace found in product_name of url : https://www.spar.at/produktwelt/darbo-naturrein-waldhonig-p2020004109316 (line 40850)
+	* grammage_quantity and grammage_unit is null for https://www.spar.at/produktwelt/s-budget-vollmilch-laenger-frisch-p2020004812148 (line 103), while the value is '1 L' on the website.
+	* 'https' missing in pdp_url for one record: www.spar.at/produktwelt/chateau-belgrave-haut-medoc-5eme-grand-cru-classe-2020-p2020004723604 (line 40923)
+	* selling_price_regular_price and promotion_price is null for 18 records. (Same as in the website) Eg :
+	https://www.spar.at/produktwelt/gaja-magari-bolgheri-dop-2020-p2020004534545 (line 40912)   
+	https://www.spar.at/produktwelt/domaene-wachau-gruener-veltliner-wachau-dac-smaragd-ried-achleiten-2022-p2020004758798(line 40913)
+	* 
+	
+2) DataHut_si_dm_PriceExtractions_20260707.CSV
+_______________________________________________
+
+	* Filename error : Expected value is 'DataHut_SI_Dm_PriceExtractions_20260807', but the actual value is 'DataHut_si_dm_PriceExtractions_20260707'. 'si' and 'dm' casing, and month value are wrong.
+	* Data count is 10444
+	* promotion_price is not empty. Have value '1.5' for one record : https://www.dm.si/p/d/1334038/babylove-cucelj-premium-proti-kolikam-iz-silikona-za-steklenicke-premium-velikost-odprtine-s (line 2514)
+	* extraction_date has wrong value '2025-08-07' for one record : https://www.dm.si/p/d/2443709/frida-mom-spodnjice-za-enkratno-uporabo-po-porodu-s-carskim-rezom (line 10445)
+	* grammage_quantity value is '50ml' (not numeric) for one record : https://www.dm.si/p/d/2559552/l-oreal-paris-men-expert-roll-on-deodorant-barber-club  (line 10142)
+	* grammage_unit has invalid value 'kom', while value on the website is 'kos' for one record : https://www.dm.si/p/d/1208164/alverde-naturkosmetik-kompaktni-puder-030-beige (line 8359)
+	* product_name is null for one record : https://www.dm.si/p/d/3109588/pesail-visoke-nogavice-velikost-39-42-5-par (line 9500)
+
+3) bayut_bah_2026_08_02.json
+____________________________
+	
+	* Data count is 2679
+	* No specific issue found
+
+4) rema1000_2026_08_10.csv
+___________________________
+
+	* file_name_4, image_url_4, file_name_5, image_url_5, file_name_6, image_url_6 fields are actually poresent in the dataset, but missing in the requirement
+
+	* Empty fields : 'store_name', 'store_addressline1', 'store_addressline2', 'store_suburb', 'store_state', 'store_postcode', 'store_addressid', 'brand_type', 'drained_weight', 'producthierarchy_level3', 'producthierarchy_level4', 'producthierarchy_level5', 'producthierarchy_level6', 'producthierarchy_level7', 'price_was', 'promotion_price', 'promotion_valid_from', 'promotion_valid_upto', 'promotion_type', 'percentage_discount', 'promotion_description', 'package_sizeof_sellingprice', 'per_unit_sizedescription', 'price_valid_from', 'multi_buy_item_count', 'multi_buy_items_price_total', 'variants', 'storage_instructions', 'preparationinstructions', 'instructionforuse', 'country_of_origin', 'allergens', 'age_of_the_product', 'age_recommendations', 'flavour', 'nutritions', 'vitamins', 'labelling', 'grade', 'region', 'packaging', 'receipies', 'processed_food', 'barcode', 'chilled', 'cooking_part', 'handmade', 'max_heating_temperature', 'special_information', 'label_information', 'dimensions', 'special_nutrition_purpose', 'feeding_recommendation', 'warranty', 'color', 'model_number', 'material', 'usp', 'dosage_recommendation', 'tasting_note', 'food_preservation', 'size', 'rating', 'review', 'file_name_1', 'file_name_2', 'image_url_2', 'file_name_3', 'image_url_3', 'competitor_product_key', 'fit_guide', 'occasion', 'material_composition', 'style', 'care_instructions', 'heel_type', 'heel_height', 'upc', 'dietary_lifestyle', 'manufacturer_address', 'importer_address', 'distributor_address', 'vinification_details', 'recycling_information', 'return_address', 'alchol_by_volume', 'beer_deg', 'netcontent', 'netweight', 'random_weight_flag', 'instock', 'promo_limit', 'multibuy_items_pricesingle', 'perfect_match', 'servings_per_pack', 'warning', 'suitable_for', 'standard_drinks', 'environmental', 'grape_variety', 'retail_limit'
+
+	* product_description is empty for 344 records. Eg: 
+	https://shop.rema1000.dk/varer/45039 (line 3)
+	https://shop.rema1000.dk/varer/40804 (line 4)
+
+	* image_url is null for https://shop.rema1000.dk/varer/43026 (line 171), eventhough image is available on the website.
+	* price_per_unit values are not numeric. Price value is comma separated and 'per kg' is added along with the price value. Eg: '50,00 per kg', '34,88 per kg'
+
+	* brand_name is appended to site_shown_uom values. Eg: '500 GR. / REMA 1000', '400 GR. / REMA 1000, ØKO.'
+
+
+
+5) dubizzle_egp_2026_08_02.json
+_______________________________
+
+	* scraped_ts and date format are correct, but have two different values '2026-08-08' and '2026-08-09'.
+	* price value is comma separated
+	* number_of_photos is '' instead of 0 for 17 records. Eg :
+	https://www.dubizzle.com.eg/en/ad/apartment-for-sale-in-ard-el-golf-prime-location-ready-to-move-ID503797672.html (line 23730)
+	https://www.dubizzle.com.eg/en/ad/receive-the-key-to-your-villa-immediately-in-the-city-valley-compound-and-enjoy-a-charming-and-direct-view-of-the-lakes-in-the-most-prestigious-ne-ID503485394.html (line 41569)
+	* Long white space found in description of several rows. Eg :
+	https://www.dubizzle.com.eg/en/ad/furnished-townhouse-corner-for-rent-in-mivida-ID503865621.html (line 16)
+	https://www.dubizzle.com.eg/en/ad/semi-furnished-townhouse-for-rent-in-hyde-park-ID503643364.html (line 10)
+
+
+6) aqarmap_egp_2025_08_02.json
+______________________________
+
+	* Filename error : Expected value is 'aqarmap_egp_2026_08_02.json', but actual value is 'aqarmap_egp_2025_08_02.json'. There is mismatch in year value.
+	* website is unreachable.
+	* cuurency value is 'egp', not 'EGP'
+	* category value ' sale' has a leading space for url : https://aqarmap.com.eg/en/listing/6966528-for-sale-alexandria-al-agamy-lbytsh-al-aeda-al-kadema-st/ (line 174246)
+	* depth, seller_role, listing_type also empty accross the dataset
+	* details is empty for one record : https://aqarmap.com.eg/en/listing/6794852-for-sale-cairo-new-cairo-ain-el-sokhna-rd/ (line 36401)
+	* price and currency is empty for 1710 records. Eg :
+	https://aqarmap.com.eg/en/listing/7111581-for-rent-ain-elsokhna-resorts-palmera-hotel-resort/  (line 5630)
+	https://aqarmap.com.eg/en/listing/6767025-for-rent-ain-elsokhna-resorts-telal-el-sokhna/ (line 5632)
+	* bathrooms value is in arabic ('١') for one record :  https://aqarmap.com.eg/en/listing/6989431-for-sale-cairo-faisal-el-talbeya/ (line 32123)
+	* bathrooms value is '01' in url : https://aqarmap.com.eg/en/listing/6939476-for-rent-cairo-new-cairo-90th-street-northern-90th-street/ (line 94964)
+	* bathrooms value is '2.5' for record : https://aqarmap.com.eg/en/listing/7155474-for-sale-cairo-dokki-mydn-lmsh-almosekar-ali-ismail-st/ (line 77601)
+	* Last digit of phone_number is hided with 'xxx' for several records :
+	https://aqarmap.com.eg/en/listing/6922981-for-sale-cairo-heliopolis-almazah-almazah-st/ (line 3) 
+	https://aqarmap.com.eg/en/listing/6915022-for-sale-cairo-dokki-shareaa-el-doqi/ (line 4)
+	* Unwanted whitespace found in title for several records. Eg :
+	https://aqarmap.com.eg/en/listing/7015168-for-sale-cairo-dokki-msdq/ (line 6)
+	https://aqarmap.com.eg/en/listing/6995814-for-sale-cairo-new-cairo-compounds-lakeview-residence/ (line 12)
+
+	
+
+
+	

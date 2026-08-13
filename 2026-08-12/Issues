@@ -1,0 +1,245 @@
+____________ISSUES______________
+================================
+
+
+1) dubizzle_uae_2026_08_02.json
+_______________________________
+
+* Data count is 627570
+* missing  سنويا in price_per
+* description is present on website, but empty on dataset:
+Row : 408524, url : https://sharjah.dubizzle.com/property-for-sale/land/2026/2/4/land-for-sale-in-a-prime-location-on-st-12-868800/
+* Unwanted whitespace found in description for several rows. Eg :
+Row: 776, url: https://dubai.dubizzle.com/property-for-rent/residential/townhouse/2026/5/25/ideal-for-family-brand-new-big-size-bal-2-181538/
+Row: 778, url: https://dubai.dubizzle.com/property-for-rent/residential/townhouse/2026/5/25/ideal-for-family-brand-new-big-balcony-2-264025/
+
+-------------------------------------------------------
+
+2) DataHut_SI_Dm_PriceExtractions_20260812.CSV
+______________________________________________
+
+* Data count is 10132
+* Extra whitespace found in between product_name. Eg:
+Row 241, pdp_url : https://www.dm.si/p/d/1321849/essence-maskara-i-love-extreme-volume   
+Row 2771, pdp_url : https://www.dm.si/p/d/2244306/afrodita-young-pure-gel-za-susenje-mozoljev 
+* default unit 'kos' is taken for units like 'pranj', 'm', 'list'
+* Extra whitespace found in between breadcrumb for 476 records . Eg :
+Row 5, url : https://www.dm.si/p/d/3159283/hipp-ekolosko-junior-mleko-pure-3-12m   
+Row 6, url : https://www.dm.si/p/d/3159228/hipp-ekolosko-nadaljevalno-mleko-za-dojencke-pure-2-6m 
+
+-------------------------------------------------------
+
+3) DataHut-AT-Billa-PriceExtractions-20260812.CSV
+_________________________________________________
+
+* Filename error : Expected value - 'DataHut_AT_Billa_PriceExtractions_20260812', Actual value - 'DataHut-AT-Billa-PriceExtractions-20260812'. Found '-' instead of '_'
+* Data count is 12303
+* site_shwon_uom is empty for 9 records, but value is available on the website :
+Row- 366, url: https://shop.billa.at/produkte/ja-natuerlich-hendlruecken-00240470 , value on website : 'Ab 0,8 kg' 
+Row- 2879, url: https://shop.billa.at/produkte/ja-natuerlich-hendlfilet-00424344 , value on website : 'Ab 0,4 kg'
+Row- 4637, url: https://shop.billa.at/produkte/ja-natuerlich-hendl-suppenfleisch-00567341 , value on website : 'Ab 0,7 kg' 
+Row- 6157, url: https://shop.billa.at/produkte/ja-natuerlich-huehnerschnitzel-00714378 , value on website : 'Ab 0,29 kg'
+Row- 6161, url: https://shop.billa.at/produkte/ja-natuerlich-huhninnenfilet-00714753 , value on website : 'Ab 0,2 kg
+Row- 11263, url: https://shop.billa.at/produkte/ja-natuerlich-hendl-oberkeulen-0095781 , value on website : 'Ab 0,75 kg' 
+Row- 11811, url: https://shop.billa.at/produkte/ja-natuerlich-hendlunterkeulen-0095782 , value on website : 'Ab 0,4 kg' 
+Row- 12165, url: https://shop.billa.at/produkte/ja-natuerlich-huehnerkeulen-0095497 , value on website : 'Ab 0,5 kg'
+Row- 12210, url: https://shop.billa.at/produkte/ja-natuerlich-huehnerfluegerl-0095499 , value on website : 'Ab 0,4 kg'
+* regular_price is null for 29 records. Eg:
+Row 1309, url - https://shop.billa.at/produkte/alnatura-tomatensauce-basilikum-00317777  
+Row 1945, url - https://shop.billa.at/produkte/lindt-lindor-kugeln-dark-00381753 
+* regular_price: Found 308 values not having exactly 2 decimal places. Eg:
+Row 68, url - https://shop.billa.at/produkte/hennessy-very-special-0011379 , value - 47.9  
+Row 128, url - https://shop.billa.at/produkte/oelz-mehrkorntoast-0014336 , value - 3.8
+* selling_price: Found 316 values not having exactly 2 decimal places. Eg: 
+Row 68, url - https://shop.billa.at/produkte/hennessy-very-special-0011379 , value - 47.9 
+Row 128, url - https://shop.billa.at/produkte/oelz-mehrkorntoast-0014336 , value - 3.8
+* grammage_quantity having unwanted space in 194 records (Same as in the website) Eg:
+Row 51, url - https://shop.billa.at/produkte/cambozola-orginal-0010763 , value : '1 000'
+Row 108, url - https://shop.billa.at/produkte/pariser-lachsschinken-0013418, value : '1 000'
+* promotion_price is greater than selling_price for 4 records :
+row    unique_id  regular_price  selling_price  promotion_price  url
+4    00-100840           3.19           2.49             3.79    https://shop.billa.at/produkte/glem-vital-shampoo-multivitamin-00100840 
+20    00-10219           3.79           3.79             3.79    https://shop.billa.at/produkte/felix-kleine-feine-gurken-0010219
+85   00-117622           2.49           1.99             3.79    https://shop.billa.at/produkte/clin-citrus-frische-pistole-streifenfrei-00117622 
+129   00-14387           3.69           2.99            18.99    https://shop.billa.at/produkte/oelz-topfengolatschen-0014387
+
+--------------------------------------------------
+
+4) DataHut_Ch_LidL_PriceExtractions_20260813.CSV
+________________________________________________
+
+* Filename error : 
+Expected value - 'DataHut_CH_Lidl_PriceExtractions_20260812.CSV', 
+Actual value - 'DataHut_Ch_LidL_PriceExtractions_20260813..CSV'.
+Error in casing ('Ch', 'LidL'), date part (20260813 is a future date) and found two dots (..)
+* 4 unnamed columns with values found in the dataset
+* Delimiter is comma, not '|'
+* Data count is 3731
+* region and pack_size are not empty, but having invalid values like text values, urls, breadcrumbs, numeric values with % etc.
+region sample :
+Row- 162, region- '4 Käse'
+Row- 609, region- '9%'
+Row- 3009, region- 'https://www.lidl.ch/p/de-CH/qualite-suisse-high-protein-naturjoghurt/p10056804'
+Row- 1290, region - 'Sortiment > Sortiment > Haribo Quaxi'
+pack_size sample :
+Row- 162, pack_size- 'https://sortiment.lidl.ch/de/catalog/product/view/id/21615/s/steinofen-pizza-mozzarella-4-kaese-1010191/category/54/'
+Row- 1290, pack_size- 'Pfirsiche'
+Row- 3281, pack_size- 'Milchprodukte & Eier > Desserts'
+* site_shown uom value is appended with 'pro' in the beginning except 2 rows :
+Row- 1290, site_shown_uom- 'Saure Goldbären'  
+Row- 3281, site_shown_uom- https://www.lidl.ch/p/de-CH/italiamo-sachertorte-brownie-cheesecake/p10056890 
+* pdp_url is not empty, but invalid in 262 rows and duplicated in 188 rows. It includes text values, breadcrumbs etc. Eg:
+Row- 162, pdp_url- 'Sortiment > Sortiment > Steinofen-Pizza Mozzarella'
+Row- 3732, pdp_url- 'Gutscheine & Unterhaltung'
+* extraction_date format and value incorrect. Future date and yyyy_mm_dd format (2026_08_13)
+* grammage_quantity contains invalid 373 values like ' 4 Käse', 'Chicken', ' 3 in 1', '% UHT/Multipack','2e-Set' etc.
+* grammage_unit contains 78 invalid values like '2x355', '450', '0.5' etc.
+* currency include values :
+['Swiss Franc',
+ nan,
+ 'Aktion',
+ '-20%',
+ 'Mit Lidl Plus -11%',
+ 'Mit Lidl Plus -10%',
+ 'Mit Lidl Plus -33%',
+ '-55%',
+ '-22%',
+ 'XXL',
+ '-14%',
+ '-23%',
+ '19.8.2026']
+ * promotion valid_from includes numeric values :
+ ['9.99', '3.99', '4.49', '0.89', '5.99']
+ * price_valid_from not equal to promotion_valid_from and includes numeric values like '3.39', '4.69', '9.35', '0.69', '2.99', '4.49', '1.99'
+ * breadcrumb null in 3 records :
+Row- 1290, unique_id- 1800437
+Row- 3281, unique_id- 10056890
+Row- 3557, unique_id- 10056978
+* percentage_discount contains invalid values. Eg :
+'30', '20', '100g = 0.50 CHF', '100g = 0.78 CHF', '22'
+* regular_price: Found 144 invalid values and values not having exactly 2 decimal places. Eg :
+Row   regular_price  unique_id
+162              g    1010191
+204            2.6    1012861
+264              g    1011926
+439            3.3      83292
+485              g    1009421
+* selling_price: Found 63 invalid values and values not having exactly 2 decimal places
+Row     selling_price  unique_id
+204            2.6    1012861
+439            3.3      83292
+968             16    5113234
+969             10    5113221
+971             24    5113220
+* promotion_price: Found 24 invalid values and  values not having exactly 2 decimal places
+Row   promotion_price  unique_id
+1290  100g = 0.66 CHF    1800437
+2989               20    5106480
+3020             19.9   10056702
+3024             34.9   10056701
+3025             24.9   10056709
+
+-----------------------------------------------
+
+5) DataHut_CH_Lidl_PriceExtractions_20260812.json
+_________________________________________________
+
+* region and pack_size fields are missing in the dataset
+* file is json format, not csv
+* Data count is 3731
+* regular_price: Found 69 values not having exactly 2 decimal places. Eg:
+Row- 203, regular_price: 2.6, pdp_url: https://sortiment.lidl.ch/de/catalog/product/view/id/21483/s/spezialwaschmittel-1012861/category/54/  
+Row- 438, regular_price: 3.3 ,pdp_url: https://sortiment.lidl.ch/de/catalog/product/view/id/20849/s/schweizer-kartoffeln-0083292/category/54/
+* selling_price: Found 60 values not having exactly 2 decimal places. Eg:
+Row- 203, selling_price: 2.6, pdp_url: https://sortiment.lidl.ch/de/catalog/product/view/id/21483/s/spezialwaschmittel-1012861/category/54/  
+Row- 438, selling_price: 3.3 ,pdp_url: https://sortiment.lidl.ch/de/catalog/product/view/id/20849/s/schweizer-kartoffeln-0083292/category/54/
+* promotion_price available on website, but empty on dataset for several rows :
+* In case of promotion_description = "Aktion" or "6+0 gratis", promotion dates are empty. 98 such records present in the dataset. Eg:
+Row- 63, promotion_description- "6+0 gratis", pdp_url- https://sortiment.lidl.ch/de/catalog/product/view/id/21903/s/smirnoff-ice-tropical-1801855/category/54/
+Row- 48, promotion_description- "Aktion", pdp_url- https://sortiment.lidl.ch/de/catalog/product/view/id/21917/s/gran-pavesi-cracker-salati-1801331/category/54/
+* Unwanted whitespace foumd in product_name for one record :
+Row- 3644, pdp_url- https://sortiment.lidl.ch/de/catalog/product/view/id/20869/s/mini-pizza-pancetta-provola-und-zwiebel-1015165/category/54/ 
+
+--------------------------------------------------
+
+6) DataHut_SI_Spar_PriceExtractions_2026_08_12.CSV
+__________________________________________________
+
+* Data count is 16521
+* Filename error :
+Expected value- 'DataHut_SI_Spar_PriceExtractions_20260812'
+Actual value- 'DataHut_SI_Spar_PriceExtractions_20260812'
+Date part format is wrong (dddd_mm_yy)
+* percentage_discount field is also empty.
+* regular_price: Found 861 values not having exactly 2 decimal places. Eg:
+Row- 402, value- 2.2, pdp_url- https://online.spar.si/p/nastrgani-mandlji-spar-200g-274032  
+Row- 434, value- 2.5, pdp_url- https://online.spar.si/p/fizol-pisani-s-budget-1kg-348544 
+* selling_price: Found 643 values not having exactly 2 decimal places. Eg:
+Row- 402, value- 2.2, pdp_url- https://online.spar.si/p/nastrgani-mandlji-spar-200g-274032  
+Row- 434, value- 2.5, pdp_url- https://online.spar.si/p/fizol-pisani-s-budget-1kg-348544 
+* promotion_price: Found 208 values not having exactly 2 decimal places. Eg:
+Row- 803, value- 2.2, pdp_url- https://online.spar.si/p/smetana-za-kuhanje-brzofino-dukat-500g-193922  
+Row- 1922, value- 3.3, pdp_url- https://online.spar.si/p/panceta-narezek-kras-100g-288830 
+* price fields and currency empty for one record, even values are avaialble on the website:
+https://online.spar.si/p/bio-rukola-spar-naturpur-100g-498211 (Row 28)
+* extraction_date value error: Expected value- '2026-08-12', Actual value- '2026-07-12'
+* price_per_unit null for 2 records and value on website is '0,00 €/KOS'
+Row - 11035,  https://online.spar.si/p/vatirane-palcke-papirnate-100-bombaz-brez-klora-beauty-kiss-3001-591908  
+Row - 11036, https://online.spar.si/p/vatirane-palcke-papirnate-100-bombaz-brez-klora-beauty-kiss-1601-591906
+* price_per_unit format is different from the website accross the entire dataset. Eg:
+Website value : '4,97 €/KG', dataset value : 'KG. za 4.97 €', pdp_url: https://online.spar.si/p/cesen-s-budget-400g-pakirano-656842(row 2)
+
+
+7) DataHUT_AT_Spar_PriceExtractions_20260811.CSV
+________________________________________________
+
+* Filename error :
+Expected value - 'DataHut_AT_Spar_PriceExtractions_20260812'
+Actual value - 'DataHUT_AT_Spar_PriceExtractions_20260811'
+Error in 'DataHUT' casing and date part (date part should be '20260812')
+* Data count is 40991
+* regular_price: Found 3944 values not having exactly 2 decimal places
+* selling_price: Found 3944 values not having exactly 2 decimal places. Eg:
+Row- 77, regular_price- 1.7, sellimg_price- 1.7, pdp_url- https://www.spar.at/produktwelt/spar-premium-mezze-maniche-p2020004938749  
+Row- 242, regular_price- 3.8, sellimg_price- 3.8, pdp_url- https://www.spar.at/produktwelt/spar-premium-premium-nektarinen-p2020005871441 
+* promotion_price: Found 36 values not having exactly 2 decimal places
+Row- 2889, promotion_price- 29.9, pdp_url- https://www.spar.at/produktwelt/bumbu-original-spiced-p2020004205377  
+Row- 3908,  promotion_price- 1.7, pdp_url- https://www.spar.at/produktwelt/spar-nektarinen-p6681104 
+* breadcrumb empty for one record, but website shows value - 'SPAR Website > Produktwelt > Lebensmittel > Schnelle Küche & To Go > Fertiggerichte >Suppen & Einlagen' for url-  https://www.spar.at/produktwelt/knorr-kaiser-teller-gulaschsuppe-p2020005648449  (row 27270)
+* Invalid grammage_quantity found in 4 records :
+Row- 13160, grammage_quantity- '100 ml', pdp_url- https://www.spar.at/produktwelt/styx-p3858677 
+Row- 502, grammage_quantity- '50-70', pdp_url- https://www.spar.at/produktwelt/spar-muellbeutel-mit-zugband-extra-lang-50-70l-p2020006225885  
+Row- 891, grammage_quantity- '35-40', pdp_url- https://www.spar.at/produktwelt/spar-muellbeutel-mit-zugband-extra-lang-35-40l-p2020006225861  
+Row- 8080, grammage_quantity- '17-30', pdp_url- https://www.spar.at/produktwelt/pampers-ninjamas-p2020006173797 
+* Whitespace found in promotion_description:
+https://www.spar.at/produktwelt/tchibo-cafissimo-caffe-crema-vorratsbox-96-kapseln-p2020000593911 (Row 3235)  
+https://www.spar.at/produktwelt/tchibo-cafissimo-espresso-vorratsbox-96-kapseln-p2020001894437 (Row 20826)
+ 
+
+8) DataHut_IT_Eurospin_PriceExtractions_2026812.CSV
+____________________________________________________
+
+* Filename error :
+Expected value - 'DataHut_IT_Eurospin_PriceExtractions_20260812'
+Actual value- 'DataHut_IT_Eurospin_PriceExtractions_2026812'
+month value in the date part is incorrect
+* Data count is 39577 (10 stores : store_addressline1 field has 10 distinct values)
+* regular_price and selling_price are comma separated accross the entire dataset.'
+* competitor_name is 'Eurospin'
+* extraction_date expected value is '2026-08-12', but actual value is '2026-08-11'
+* regular_price and selling_price empty for one record, but site shows value '4,99' for https://online.eurospin.com/product/prosecco-asolo-docg-spumante-750ml  (row 25123)
+* site_shown_uom value is recorded as '500', but site shows '500 ℮' for 19 records. Eg:
+https://online.eurospin.com/product/orecchiette-fresche-500g2 (row 3492) 
+https://online.eurospin.com/product/orecchiette-fresche-500g2 (row 3493)
+
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,74 @@
+__________________Issues____________________
+============================================
+
+
+1) DataHut_SI_Mercator_PriceExtractions_20260811.CSV
+____________________________________________________
+
+* Data count is 16940
+* No sepcific issues found.
+
+2) rema1000_2026_08_11.csv
+___________________________
+
+* file_name_4, image_url_4, file_name_5, image_url_5, file_name_6, image_url_6 fields are actually poresent in the dataset, but missing in the requirement
+* extraction_date is expected to be '2026-08-11' as the filename is 'rema1000_2026_08_11.csv'
+* grammage_quantity is float type for 9 records :
+row 259 , value : 10.0 , url : https://shop.rema1000.dk/varer/225515
+row 265 , value : 10.0 , url : https://shop.rema1000.dk/varer/224233
+row 276 , value : 15.0 , url : https://shop.rema1000.dk/varer/220032
+row 283 , value : 8.0 , url : https://shop.rema1000.dk/varer/220017
+row 302 , value : 4.0 , url : https://shop.rema1000.dk/varer/224232
+row 319 , value : 6.0 , url : https://shop.rema1000.dk/varer/224242
+row 370 , value : 6.0 , url : https://shop.rema1000.dk/varer/220018
+row 376 , value : 6.0 , url : https://shop.rema1000.dk/varer/220019
+row 457 , value : 8.0 , url : https://shop.rema1000.dk/varer/224239
+* price_per_unit values are not numeric.  'per kg' is added along with the price value. Eg: '50,00 per kg', '34,88 per kg'
+* brand_name is appended to site_shown_uom values. Eg: '500 GR. / REMA 1000', '400 GR. / REMA 1000, ØKO.'
+
+
+3) qatarliving_qat_2026_08_02.json
+__________________________________
+
+* Data count is 26087
+* Unwanted space found in bathrooms field for several records. Eg:
+Row 17161, value : '1 - 5', url : https://qlp.qatarliving.com/en/properties/rent/commercial/office/ramada_office_opposite_ibis_hotel_from_qar_7_000/243908
+Row 17162, value : '21 - 50', url : https://qlp.qatarliving.com/en/properties/rent/commercial/labour_camp/building_of_60_labor_rooms_with_sewage_connected/135785 
+* https://www.qatarliving.com/en/properties/rent/residential/villa-apartment/2-bhk-family-flat-al-mansura/1951433 --> This website shows "This property is no longer available"
+* title contain '......' at the end : https://qlp.qatarliving.com/en/properties/rent/residential/apartment/family_friendly_2_bhk_semi_furnished_flats_with_3_bathrooms_in_al_nasar_/231234 (row 677)
+
+4) bahrainfinder_bah_2026_08_11.json
+_______________________________
+
+* Filename error : Expected value is 'dubizzle_bah_2026_08_02', but actual value is 'dubizzle_bah_2025_08_02'. Year value is wrong
+* Data count is 2936
+* scraped_ts : '2026-08-12' is a future date.
+* Date values are different : iteration_number : '2026_08_11', date : '2026-08-10', scraped_ts : '2026-08-12'
+* category values are in uppercase : 'RENT', 'SALE'
+* No value 'fully furnished' for furnished field
+* price value is comma separated
+* In several rows details field captured value from 'Size' and 'BuildSize' in the website without including a space in between. Eg:
+Row: 1, Value : '34.2 m²100 m²', url : https://bahrainfinder.bh/en/property/villa-for-sale-in-daih-11539.html
+Row: 25, Value : '200.5 m²254.9 m²', url : https://bahrainfinder.bh/en/property/villa-for-sale-in-barbar-4437.html
+* details field includes arabic alphabet (م²) in several rows. Eg:
+Row 87 : https://bahrainfinder.bh/ar/property/فيلا-للبيع-في-سرايا-1-11863.html  
+Row 88 : https://bahrainfinder.bh/ar/property/فيلا-للبيع-في-صدد-11858.html
+
+5) Datahut_AT_Spar_PriceExtractions_20260811.CSV
+________________________________________________
+
+* Filename error : Expected value is 'DataHut_AT_Spar_PriceExtractions_20260811', but actual value is 'Datahut_AT_Spar_PriceExtractions_20260811'. character 'h' in Datahut should be uppercase.
+* Data count is 40976
+* extraction_date is expected to be '2026-08-11' as per the filename. But the value is '2026-08-10'
+* regular_price, selling price, price_per_unit values are comma separated for one record : 
+row : 23226
+url : https://www.spar.at/produktwelt/hengstenberg-sticksi-gurkenviertel-scharf-wuerzig-p7467509
+regular_price : 2,99
+selling_price : 2,99
+price_per_unit : Per 1 kg 8,31
+* selling_price_regular_price and promotion_price is null for 18 records. (Same as in the website)
+
+
+
+
+

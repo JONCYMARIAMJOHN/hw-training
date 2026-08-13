@@ -77,7 +77,7 @@ Some limitations include:
 -It is not an AI framework.
 
 Sample prorotype link :
-
+https://github.com/JONCYMARIAMJOHN/hw-training/blob/main/2026-08-07/tcs_at_automation.py
 Streamlit can be installed with command : "pip install streamlit" and project can be simply run using "streamlit run project_name.py"
 
 
