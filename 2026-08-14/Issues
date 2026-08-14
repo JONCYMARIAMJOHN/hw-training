@@ -1,0 +1,295 @@
+_____________ISSUES_______________
+==================================
+
+1) DataHut_AT_Dm_FullDumbs_20260814.CSV 
+_______________________________________
+
+* filename error : expected value - 'DataHut_AT_Dm_FullDump_20260813.CSV', actual value - 'DataHut_AT_Dm_FullDumbs_20260814.CSV'
+Error in spelling and date part
+* extraction_date is '2026-08-14', but the data provided on 2026-08-13
+* instock is False for 3 products :
+https://www.dm.at/p/d/1901743/ebelin-haargummi-braun (row 6420) 
+https://www.dm.at/p/d/3116917/essence-augenbrauenstift-microblading-brow-brush-liner-01-soft-blonde (row 6421)
+https://www.dm.at/p/d/3088149/essence-highlighter-soft-touch-boucy-glow-10-soft-glaze (row 6422)
+* image_url_1 is null for one record (same as in the website) : https://www.dm.at/p/d/1353257/schaebens-gesichtsmaske-hydrogel (row 16430)
+* grammage_quantity includes int, 1f, 2f, 3f and numerics with space. Eg:
+https://www.dm.at/p/d/3132880/amorelie-health-intimhydration-fuer-sie (row 2), value - 1
+https://www.dm.at/p/d/3119941/nucao-schokolade-matcha-erdbeere (row 13618), value - 0.115
+https://www.dm.at/p/d/1879587/lutz-jausen-gurkerl-bio (row 14255), value - 0.54
+https://www.dm.at/p/d/1689108/whiskas-nassfutter-katze-pure-delight-gefluegel-ragout-mega-pack (row 12171), value - '3 400'
+
+* labelling field includes whitespace without any text (value = '  ') in 1454 rows. Eg:
+https://www.dm.at/p/d/3132880/amorelie-health-intimhydration-fuer-sie (row 2)  
+https://www.dm.at/p/d/3132889/amorelie-health-testobalance-fuer-ihn (row 5)
+
+* regular_price: Found 1866 values not having exactly 2 decimal places
+* selling_price: Found 1868 values not having exactly 2 decimal places. Eg:
+ https://www.dm.at/p/d/3148567/weleda-gesichtsoel-youth-power-granatapfel (row 12), value - 28.9
+https://www.dm.at/p/d/1557001/braun-nasensauger-nasal-aspirator-1 (row 17) , value - 39.9
+* promotion_price: Found 7 values not having exactly 2 decimal places
+https://www.dm.at/p/d/3085313/nur-die-periodenunterwaesche-slip-alles-geregelt-schwarz-gr-l (row 9255), value - 8.9
+https://www.dm.at/p/d/1799677/ooia-badeoberteil-gruen-gr-s (row 9268), value - 25.9
+* Following fileds are actually empty, but niot mentioned in the requirement: 'producthierarchy_level5', 'file_name_1', 'file_name_2', 'file_name_3', 'file_name_4', 'file_name_5', 'file_name_6'      
+* 'barcode', retail_limit are not empty, but mentioned as empty in the requirement
+* white space found in product_name fro 48 rows. Eg:
+https://www.dm.at/p/d/1712323/reell-e-toenungsshampoo-7-4-kupfergold (row 1924)  
+https://www.dm.at/p/d/3131648/plantur-conditioner-dmg-clinical-aufbaupflege (row 2494)
+* white space found in storage_instructions for 183 rows . Eg:
+https://www.dm.at/p/d/1460763/babylove-anfangsmilch-pre-von-geburt-an (row 156)  
+https://www.dm.at/p/d/1675004/frosch-kalkreiniger-himbeer-essig-nachfuellpack (row 495)
+* white space found in country of origin in 14 rows :
+https://www.dm.at/p/d/3140068/babylove-fruchtriegel-pfirsich-maracuja (row 383)   
+https://www.dm.at/p/d/3094857/dmbio-sauce-sweet-chili (row 1020)
+* warning field includes whitespace in 865 rows. Eg:
+https://www.dm.at/p/d/3132880/amorelie-health-intimhydration-fuer-sie (row 2)  
+https://www.dm.at/p/d/3132889/amorelie-health-testobalance-fuer-ihn (row 5)
+
+
+2) winparts_2026_08_15.csv
+__________________________
+
+* Filename error : Expected value - 'winparts_2026_08_14.csv', Actual value - 'winparts_2026_08_15.csv'
+Mismatch in date part
+* Data count is 21131
+* Stock field contains values 'In Stock', 'Out of Stock
+* Ref_no_space is not alphanumeric, but numeric for 775 records. Eg:
+https://www.winparts.be/motordelen-toebehoren/bougies/c53/bougie-zfr5pg-zfr5p-g-ngk/p92246.html (row 6056) 
+https://www.winparts.be/motordelen-toebehoren/bougies/c53/bougie-kj16cr-l11-denso/p660860.html (row 6057)
+* description ends with keys, not values in several records. Also includes unwanted whitespace.
+Eg: 
+row : 61
+description :'Transmissie-olie: Niet inbegrepen. Materiaal: Staal. Filter type: Zeeffilter. Garantie: 2 jaar. Hoogte [mm]: 23. Service-informatie in acht nemen: '
+pdp_url  : https://www.winparts.be/filters-vloeistoffen/transmissie-filters/c1705/versnellingsbakoliefilter-adv182176-blue-print/p1241338.html 
+
+
+3) autoonderdelen24_2026_08_15.csv
+__________________________________
+
+* Filename error : Expected value - 'autoonderdelen24_2026_08_14.csv', Actual value - 'autoonderdelen24_2026_08_15.csv'
+Mismatch in date part
+* No other issues
+
+4) mister_auto_2026_08_15.csv
+_____________________________
+
+* Filename error : Expected value - 'mister_auto_2026_08_14.csv', Actual value - 'mister_auto_2026_08_15.csv'
+Mismatch in date part
+* Data count is 33184
+* Net price is 0 for 1030 records, where the website UI is crashed for these urls. Eg:
+https://www.mister-auto.be/fr/rivet-a-expansion-febi-bilstein-101-100516-p/ (row 46) 
+https://www.mister-auto.be/fr/rivet-a-expansion-febi-bilstein-101-100601-p/ (row 47)
+* Ref_no_space is numeric for 1220 rows. Eg :
+https://www.mister-auto.be/fr/pompe-lave-glace-herth-buss-elparts-072-65451044-p/  (row 2)
+https://www.mister-auto.be/fr/pompe-lave-glace-febi-bilstein-101-23113-p/ (row 3)
+* Stock field contains Values: In Stock / Out of Stock
+* description ends with keys, not values in 1870 records. Also includes unwanted whitespace. Eg:
+https://www.mister-auto.be/fr/etrier-de-frein-febi-bilstein-101-181549-p/  (row 191)
+https://www.mister-auto.be/fr/etrier-de-frein-bosch-030-0986474898-p/ (row 192)
+
+* URL and Part number are not unique
+* website UI is crashed, not able to crosscheck data
+
+5) autoteiledirekt_2026_08_15.csv
+_________________________________
+
+* Second field is 'Catelogue price' in the requirement, but 'Catalogue price' in dataset.
+* Eighth field is 'Availability' in the requirement, but 'Stock' in the dataset.
+* Filename error : Expected value - 'autoteiledirekt_2026_08_14.csv', Actual value - 'autoteiledirekt_2026_08_15.csv'
+Mismatch in date part
+* Data count is 25788
+* Description field is partially empty
+* Ref_no_space is not alphanumeric, but numeric for 1729 records : 
+https://www.autoteiledirekt.de/febi-bilstein-8766515.html  (row 315)
+https://www.autoteiledirekt.de/ngk-7133251.html (row 317)
+
+
+
+6) DataHut_CH_Lidl_PriceExtractions_20260814.CSV
+________________________________________________
+
+* Data count is 3620
+* regular_price: Found 58 values not having exactly 2 decimal places
+* selling_price: Found 61 values not having exactly 2 decimal places. Eg :
+https://sortiment.lidl.ch/de/catalog/product/view/id/21483/s/spezialwaschmittel-1012861/category/54/ (row 192), value- 2.6
+https://sortiment.lidl.ch/de/catalog/product/view/id/20849/s/schweizer-kartoffeln-0083292/category/54/ (row 433), value- 3.3
+* promotion_price: Found 20 values not having exactly 2 decimal places
+https://sortiment.lidl.ch/de/catalog/product/view/id/16482/s/zinfandel-rose-0206816/category/54/ (row 1330)
+https://sortiment.lidl.ch/de/catalog/product/view/id/16343/s/piu-secco-0206227/category/54/ (row 1401)
+* 519 rows found in the dataset with promotion_description present, but promotion dates are null. Eg:
+
+Row : 7
+pdp_url : https://sortiment.lidl.ch/de/catalog/product/view/id/14079/s/montepulciano-d-abruzzo-doc-0151217/category/54/ 
+promotion_description : '-20%'
+promotion_valid_upto : null
+
+Row: 20 
+pdp_url : https://sortiment.lidl.ch/de/catalog/product/view/id/14499/s/prosecco-valdobbiadene-docg-0149516/category/54/
+promotion_description : 'Aktion'
+promotion_valid_from : null
+promotion_valid_upto : null
+
+ * white space found in product_name for 1 record:
+ Row : 3539
+ pdp_url: https://sortiment.lidl.ch/de/catalog/product/view/id/20869/s/mini-pizza-pancetta-provola-und-zwiebel-1015165/category/54/   
+ value : 'Mini Pizza Pancetta, Provola und  Zwiebel'
+ 
+ * white space found in breadcrumb for 1 record:
+ Row : 3539
+ pdp_url : https://sortiment.lidl.ch/de/catalog/product/view/id/20869/s/mini-pizza-pancetta-provola-und-zwiebel-1015165/category/54/   
+ value : 'Sortiment > Sortiment > Mini Pizza Pancetta, Provola und  Zwiebel '
+ 
+ 
+ 7) DataHut_AT_Spar_PriceExtractions_20260814.CSV
+ ________________________________________________
+ 
+ * Data count is 41191
+ * regular_price: Found 3975 values not having exactly 2 decimal places
+ * selling_price: Found 3975 values not having exactly 2 decimal places
+ Eg:
+ Row : 45                                    
+ pdp_url : https://www.spar.at/produktwelt/spar-premium-mezze-maniche-p2020004938749  
+ regular_price : 1.7
+ selling_price : 1.7
+
+ Row : 83                               
+ pdp_url : https://www.spar.at/produktwelt/spar-premium-premium-nektarinen-p2020005871441 
+ regular_price : 3.8
+ selling_price : 3.8
+
+ * promotion_price: Found 66 values not having exactly 2 decimal places
+ Eg:
+ Row : 2599                                           
+ pdp_url : https://www.spar.at/produktwelt/raschhofer-maerzen-p8033130  
+ promotion_price: 0.7
+
+ Row: 2853
+ pdp_url : https://www.spar.at/produktwelt/spar-nektarinen-p6681104 
+ promotion_price: 1.7
+
+* white space found in breadcrumb for 2 records :
+Row: 24294                              
+pdp_url : https://www.spar.at/produktwelt/vorarlberg-milch-laendle-halbfettmilch-laenger-frisch-1-5-fett-p2020006312547 
+
+Row: 33991
+pdp_url : https://www.spar.at/produktwelt/berglandmilch-schaerdinger-cremig-15-p2020006140843 
+
+ 8) mister_auto_2026_08_14.csv
+ _____________________________
+ 
+ * Data count is 24277
+ * Net price is 0 for 636 records. Eg :
+ https://www.mister-auto.be/fr/rivet-a-expansion-febi-bilstein-101-100601-p/ (row 41)
+ https://www.mister-auto.be/fr/rivet-a-expansion-febi-bilstein-101-100516-p/ (row 42)
+ * Part number is numeric for 15883 records. Eg:
+ Row: 2
+ URL : https://www.mister-auto.be/fr/pompe-lave-glace-herth-buss-elparts-072-65451044-p/ 
+ value : 65451044
+ 
+  
+ Row: 9
+ URL: https://www.mister-auto.be/fr/pompe-lave-glace-febi-bilstein-101-23113-p/
+ value: 23113
+ 
+ * Stock field contain values In Stock, Out of Stock
+ * Ref_no space is numeric for 1094 records:
+ Eg:
+ Row : 2
+ pdp_url : https://www.mister-auto.be/fr/pompe-lave-glace-herth-buss-elparts-072-65451044-p/
+ value : 99662817200
+  
+ Row : 9
+ pdp_url : https://www.mister-auto.be/fr/pompe-lave-glace-febi-bilstein-101-23113-p/
+ value : 99662817200
+ 
+ * Description is incomplete 1610 records. It ends with keys, not values, even if values available on website. Also includes unwanted whitespace. Eg:
+https://www.mister-auto.be/fr/etrier-de-frein-ferodo-062-fcl694076-p/ (row 144)  
+https://www.mister-auto.be/fr/etrier-de-frein-ferodo-062-fcl695003-p/ (row 174)
+* Part number is taken from 'Référence' field in the website.
+
+
+9) DataHut_AT_Dm_PriceExtractions_20260814.CSV
+_______________________________________________
+
+* data count is 16871
+* regular_price: Found 1868 values not having exactly 2 decimal places
+* selling_price: Found 1870 values not having exactly 2 decimal places
+ Eg:
+ Row 13
+ pdp_url : https://www.dm.at/p/d/3148567/weleda-gesichtsoel-youth-power-granatapfel  
+ regular_price : 28.9
+ selling_price : 28.9
+
+ Row 17
+ pdp_url : https://www.dm.at/p/d/3144829/weleda-augenpflege-youth-power-granatapfel 
+ regular_price : 24.9
+ selling_price : 24.9
+ 
+ * promotion_price: Found 6 values not having exactly 2 decimal places
+ Eg:
+ Row : 9216              
+ pdp_url : https://www.dm.at/p/d/3085313/nur-die-periodenunterwaesche-slip-alles-geregelt-schwarz-gr-l  
+ promotion_price : 8.9
+
+ Row : 9220                                               
+ pdp_url : https://www.dm.at/p/d/1799677/ooia-badeoberteil-gruen-gr-s  
+ promotion_price : 25.9
+ 
+ * grammage_quantity includes numeric with space in 18 records (same as in the website)
+ Eg:
+ Row : 994                                  
+ pdp_url : https://www.dm.at/p/d/3117626/pampers-feuchttuecher-99-prozent-water-18-x-60  
+ value : 1 080
+ 
+ Row : 1074                          
+ pdp_url : https://www.dm.at/p/d/1691425/pampers-feuchttuecher-sensitive-vorteilspack-15x80-st 
+ value : 1 200
+ 
+ * White space found in product_name for 48 record . Eg:
+ https://www.dm.at/p/d/3137062/essence-nagelpuder-studio-nails-01-gelato-glaze (row 877)  
+ https://www.dm.at/p/d/3104287/mivolis-tabletten-vitamin-b12-350 (row 1464) 
+
+
+ 10) DataHut_AT_Billa_PriceExtractions_20260814.CSV
+ __________________________________________________
+
+ * site_shown_uom empty for 9records, while site shows values like 'Ab 0,4 kg', 'Ab 0,8 kg' etc. Eg:
+ https://shop.billa.at/produkte/ja-natuerlich-hendlruecken-00240470 (row 383) 
+ https://shop.billa.at/produkte/ja-natuerlich-hendlfilet-00424344 (row 2847)
+ * selling_price: Found 325 values not having exactly 2 decimal places. Eg:
+ https://shop.billa.at/produkte/hennessy-very-special-0011379 (row 51)
+ https://shop.billa.at/produkte/rauch-weizenmehl-extra-fuer-kuchen-0015865 (row 131)
+ * regular_price: Found 309 values not having exactly 2 decimal places
+ https://shop.billa.at/produkte/hennessy-very-special-0011379 (row 51)
+ https://shop.billa.at/produkte/rauch-weizenmehl-extra-fuer-kuchen-0015865 (row 131)
+ * promotion_price: Found 27 values not having exactly 2 decimal places                                                                                               
+ https://shop.billa.at/produkte/hardys-shiraz-cabernet-sauvignon-00336380 (row 1428) 
+ https://shop.billa.at/produkte/bens-original-langkornreis-10-minuten-00423190 (row 2838)
+ * regular_price is null for 25 records with promotion_description, 'AKTION'. Eg:
+ https://shop.billa.at/produkte/goesser-maerzen-0021841 (row 324)  
+ https://shop.billa.at/produkte/stiegl-goldbraeu-0021982  (row 333)
+ * grammage_quantity contains numeric with space
+ https://shop.billa.at/produkte/cambozola-orginal-0010763  (row 60) 
+ https://shop.billa.at/produkte/pariser-lachsschinken-0013418 (row 101)
+ * Unique_id is not numeric
+ * regular_price, selling_price and promotion_price are equal for 4 records
+ Row : 4030                   
+ pdp_url : https://shop.billa.at/produkte/almdudler-original-00490819   
+ value : 1.32 
+ promotion_description : 'Bei 6 Flaschen je'
+ 
+ Row : 4785                  
+ pdp_url : https://shop.billa.at/produkte/almdudler-zuckerfrei-00575986 
+ value : 1.32 
+ promotion_description : 'Bei 6 Flaschen je' 
+ 
+ Row : 6531                          
+ pdp_url : https://shop.billa.at/produkte/spezi-orange-00721650   
+ value : 1.32
+ promotion_description : 'Bei 6 Flaschen je' 
+ 
+ Row : 7707  
+ pdp_url : https://shop.billa.at/produkte/ja-natuerlich-steirisches-fladenbrot-00748229 
+ value : 3.32
+ promotion_description : 'AKTION' 
+ 
+ 
