@@ -1,0 +1,276 @@
+______________ISSUES______________
+==================================
+
+1) DataHut_AT_Dn_PriceExtraction_20260816.CSV
+_____________________________________________
+
+* Filename error: Expected name - 'DataHut_AT_Dm_PriceExtractions_20260816.CSV, Actaul name - DataHut_AT_Dn_PriceExtraction_20260816.CSV
+'m' in 'Dm' replaced with 'n' and 's' in 'Extractions' is missing
+* Data count is 16829
+* competitor_name is DM' instead of 'dm'
+* site_shown_uom is comma-separated for 2413 records. Eg:
+Row: 14844, site_shown_uom: '0,8 kg', pdp_url : https://www.dm.at/p/d/1459132/nestle-beba-anfangsmilch-pre-von-geburt-an   
+Row: 14845, site_shown_uom: '0,8 kg', pdp_url : https://www.dm.at/p/d/1459140/nestle-beba-kindermilch-junior-2-ab-2-jahre 
+* product_name null for 2 records, while site shows value :
+Row: 14844, pdp_url : https://www.dm.at/p/d/1459132/nestle-beba-anfangsmilch-pre-von-geburt-an   
+Row: 14845, pdp_url : https://www.dm.at/p/d/1459140/nestle-beba-kindermilch-junior-2-ab-2-jahre 
+* Found invalid breadcrumb 'Startseite > > > > Gesundheit > Liebesspiel & Verhütung > Sextoys' for pdp_url : https://www.dm.at/p/d/1709822/loovara-intimate-lecktuecher-oral-dams (row 29)
+* pdp_url duplicate found : https://www.dm.at/p/d/1626741/balea-einwegrasierer-2-klingen (row 4040, 4041)
+* regular_price: Found 1879 values not having exactly 2 decimal places
+* selling_price: Found 1881 values not having exactly 2 decimal places. Eg:
+Row: 2, selling_price : 29.9, regular_price : 29.9, pdp_url : https://www.dm.at/p/d/3158521/alpine-gehoerschutz-muffy-baby  
+Row:7, selling_price : 5.0, regular_price : 5.0, pdp_url : https://www.dm.at/p/d/3118921/dm-box-jubilaeumsbox-50-jahre-dm-familie
+* promotion_price: Found 6 values not having exactly 2 decimal places
+Row: 9125, promotion_price: 8.9, pdp_url: https://www.dm.at/p/d/3085313/nur-die-periodenunterwaesche-slip-alles-geregelt-schwarz-gr-l  
+Row: 9129, promotion_price: 25.9, pdp_url : https://www.dm.at/p/d/1799677/ooia-badeoberteil-gruen-gr-s
+* Invalid currency value, 'HUF' instead of 'EUR'
+* competitor_name 'DM' instead of 'Dm'
+* whitespace found in product_name for 48 records :
+https://www.dm.at/p/d/3137062/essence-nagelpuder-studio-nails-01-gelato-glaze (row 1300)   
+https://www.dm.at/p/d/3104287/mivolis-tabletten-vitamin-b12-350 (row 1775)
+
+
+2) DataHut_SI_Spar_PriceExtractions_20260818.CSV
+________________________________________________
+
+* Data count : percentage_discount field is also empty.
+* percentage_discount field is also empty.
+* regular_price: Found 832 values not having exactly 2 decimal places
+* selling_price: Found 675 values not having exactly 2 decimal places
+Row : 402,
+regular_price: 2.2,
+selling_price :2.2,
+pdp_url : https://online.spar.si/p/nastrgani-mandlji-spar-200g-274032  
+
+Row : 423
+regular_price: 2.5,
+selling_price :2.5,
+pdp_url : https://online.spar.si/p/fizol-pisani-s-budget-1kg-348544  
+* promotion_price: Found 238 values not having exactly 2 decimal places
+Row : 816
+promotion_price : 2.2,
+pdp_url : https://online.spar.si/p/smetana-za-kuhanje-brzofino-dukat-500g-193922  
+
+Row : 1851 
+promotion_price : 3.3,
+pdp_url : https://online.spar.si/p/panceta-narezek-kras-100g-288830  
+* https://online.spar.si/p/radic-vitlof-500g-446351 (row 38) --> site_shown_uom is '0.5 KOS', but it is '500 G' on website, so the expected value is '0.5 KG'
+ https://online.spar.si/p/piscancja-prsa-s-budget-500g-641251 (row 1725) --> site_shown_uom is '0.5 KOS', but it is '500 G' on website, so the expected value is '0.5 KG'
+ https://online.spar.si/p/prehransko-dopolnilo-vitamin-cd3-swedsih-nutra-500-ml-674564 (row 8942) --> site_shown_uom is '0.5 KOS', but it is '500 ML' on website, so the expected value is '0.5 L'
+ (Same issue found on several rows)
+ 
+* price_per_unit is null for 2 records, site shows '0,00 €/KOS'
+https://online.spar.si/p/vatirane-palcke-papirnate-100-bombaz-brez-klora-beauty-kiss-3001-591908 (row 10998) 
+https://online.spar.si/p/vatirane-palcke-papirnate-100-bombaz-brez-klora-beauty-kiss-1601-591906 (row 10999)
+
+3) DataHut_SI_Dm_PriceExtractions_20260818.CSV
+______________________________________________
+
+* Data count : 10291
+* regular_price: Found 2545 values not having exactly 2 decimal places
+* selling_price: Found 2545 values not having exactly 2 decimal places
+Row : 22,
+regular_price : 3.2,
+selling_price : 3.2,
+pdp_url : https://www.dm.si/p/d/1916616/alpro-rastlinski-napitek-this-is-not-m-lk-s-3-5-mascobe  
+
+Row : 24,
+regular_price : 3.4,
+selling_price : 3.4,
+pdp_url : https://www.dm.si/p/d/3080465/alpro-ovseni-in-sojin-napitek-barista-z-okusom-vanilije
+* site_shown_uom has comma separated values (eg :0,75) :
+https://www.dm.si/p/d/3156724/bref-cistilo-za-wc-self-active-aqua-fresh  (row 31)
+https://www.dm.si/p/d/3080466/alpro-ovseni-in-sojin-napitek-barista-z-okusom-karamele  (row 117)
+* white space found in product_name for 14 records. Eg:
+https://www.dm.si/p/d/1321849/essence-maskara-i-love-extreme-volume  (row 245)
+https://www.dm.si/p/d/2244306/afrodita-young-pure-gel-za-susenje-mozoljev  (row 2616)
+* whitespace found in breadcrumb for 490 rows. Eg:
+https://www.dm.si/p/d/3159283/hipp-ekolosko-junior-mleko-pure-3-12m  (row 6)
+https://www.dm.si/p/d/3159227/hipp-ekolosko-zacetno-mleko-za-dojencke-pure-1-0m  (row 8)
+
+
+4) DataHut_SI_Mercator_PriceExtractions_20260818.CSV
+____________________________________________________
+
+* 
+* regular_price: Found 70 values not having exactly 2 decimal places
+* selling_price: Found 328 values not having exactly 2 decimal places. Eg:
+https://mercatoronline.si/izdelek/17720502/maslo-mu-cuisine-20-g (row 362), value- 0.4
+https://mercatoronline.si/izdelek/19119393/maslo-meggle-20-g (row 387), value- 0.5
+* promotion_price: Found 266 values not having exactly 2 decimal places
+https://mercatoronline.si/izdelek/19901731/musli-cokolada-rise-amp-smile-750-g (row 3521), value- 1.5 
+https://mercatoronline.si/izdelek/19901742/hrustljavi-musli-cokolada-rise-amp-smile-350-g (row 3535), value- 1.2
+
+* Usually, if promotion_description presents, the lower value in the website is assigned to selling_price and regular_price and promotion price keeps empty. but in the cases of promotion description contains 'Ugodno', the lower value in the website is assigned to promotion_price and selling_price and the higher value is assigned to regular_price. Such 1508 records exists. Eg :
+https://mercatoronline.si/izdelek/19682209/trajno-polnomastno-mleko-3-5-m-m-mercator-1-l (row 572) 
+https://mercatoronline.si/izdelek/17707561/trajno-polnomastno-mleko-3-5-m-m-mercator-1-l (row 584)
+
+
+5) Datahut_At_billa_PriceExtraction_20260718.CSV
+_________________________________________________
+
+* Filename error : Expected name - 'DataHut_AT_Billa_PriceExtractions_20260718', Actual value - 'Datahut_At_billa_PriceExtraction_20260718'
+Error in casing, spelling and month value in date part
+* product_name null for 2 records, while value available on website :
+https://shop.billa.at/produkte/coca-cola-00721877 (row 6488)
+https://shop.billa.at/produkte/coca-cola-zero-00721878 (row 6489)
+* regular_price null for 25 records. Eg :
+https://shop.billa.at/produkte/goesser-maerzen-0021841 (row 297) 
+https://shop.billa.at/produkte/stiegl-goldbraeu-0021982 (row 307)
+* regular_price: Found 305 values not having exactly 2 decimal places
+* selling_price: Found 321 values not having exactly 2 decimal places. Eg:
+https://shop.billa.at/produkte/hennessy-very-special-0011379 (row 28), value- 47.9
+https://shop.billa.at/produkte/oelz-mehrkorntoast-0014336  (row 100), value- 3.8
+* promotion_price: Found 27 values not having exactly 2 decimal places
+https://shop.billa.at/produkte/hardys-shiraz-cabernet-sauvignon-00336380 (row 1376), value- 4.0
+https://shop.billa.at/produkte/bens-original-langkornreis-10-minuten-00423190 (row 2870), value-3.8
+* competitor_name is in Camle case : 'Billa'
+* grammage_unit is 'gg' for 1 record : https://shop.billa.at/produkte/clever-rahmcamembert-00634069 (row 12282)
+* price_per_unit error: '€' symbol is replaced with '$' accross the entire dataset
+* promotion_price, regular_price and selling_price are equal in 4 records, while two prices are available on website for the first 3 records following. promotion description of the first 3 records is 'Bei 6 Flaschen je' and that of 4th one is 'Aktion' :
+https://shop.billa.at/produkte/almdudler-original-00490819 (row 4116)  
+https://shop.billa.at/produkte/almdudler-zuckerfrei-00575986 (row 4791)
+https://shop.billa.at/produkte/spezi-orange-00721650 (row 6465)
+https://shop.billa.at/produkte/ja-natuerlich-steirisches-fladenbrot-00748229 (row 7659)
+* Among 15 records with regular_price null, 11 records doesn't have a 'Mehrweg' tag on the website. Eg:
+https://shop.billa.at/produkte/lindt-lindor-kugeln-dark-00381753 (row 1813)
+https://shop.billa.at/produkte/lindt-lindor-kugeln-tiramisu-00871627  (row 11896)
+
+6) DataHut_AT_LIDL_PriceExtractions_20260819.CSV
+________________________________________________
+
+* Filename error : Expected name- 'DataHut_CH_Lidl_PriceExtractions_20260818', Actual value- 'DataHut_AT_LIDL_PriceExtractions_20260819'
+Error in spelling, casing, date part
+* unique_id is not unique. The value 180707 is repeating on rows on 1700 & 1701
+* competitor_name value is 'lidL' for 1 record https://sortiment.lidl.ch/de/catalog/product/view/id/16301/s/mozzarella-gerieben-0129674/category/54/ (row 11)
+* currency is 'EUR'
+* price_valid_from is not equal to promotion_valid_from for 1 record : https://sortiment.lidl.ch/de/catalog/product/view/id/14499/s/prosecco-valdobbiadene-docg-0149516/category/54/ (row 17)
+* Invalid breadcrumb, 'Sortiment > Sortiment > Bürlischild > > '  https://sortiment.lidl.ch/de/catalog/product/view/id/21540/s/buerlischild-5114330/category/54/ (row 3601)
+* percentage_discount missing for 1 record, while corresponding promotion_description is '-20%' : https://sortiment.lidl.ch/de/catalog/product/view/id/15673/s/pinotage-0034515/category/54/ (row 1672)
+* promotion dates are empty even if promotion_description presents for 143 records:
+https://sortiment.lidl.ch/de/catalog/product/view/id/21944/s/pinsa-teig-xxl-6018554/category/54/ (row 36) 
+https://sortiment.lidl.ch/de/catalog/product/view/id/21941/s/chicken-wings-nature-5114255/category/54/ (row 38)
+* regular_price: Found 60 values not having exactly 2 decimal places
+* selling_price: Found 62 values not having exactly 2 decimal places. Eg:
+Row : 181, value: 2.6 , pdp_url : https://sortiment.lidl.ch/de/catalog/product/view/id/21483/s/spezialwaschmittel-1012861/category/54/  
+Row: 405, value: 3.3, pdp_url : https://sortiment.lidl.ch/de/catalog/product/view/id/20849/s/schweizer-kartoffeln-0083292/category/54/
+* promotion_price: Found 20 values not having exactly 2 decimal places
+Row : 1255, value: 3.0, pdp_url: https://sortiment.lidl.ch/de/catalog/product/view/id/16482/s/zinfandel-rose-0206816/category/54/  
+Row : 1323, value: 2.2, pdp_url: https://sortiment.lidl.ch/de/catalog/product/view/id/16343/s/piu-secco-0206227/category/54/ 
+* first part of price_per_unit (eg: 'pro 1 kg') are missing in several records, when comparing with the website. Eg:
+https://sortiment.lidl.ch/de/catalog/product/view/id/12790/s/trauben-hell-kernlos-0080505/category/54/ (row 3)
+https://sortiment.lidl.ch/de/catalog/product/view/id/18020/s/fonduebrot-5110412/category/54/ (row 3694)
+* site_shown_uom missing for 569 records
+* whitespace found in product_name and breadcrumb of 1 record : https://sortiment.lidl.ch/de/catalog/product/view/id/20869/s/mini-pizza-pancetta-provola-und-zwiebel-1015165/category/54/ (row 5395)
+
+
+7) DataHut_AT_Dm_PriceExtractions_20260818.CSV
+______________________________________________
+
+* breadcrumb null for 1 record : https://www.dm.at/p/d/1575911/babylove-wickelunterlagen-monatspack (row 37)
+* site_shown_uom is null for 3 records :
+https://www.dm.at/p/d/3123593/nivea-gesichtswasser-pflegend-arganoel-hyaluronsaeure (row 2750) 
+https://www.dm.at/p/d/1703270/balea-augencreme-vital-straffend (row 2921) 
+https://www.dm.at/p/d/1914190/nivea-nachtcreme-revitalisierend-anti-falten-55 (row 3105)
+* site_shown_uom comma separated for some records . Eg:
+https://www.dm.at/p/d/1617230/hipp-anfangsmilch-bio-combiotik-pre-von-geburt-an (row 30), value- 0,6
+https://www.dm.at/p/d/1291025/denkmit-desinfektionsspray (row 34) value- 0,25
+* Invalid breadcrumb value 'Startseite > Pflege & Parfum > > Gesichtsreinigung > Waschgel ' for url : https://www.dm.at/p/d/1487984/neutrogena-reinigungsgel-hydro-boost-aqua (row 983)
+* price_per_unit is comma separated (3,45 € je 1 St) for 1 record : https://www.dm.at/p/d/3061283/ebelin-gesichtsmaske-silikon-wiederverwendbar-sortiert (row 1228)
+* regular_price: Found 1882 values not having exactly 2 decimal places
+* selling_price: Found 1884 values not having exactly 2 decimal places
+https://www.dm.at/p/d/3158521/alpine-gehoerschutz-muffy-baby (row 2)
+https://www.dm.at/p/d/3148567/weleda-gesichtsoel-youth-power-granatapfel (row 7)
+* promotion_price: Found 6 values not having exactly 2 decimal places
+https://www.dm.at/p/d/3085313/nur-die-periodenunterwaesche-slip-alles-geregelt-schwarz-gr-l (row 9263)  
+https://www.dm.at/p/d/1799677/ooia-badeoberteil-gruen-gr-s (row 9267)
+
+* price_valid_from is not equal to promotion_valid_from for 1 record :
+https://www.dm.at/p/d/1493420/dontodent-zahnpasta-gel-junior(row 654)
+* selling_price is greater than regular_price for 1 record. promotion_description and promtion_price are null in this case : https://www.dm.at/p/d/1353535/jessa-slipeinlagen-extra-lang-mit-frischeduft (row 1026)
+* white space found in product_name for 48 records :
+https://www.dm.at/p/d/3137062/essence-nagelpuder-studio-nails-01-gelato-glaze (row 1567)
+https://www.dm.at/p/d/3104287/mivolis-tabletten-vitamin-b12-350 (row 1669)
+* site_shown_uom is '20 Btl', but grammage_unit is 'g' for 1 record : https://www.dm.at/p/d/3084459/dmbio-fruechtetee-hagebutte-hibiskus (row 626)
+* site_shown_uom is '60 wg', but grammage_unit is 'ml' for 1 record : https://www.dm.at/p/d/3130473/somat-geschirrreiniger-gel-5-in-1 (row 2670)
+
+
+8) DataHut_AT_Spar_Price_Extractions_20260818.CSV
+_________________________________________________
+
+* Data count : 41194
+* breadcrumb ends with '>' for 1 record : https://www.spar.at/produktwelt/simpex-basic-simpex-basic-schale-si-20cm-p2020005366343 (row 3699)
+* competitor_name is in Camel case 'Spar'
+* regular_price and selling_price empty for 19 records :
+
+* Incorrect grammage_unit 'stuck' for 1 record : https://www.spar.at/produktwelt/spar-qualitaetsmarke-servietten-3-lagig-40x40-cm-rot-50-stueck-p2020002515669 (row 324)
+* site_shown_uom comma-separated for some records:
+https://www.spar.at/produktwelt/despar-condimento-bianco-p5733460 (row 91), value- '0,5 L'
+https://www.spar.at/produktwelt/despar-gelateria-cioccolato-p2020003266126 (row 159)- '0,9 L'
+* regular_price and selling_price = '120980.0' for 1 record, while site shows "2,99":  https://www.spar.at/produktwelt/spar-office-fineliner-10-farben-p2020006069779 (row 102)
+* regular_price and selling_price = '6049.0' for 1 record, while site shows "6.049,00":  https://www.spar.at/produktwelt/hibiki-whisky-30-yo-p2020005455030 (row 8725)
+* regular_price and selling_price = '89900.0' for 1 record, while site shows "89.900,00":  https://www.spar.at/produktwelt/domaine-de-la-romanee-conti-assortement-grand-cru-10er-holzkiste-2014-p2020005011366 (row 15156)
+* regular_price and selling_price = '5490.0' for 1 record, while site shows "5.490,00":  https://www.spar.at/produktwelt/petrus-pomerol-2018-p2020005289963  (row 16025)
+* regular_price and selling_price = '13.9000' for 1 record, while site shows "13.900,00":  https://www.spar.at/produktwelt/duclot-bordeaux-collection-9er-assortement-2009-p2020005398917  (row 20869)
+* regular_price: Found 3973 values not having exactly 2 decimal places (Eg. rows : 76, 102)
+* selling_price: Found 3973 values not having exactly 2 decimal places (Eg. rows : 76, 102)
+* promotion_price: Found 23 values not having exactly 2 decimal places (Eg. rows : 4272, 4591)
+
+* Invalid url : www.spar.at/produktwelt/kerry-cheestrings-gouda-mit-gouda-p2020002089801 (row 32193)
+
+* unique_id not numeric for 1 record. Value is '767o626', which countain alphabet 'o', https://www.spar.at/produktwelt/spar-office-klarsichthuellen-a4-100-stueck-p7670626 (row 408)
+
+* promotion_price = selling_price for 1 record :
+Row: 91, pdp_url : https://www.spar.at/produktwelt/despar-condimento-bianco-p5733460 , promotion_price = selling_price = 1.99, regualr_price = 2.49, promotion_description = 'Mengenvorteil ab 2 Stk. je '
+* '|' is not replaced with '\|' in product_name and site_shown_uom for 10 records . Eg:
+https://www.spar.at/produktwelt/mehrzweckschrauben-4x40-150stk-p2020005763197 (row 17119)  
+https://www.spar.at/produktwelt/bgs-mehrzweckschrauben-4-0-x-50-mm-120-stueck-p2020005763210 (row 17785)
+* White space found in breadcrumb for 2 records :
+https://www.spar.at/produktwelt/vorarlberg-milch-laendle-halbfettmilch-laenger-frisch-1-5-fett-p2020006312547 (row 23845)   
+https://www.spar.at/produktwelt/berglandmilch-schaerdinger-cremig-15-p2020006140843 (row 34642)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

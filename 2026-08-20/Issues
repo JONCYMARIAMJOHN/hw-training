@@ -1,0 +1,173 @@
+_____________ISSUES_______________
+==================================
+
+
+1) DataHut_CH_Lidl_PriceExtractions_20260819.CSV
+________________________________________________
+
+* Data count : 3692
+* site_shown_uom empty for 569 records
+* site_shown_uom - some values are comma separated. Eg:
+https://sortiment.lidl.ch/de/catalog/product/view/id/14079/s/montepulciano-d-abruzzo-doc-0151217/category/54/ (row 18), value '0,75l'
+https://sortiment.lidl.ch/de/catalog/product/view/id/13624/s/spezialbier-0031322/category/54/ (row 21), value '0,5l'
+* regular_price: Found 60 values not having exactly 2 decimal places
+* selling_price: Found 62 values not having exactly 2 decimal places
+https://sortiment.lidl.ch/de/catalog/product/view/id/21483/s/spezialwaschmittel-1012861/category/54/ (row 191)
+https://sortiment.lidl.ch/de/catalog/product/view/id/20849/s/schweizer-kartoffeln-0083292/category/54/ (row 419)
+* promotion_price: Found 20 values not having exactly 2 decimal places
+https://sortiment.lidl.ch/de/catalog/product/view/id/16482/s/zinfandel-rose-0206816/category/54/(row 1270)  
+https://sortiment.lidl.ch/de/catalog/product/view/id/16343/s/piu-secco-0206227/category/54/ (row 1337)
+* In cases where promotion description is 'Aktion' or '6+0 gratis', promotion dates are empty. Eg:
+https://sortiment.lidl.ch/de/catalog/product/view/id/21941/s/chicken-wings-nature-5114255/category/54/ (row 40), promotion_description : 'Aktion'
+https://sortiment.lidl.ch/de/catalog/product/view/id/21472/s/ramseier-apfelschorle-5109810/category/54/ (row 199), promotion_description : '6+0 gratis'
+* white space found in product_name and breadcrumb for 1 records: https://sortiment.lidl.ch/de/catalog/product/view/id/20869/s/mini-pizza-pancetta-provola-und-zwiebel-1015165/category/54/(row 3645)
+
+2) DataHut_SI_Dm_FullDump_20260820.CSV
+_______________________________________
+
+* Data count : 10437
+* price_was, promotion_price also empty
+* regular_price: Found 2588 values not having exactly 2 decimal places
+* selling_price: Found 2588 values not having exactly 2 decimal places
+https://www.dm.si/p/d/3156773/playgro-set-igrac-za-kopanje-plavajoci-zabavni-prijatelji (row 16)
+https://www.dm.si/p/d/3155856/nivea-krema-za-roke-anti-age-q10 (row 18)
+* '\t' found in preparationinstructions, labelling and warning fields :
+preparationinstructions--> (row 3435, 3990, 5402, 9101, 9121)
+labelling--> (row 2387, 2625)
+warning--> (row 4350)
+* '|' is not replaced with '\|' in ingredients, instructionforuse fields. Eg:
+https://www.dm.si/p/d/3123738/balea-zascita-pred-drgnjenjem-koze-v-stiku-tropical-dream (row 93)
+ https://www.dm.si/p/d/1694856/trend-t-up-vodoodporni-korektor-18h-020-peach (row 10323)
+* feeding_recommendation ends with key, not value ('Teža psa: priporočena količina na dan 2-5kg: 1-2 kosa 5-15kg: 2-5 kosov 15-25kg: 5-7 kosov 25-35kg: 7-9 kosov 35-50kg: '), pdp_url : https://www.dm.si/p/d/2244467/vitakraft-dopolnilna-hrana-za-pse-vita-veggies-stickies (row 9618)
+* storage_instructions ends with key, not value ('Hraniti v hladnem in suhem prostoru. Kühl und trocken lagern. Mindestens haltbar bis:'), pdp_url : https://www.dm.si/p/d/1638677/dmbio-bio-susene-testenine-kritaraki (row 2185)
+* white space found in breadcrumb for 507 records :
+https://www.dm.si/p/d/3159228/hipp-ekolosko-nadaljevalno-mleko-za-dojencke-pure-2-6m  (row 8)
+https://www.dm.si/p/d/3159283/hipp-ekolosko-junior-mleko-pure-3-12m (row 12)
+* white space found in storageinstructions for 9 records :
+https://www.dm.si/p/d/3149875/lekobeba-vetrovne-kapljice-prehransko-dopolnilo (row 687)
+https://www.dm.si/p/d/1689987/pure-fun-bio-sadna-kasica-tacke-na-patrulji-jabolko-banana-jagoda (row 750)
+* white space found in preparationinstructions for 55 records :
+https://www.dm.si/p/d/1462215/dmbio-bio-ovsena-zitna-kasica-po-dopolnjenem-5-mesecu (row 114)  
+https://www.dm.si/p/d/1462222/dmbio-bio-polnozrnata-zitna-kasica-s-psenicnim-zdrobom-za-dojencke-po-dopolnjenem-5-mesecu (row 388)
+* white space found in country_of_origin for 6 records :
+https://www.dm.si/p/d/1494320/dmbio-bio-polnozrnati-pirini-krekerji (row 2531)   
+https://www.dm.si/p/d/3103371/mivolis-zeliscni-caj-s-kolagenom-biotinom-in-vitaminom-c (row 2619)
+* white space found in labelling for 1 record :
+https://www.dm.si/p/d/1299311/denkmit-detergent-za-rocno-pomivanje-posode-ultra-pro-climate (row 2173)
+* white space found in warning for 142 records :
+https://www.dm.si/p/d/3123983/apinature-prehransko-dopolnilo-junior-omega-3 (row 26)
+https://www.dm.si/p/d/3123931/apinature-prehransko-dopolnilo-junior-iron-mix (row 27)
+
+3) DataHut_CH_Coop_FullDump_20260820.CSV
+________________________________________
+
+* site_shown_uom empty for 7010 records
+* breadcrumb value invalid ('Startseite > > Wein & Tonic ') for 2 records:
+https://www.coop.ch/de//wein-tonic/p/7400136 (row 22257)
+https://www.coop.ch/de//wein-tonic/p/7400134 (row 22333)
+* regular_price and selling_price null in dataset, but has value on website for 1 record : https://www.coop.ch/de/lebensmittel/fleisch-fisch/abgepacktes-frischfleisch/schwein/bell-schweins-brustspitz-texas-mariniert-ca/p/7231808 (row 1849)
+* regular_price empty but selling_price has value for 77 records. Eg:
+https://www.coop.ch/de/kiosk/spirituosen/alle-spirituosen/whisky/aus-schottland/blended-scotch/johnnie-walker-red-label-blended-scotch-whisky/p/3050958 (row 7941)
+https://www.coop.ch/de/kiosk/spirituosen/alle-spirituosen/liqueurs/fruchtige-liquers/villa-massa-limoncello-di-sorrento/p/7426273 (row 8041)
+* regular_price and selling_price is zero for 137 records (same as in the website)
+* regular_price: Found 15240 values not having exactly 2 decimal places
+* selling_price: Found 15067 values not having exactly 2 decimal places
+https://www.coop.ch/de/lebensmittel/fruechte-gemuese/fruechte/aepfel-birnen/aepfel-gala-vv-suesslich-ip-suisse/p/7050654 (row 2)
+https://www.coop.ch/de/lebensmittel/fruechte-gemuese/fruechte/aepfel-birnen/prix-garantie-birnen/p/7080249 (row 3)
+* promotion_price: Found 503 values not having exactly 2 decimal places
+https://www.coop.ch/de/lebensmittel/fruechte-gemuese/fruechte/steinobst/naturaplan-bio-nektarinen/p/6617761 (row 25)
+https://www.coop.ch/de/lebensmittel/fruechte-gemuese/fruechte/steinobst/naturaplan-bio-pfirsiche-flach/p/3643968 (row 46)
+* product_description emds with key without value. Eg:
+https://www.coop.ch/de/lebensmittel/tiefgekuehlt/fertiggerichte/aperogebaeck/buitoni-piccolinis-pizza-prosciutto-formaggio-9-stueck/p/3496075 (row 7363)   
+https://www.coop.ch/de/lebensmittel/tiefgekuehlt/fertiggerichte/aperogebaeck/buitoni-piccolinis-pizza-tomate-mozzarella-9-stueck/p/3508232 (row 7387)
+
+
+
+4) DataHut_SI_Spar_FullDump_20260820.CSV
+________________________________________
+
+* Data count : 16616
+* Following fields are actually empty, but not mentioned as empty in requirement : 
+variants, preparationinstructions, country_of_origin, age_recommendations, flavour, labelling, packaging, special_information, label_information, dimensions, color, material, tasting_note, rating, review, file_name_1, file_name_2, file_name_3, file_name_4, file_name_5, file_name_6, competitor_product_key, features, retail_limit     
+* Following fields are not actually empty, but mentioned as empty in requirement :
+barcode, promotion_valid_upto, promotion_description, price_was, promotion_price, alchol_by_volume, netweight
+* only True in instock
+* grammage_quantity converted from g to kg , but unit not converted for 2 records :
+https://online.spar.si/p/nadomestek-kave-z-okusom-po-kakavu-calmrooty-62g-681408 (row 727)
+https://online.spar.si/p/testenine-fusilli-feelingok-220g-679091 (row 8778) 
+
+* white space found in producthierarchy_level3 for 526 records :
+https://online.spar.si/p/sardele-v-soncnicnem-olju-s-budget-125g-477694 (row 7342)  
+https://online.spar.si/p/sardele-v-soncnicnem-olju-z-limono-s-budget-125g-477666 (row 7343)
+* white space found in producthierarchy_level4 for 34 records :
+https://online.spar.si/p/univerzalni-robcki-s-budget-801-666299 (row 14375)
+https://online.spar.si/p/robcki-paloma-dino-3slojni-81-646599 (row 14376)
+* white space found in breadcrumb for 560 records :
+https://online.spar.si/p/sardele-v-soncnicnem-olju-s-budget-125g-477694 (row 7342)
+https://online.spar.si/p/sardele-v-soncnicnem-olju-z-limono-s-budget-125g-477666 (row 7343)
+* white space found in warning for 80 records :
+https://online.spar.si/p/mleta-prazena-kava-moka-100-arabica-hausbrandt-250g-665396 (row 3060)
+https://online.spar.si/p/kava-skinny-latte-starbucks-220ml-539884 (row 3147)
+
+
+5) DataHut_SI_Mercator_FullDump_20260820.CSV
+______________________________________________
+
+* regular_price: Found 73 values not having exactly 2 decimal places
+* selling_price: Found 332 values not having exactly 2 decimal places
+https://mercatoronline.si/izdelek/17720502/maslo-mu-cuisine-20-g (row 360)
+https://mercatoronline.si/izdelek/19119393/maslo-meggle-20-g (row 376)
+* promotion_price: Found 268 values not having exactly 2 decimal places
+https://mercatoronline.si/izdelek/19901731/musli-cokolada-rise-amp-smile-750-g (row 3586) 
+https://mercatoronline.si/izdelek/19901742/hrustljavi-musli-cokolada-rise-amp-smile-350-g (row 3594)
+* price_was is empty for 1523 records. Eg:
+https://mercatoronline.si/izdelek/13633580/jajca-m-izpod-kamniskih-planin-jata-12-1 (row 2)
+https://mercatoronline.si/izdelek/18342686/jajca-l-iz-hlevske-reje-mercator-10-1 (row 3)
+
+* instructionforuse is ',' for https://mercatoronline.si/izdelek/19684769/negazirana-voda-first-aloe-vera-fructal-0-5-l(row 4526)
+* website have 2 prices, but only is the higher value taken as regular_price and selling_price keeping promotion_price empty for several records. promotion_description has value in these cases . eg:
+https://mercatoronline.si/izdelek/18842384/proteinski-puding-cokolada-z-bregov-180-g (row 28)
+https://mercatoronline.si/izdelek/441791/cvrsti-jogurt-1-5-m-m-lca-180-g (row 30)
+* white space found in brand for 18 records ('KREPKO  EKO', 'BEL  BABYBEL', 'FELIX  PURINA'). Eg:
+https://mercatoronline.si/izdelek/18712103/bio-kefir-3-2-m-m-krepko-250-g (row 251)
+https://mercatoronline.si/izdelek/18134252/bio-kefir-krepki-suhec-1-5-m-m-krepko-250-g (row 254)
+
+
+6) DataHut_CH_Lidl_FullDump_20260820.CSV
+________________________________________
+
+* Data count : 3544
+* country_of_origin is also empty
+* regular_price: Found 78 values not having exactly 2 decimal places
+* selling_price: Found 75 values not having exactly 2 decimal places
+173     https://sortiment.lidl.ch/de/catalog/product/view/id/21483/s/spezialwaschmittel-1012861/category/54/ (row 175) 
+376   https://sortiment.lidl.ch/de/catalog/product/view/id/20849/s/schweizer-kartoffeln-0083292/category/54/ (row 378)
+* promotion_price: Found 27 values not having exactly 2 decimal places
+https://sortiment.lidl.ch/de/catalog/product/view/id/14557/s/milchschokolade-0126585/category/54/ (row 1731)
+https://www.lidl.ch/p/de-CH/esmara-trenchcoat/p10057023 (row 1731)
+* price_was is empty for 3307 records
+* In cases of promotion_description is 'Aktion' or '6+0 gratis', promotion dates are empty . Eg:
+https://sortiment.lidl.ch/de/catalog/product/view/id/21932/s/skyr-natur-0-2-xxl-0215443/category/54/ (row 49)
+https://sortiment.lidl.ch/de/catalog/product/view/id/13787/s/valser-mineralwasser-0003858/category/54/  (row 1951)
+* '|' is not replace with ' \|' in product_description for 1 records : https://www.lidl.ch/p/de-CH/parkside-transportrollen/p10057672 (row 3253)
+* white space found in product_name, breadcrumb and producthierarchy_level3 for 1 record :
+https://sortiment.lidl.ch/de/catalog/product/view/id/20869/s/mini-pizza-pancetta-provola-und-zwiebel-1015165/category/54/ (row 3473)
+* whitespace found in product_description for 135 records :
+https://www.lidl.ch/p/de-CH/esmara-trenchcoat/p10057023 (row 2831)  
+https://www.lidl.ch/p/de-CH/lupilu-matsch-und-buddeloverall/p10057028 (row 2836)
+
+7) bayut_properties_rent_commercial_2026_08_19.json
+__________________________________________
+
+* location has values --> 'Dubai', 'Sharjah', None, 'Fujairah', 'Abu Dhabi'. Eg:
+listing_url : https://www.bayut.com/property/details-15871454.html (row 384), location: 'Sharjah'
+listing_url : https://www.bayut.com/property/details-15239927.html  (row 2831), location: 'Fujairah'
+listing_url : https://www.bayut.com/property/details-15870334.html (row 2835), location: 'Abu Dhabi'
+listing_url : https://www.bayut.com/property/details-15887947.html (row 1136), location: None
+* url in coverPhoto is empty for 4 records :
+(row 16991)  https://www.bayut.com/property/details-14952763.html
+(row 28556)  https://www.bayut.com/property/details-16204410.html
+(row 28558)  https://www.bayut.com/property/details-15299789.html
+(row 28559)  https://www.bayut.com/property/details-15300057.html
+
+

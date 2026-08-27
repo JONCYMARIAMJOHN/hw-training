@@ -1,0 +1,177 @@
+____________ISSUES_______________
+=================================
+
+
+1) DataHut_SI_Mercator_PriceExtractions_20260819.CSV
+____________________________________________________
+
+* regular_price: Found 73 values not having exactly 2 decimal places
+* selling_price: Found 331 values not having exactly 2 decimal places. Eg:
+https://mercatoronline.si/izdelek/17720502/maslo-mu-cuisine-20-g  (row 361), value- 0.4
+https://mercatoronline.si/izdelek/19119393/maslo-meggle-20-g  (row 377), value- 0.5
+* promotion_price: Found 267 values not having exactly 2 decimal places. Eg:
+https://mercatoronline.si/izdelek/19901731/musli-cokolada-rise-amp-smile-750-g (row 3546), value- 1.5
+https://mercatoronline.si/izdelek/19901742/hrustljavi-musli-cokolada-rise-amp-smile-350-g (row 3560), value- 1.2
+* Usually, if promotion_description presents, the lower value in the website is assigned to selling_price & regular_price and promotion price keeps empty. but in the cases of promotion description contains 'Ugodno', the lower value in the website is assigned to promotion_price & selling_price and the higher value is assigned to regular_price. Such 1508 records exists. Eg :
+https://mercatoronline.si/izdelek/19682209/trajno-polnomastno-mleko-3-5-m-m-mercator-1-l (row 579)
+https://mercatoronline.si/izdelek/19664977/trajno-polnomastno-mleko-3-5-m-m-mercator-1-l (row 612)
+* promotion_description present, but percentage_discount empty for records :
+https://mercatoronline.si/izdelek/14425024/jogurtov-napitek-actimel-6-x-100-g (row 29) 
+https://mercatoronline.si/izdelek/876835/cvrsti-jogurt-3-2-m-m-mu-180-g (row 31)
+
+
+2) DataHut_SI_Dm_PriceExtractions_20260819.CSV
+______________________________________________
+
+* regular_price: Found 2528 values not having exactly 2 decimal places
+* selling_price: Found 2528 values not having exactly 2 decimal places
+https://www.dm.si/p/d/3155856/nivea-krema-za-roke-anti-age-q10 (row 16), value-  4.9
+https://www.dm.si/p/d/3137870/balea-gel-za-tusiranje-sensitive-polnilo (row 20), value- 1.9
+* site_shown_uom comma separated for several records. Eg:
+https://www.dm.si/p/d/1639873/dmbio-bio-rdec-curryev-namaz (row 60), value- '0,12 kg'
+https://www.dm.si/p/d/3080466/alpro-ovseni-in-sojin-napitek-barista-z-okusom-karamele (row 107), value- '0,75 l'
+* white space found in product_name for 13 records:
+https://www.dm.si/p/d/1321849/essence-maskara-i-love-extreme-volume (row 182)
+https://www.dm.si/p/d/3135674/visiomax-ocala-za-branje-crno-siva-dioptrija-1-00 (row 2497)
+* white space found in breadcrumb for 492 records :
+https://www.dm.si/p/d/3159227/hipp-ekolosko-zacetno-mleko-za-dojencke-pure-1-0m (row 7)
+https://www.dm.si/p/d/3159228/hipp-ekolosko-nadaljevalno-mleko-za-dojencke-pure-2-6m (row 9)
+
+
+3) DataHut_SI_Spar_PriceExtractions_20260819.CSV
+________________________________________________
+
+* regular_price: Found 834 values not having exactly 2 decimal places
+* selling_price: Found 667 values not having exactly 2 decimal places
+https://online.spar.si/p/nastrgani-mandlji-spar-200g-274032 (row 397) , value-1.0
+https://online.spar.si/p/fizol-pisani-s-budget-1kg-348544 (row 423), value- 2.2
+* promotion_price: Found 198 values not having exactly 2 decimal places
+https://online.spar.si/p/bio-indijski-orescki-prazeni-in-soljeni-spar-naturpur-30g-672323 (row 314), value- 1.0 
+https://online.spar.si/p/panceta-narezek-kras-100g-288830 (row 1889), value- 3.3
+* price_per_unit empty for 2 records:
+https://online.spar.si/p/vatirane-palcke-papirnate-100-bombaz-brez-klora-beauty-kiss-3001-591908 (row 11065)
+https://online.spar.si/p/vatirane-palcke-papirnate-100-bombaz-brez-klora-beauty-kiss-1601-591906 (row 11066)
+
+
+* grammage quantity converted from 'g' to 'kg', but grammage_unit is recorded as 'g' itself for 2 records :
+https://online.spar.si/p/nadomestek-kave-z-okusom-po-kakavu-calmrooty-62g-681408 (row 709)
+https://online.spar.si/p/testenine-fusilli-feelingok-220g-679091 (row 8620)
+* grammage_unit 'g' converted to 'kg' value accross the entire dataset. But 4 exception found :  
+https://online.spar.si/p/hiter-obrok-borovnicev-strudl-njamito-390g-649044 (row 3633)
+https://online.spar.si/p/polnilo-stop-vlaga-vonj-sivke-ceresit-2x50g-335753 (row 15090)
+https://online.spar.si/p/lepilo-super-glue-rocket-bison-3g-438800 (row 15589)
+https://online.spar.si/p/lepilo-super-glue-minis-uhu-3x1g-293055 (row 15593)
+* grammage_unit 'ml' is converted to 'l' value accross the entire dataset. But 1 exception found :
+https://online.spar.si/p/lepilo-super-glue-jumbo-uhu-3ml-457227 (row 15588)
+* product_name is '9100000096049' (same as in the website), https://online.spar.si/p/9100000096049-437703 (row 3)
+
+4) DataHut_CH_Lidl_FullDump_20260817.CSV
+_________________________________________
+
+* Filename error : Date part is expected to be 20260819
+* price_per_unit is 'null' for https://www.lidl.ch/p/de-CH/deluxe-lammgigot/p10057093 (row 3122)
+* product_description includes '\n' for https://www.lidl.ch/p/de-CH/pizza-margherita-aktion-nur-im-tessin-gueltig/p10057398 (row 3288)
+
+
+5) DataHut_AU_Coles_FullDump_20260819.CSV
+____________________________________________
+
+* Dataset is duplicated for 23750 records.
+* brand value is 'Nan' for 48 records : rows (450038 - 450085)
+* product_description is 'Null' for 20 records (row 669505 - 669524)
+* product_description is '(null) for records (row 85491 - 85513)
+* instructionforuse '(null)' for 23 records (row 720369 - 720391)
+* site_shown_uom is empty for 3404 records
+* grammage_quantity and unit empty for 3984 records: 
+https://www.coles.com.au/product/somma-somma-watermelon-and-lime-a-4309260  (row 283)
+https://www.coles.com.au/product/somma-somma-watermelon-and-lime-a-4309260 (row 284)
+*  regular_price: Found 695575 values not having exactly 2 decimal places
+* selling_price: Found 678692 values not having exactly 2 decimal places
+https://www.coles.com.au/product/coles-simply-unsalted-butter-250g-3169879 (row 2) 
+https://www.coles.com.au/product/coles-simply-unsalted-butter-250g-3169879 (row 3)
+* prices are in int format on several rows. Eg:
+https://www.coles.com.au/product/coles-simply-salted-butter-500g-3169880 (row 26)
+* preparationinstructions having key without value 'Freeze: ' for url :  https://www.coles.com.au/product/peters-original-twin-pole-pineapple-raspberry-ice-blocks-8-pack-590ml-4477581  (row 1257 - 1266)
+* ingredients, perfect_match, instructions etc, end with comma in several records (same as in the website)
+* promotion_price is greater than regular_price for 55422 records. Eg:
+https://www.coles.com.au/product/coles-kitchen-beef-lasagne-spring-rolls-240g-8399821 (row 1158)
+https://www.coles.com.au/product/coles-entertaining-pigs-in-blankets-360g-1864005 (row 758356)
+* prices are empty in dataset, but available on website for url : https://www.coles.com.au/product/kellogg%27s-coco-pops-pillows-choc-brownie-flavour-310g-8127923 (row 74 - 97)
+* All 3 price values are equal for 6120 records:
+https://www.coles.com.au/product/living-healthy-gummies-magnesium-glycinate-60-pack-1593280 (row 10830)
+https://www.coles.com.au/product/lindt-lindor-christmas-gift-box-148g-1154780 (row 760795)
+* In several cases where promotion type is not multibuy, promotion_price is not equal to selling_price, but empty. Eg:
+https://www.coles.com.au/product/coles-simply-unsalted-butter-250g-3169879  (row 2)
+https://www.coles.com.au/product/the-kraken-spiced-rum-and-cola-can-330ml-24-pack-7060747  (row 761160)
+* labelling empty for 370494 records :
+https://www.coles.com.au/product/coles-simply-unsalted-butter-250g-3169879 (row 2)
+https://www.coles.com.au/product/the-kraken-spiced-rum-and-cola-can-330ml-24-pack-7060747 (row 761160)
+* promotion_type empty for 540005 records:
+https://www.coles.com.au/product/coles-simply-unsalted-butter-250g-3169879 (row 2)
+https://www.coles.com.au/product/the-kraken-spiced-rum-and-cola-can-330ml-24-pack-7060747 (row 761160)
+* preparationinstructions value is '- - - - - - - - - -' for records with 2 urls : 
+https://www.coles.com.au/product/coles-kitchen-asian-style-salad-kit-350g-2787974 (row 110459 - 
+https://www.coles.com.au/product/coles-kitchen-asian-salad-kit-550g-4989110 (row 136622 - 136647)
+* instructions is '-' for several records :
+https://www.coles.com.au/product/trek-oat-cocoa-50g-1750855 (row 30008)
+https://www.coles.com.au/product/nescafe-white-choc-mocha-coffee-sachets-8-pack-1049297 (row 517304)
+* storage_instructions is '.' for records with 2 urls:
+https://www.coles.com.au/product/marbig-colourhide-notebook-a5-assorted-1-each-1838526 (row 376250 - 376270)
+https://www.coles.com.au/product/marbig-colourhide-notebook-a4-1-pack-1838560 (row 491924 - 491947)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

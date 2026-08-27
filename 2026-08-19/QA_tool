@@ -1,0 +1,213 @@
+QA Automation tool
+==================
+
+pipedog (simple, local, CSV + JSON, rules + UI)
+_______________________________________________
+
+Why it fits our case
+	We can upload/select a file locally each day (CSV or JSON) and run validation with a single command or via its desktop GUI.
+	Supports CSV and JSON natively (via pandas).
+
+	Provides:
+	Auto‑generated checks: missing values, duplicates, type drift, basic stats.
+	Custom rules you define once and reuse daily (e.g., uniqueness on id, non‑null on selling_price, custom logic for promotion fields).
+	Gives you a clear report (terminal + Excel/HTML) showing which rows failed which rules.
+	No need to set up a server or database; it runs on your laptop.
+	
+How you’d use it daily
+
+	1. Install once (Python environment):
+		pip install pipedog
+	2. Initialize a profile for your data structure (one‑time setup):
+		pipedog init scraped_data_sample.csv --profile product_scrape
+		This creates a baseline schema and auto‑checks.
+	3. Add your custom business rules (one‑time or as they evolve), for example:
+		# Example style (actual CLI may vary; concept is the same)
+		pipedog checks add --column id --type unique --profile product_scrape
+		pipedog checks add --column selling_price --type not_null --profile product_scrape
+		
+		For complex rules like promotion_price <= selling_price, you’d define a custom check (Python function or expression) in the config that pipedog generates.
+	4. Daily run when your team uploads a new file:
+		pipedog scan today_scraped_data.csv --profile product_scrape
+		or via the desktop GUI: open the app, pick the file, choose the profile, and click “Scan”.
+	5. Review the report:
+		- Missing values per column
+		- Duplicate IDs
+		- Rows where promotion rules fail
+		- Outliers / type issues
+
+This matches your workflow: manual file selection, CSV/JSON support, reusable rules, and readable reports
+It’s built exactly for analysts who want to drop in a CSV/JSON file, run predefined + custom rules, and get a clear report without managing servers.
+
+----------------------------------------------------
+
+Below is a complete, practical setup for your exact rules using pipedog, plus a small custom Python script to handle the complex business rules that pipedog’s built‑in checks can’t express directly (e.g., “if promotion_description contains ‘%’ then percentage_discount must be positive”, “promotion_price < regular_price”, “no leading/trailing spaces”, etc.).
+pipedog handles:
+	- Unique, not‑null, numeric, min/max, allowed values, schema drift, row count, etc. out of the box.
+	- For cross‑field and conditional logic, we’ll:
+		Run pipedog for the basic checks.
+		Run a small custom validator (Python + pandas) for the complex business rules.
+	- Wrap both in a single daily script so your team just runs one command per file.
+
+1) Prepare a sample file
+_________________________
+
+	- Create a representative sample of your scraped data, e.g. sample_scrape.csv (or .json), with columns: [unique_id, competitor_name, extraction_date, product_name, grammage_quantity, grammage_unit, regular_price, selling_price, price_valid_from, price_per_unit, percentage_discount, promotion_price, promotion_valid_from, promotion_valid_upto, promotion_description, currency, breadcrumb, pdp_url, region, pack_size, site_shown_uom]
+	- Make sure this sample is clean (passes all your rules) – it will be used to create the baseline.
+	
+2) Create a profile for your dataset
+____________________________________
+
+	- Run:
+	pipedog init sample_scrape.csv --profile product_scrape
+	- This creates:
+		.pipedog/product_scrape/schema.json – baseline schema & stats
+		.pipedog/product_scrape/checks.json – auto‑generated rules
+	- pipedog will auto‑generate rules like:
+		not_null for columns with no nulls in the sample
+		unique for columns where all values are distinct
+		min_value / max_value for numeric columns
+	- We’ll then customize checks.json to match your exact requirements.
+	
+3) Define your rules in pipedog
+_______________________________
+		
+	- Open the checks file:
+	pipedog checks edit --profile product_scrape	
+	- Below is a recommended structure for your rules. Adjust column names/types to match your actual data.
+	Eg checks.json :
+	[
+  		{
+    			"column": "unique_id",
+    			"type": "not_null",
+    			"description": "unique_id must not be null",
+			"severity": "error"
+		},
+		{
+			"column": "unique_id",
+			"type": "unique",
+			"description": "unique_id must be unique",
+			"severity": "error"
+		},
+
+		{
+			"column": "pdp_url",
+			"type": "not_null",
+			"description": "pdp_url must not be null",
+			"severity": "error"
+		},
+		...
+	]
+
+4) Custom validator for complex business rules
+______________________________________________
+
+	Create a file validate_product_scrape.py in the same folder as your data.
+	This script:
+		- Loads the CSV/JSON you provide.
+		- Runs pipedog via subprocess for basic checks.
+		- Runs custom pandas checks for your complex rules.
+		- Prints a combined report and exits with code 1 if any check fails.
+	
+	 Install extra dependency:
+	 	pip install pandas
+
+	validate_file_scrape.py :
+	------------------------
+
+	import subprocess
+	import sys
+	import json
+	from datetime import datetime, date
+	import pandas as pd
+	import re
+	from pathlib import Path
+
+	def load_data(path: str) -> pd.DataFrame:
+		p = Path(path)
+		if p.suffix.lower() == ".json":
+			df = pd.read_json(p)
+		elif p.suffix.lower() in [".csv", ".tsv"]:
+			df = pd.read_csv(p)
+		else:
+			raise ValueError(f"Unsupported file type: {p.suffix}")
+		return df
+
+	def check_string_issues(df: pd.DataFrame, cols) -> list:
+		"""
+		Check for:
+		- leading/trailing spaces
+		- multiple consecutive spaces inside the string
+		- literal bad values: 'null', 'nan', '\n', '\t', ' '
+		Returns list of error messages.
+		"""
+		errors = []
+		bad_tokens = {"null", "nan", "\n", "\t", " "}
+		for col in cols:
+			if col not in df.columns:
+				continue
+			s = df[col].astype(str)
+			# leading/trailing spaces
+			mask_lt = s != s.str.strip()
+			if mask_lt.any():
+				errors.append(f"Column '{col}' has values with leading/trailing spaces.")
+			# multiple spaces inside
+			mask_multi_space = s.str.contains(r" {2,}", regex=True)
+			if mask_multi_space.any():
+				errors.append(f"Column '{col}' has values with multiple consecutive spaces.")
+			# literal bad tokens
+			for token in bad_tokens:
+				mask_token = s == token
+				if mask_token.any():
+					errors.append(f"Column '{col}' contains literal bad value '{repr(token)}'.")
+		return errors
+		...
+
+
+5) Daily workflow for your team
+________________________________
+
+	5.1) One‑time setup
+	____________________
+		- Install:
+		pip install pipedog pandas
+		- Create baseline with a clean sample:
+		pipedog init sample_scrape.csv --profile product_scrape
+		- Customize rules:
+		pipedog checks edit --profile product_scrape
+		- Paste the checks.json example from Section 2.1 (adjusted to your real columns).
+		- Save validate_file_scrape.py in a shared folder (e.g. qa_tools/).
+
+	5.2) Daily use
+	_______________
+		- Each day, when your team has a new file (CSV or JSON):
+		python validate_product_scrape.py today_scrape.csv
+		or:
+		python validate_product_scrape.py today_scrape.json
+
+		- The script will:
+		Run pipedog for defined basic rules and run custom checks
+		- If anything fails, you get a clear list of errors and a non‑zero exit code (so you can integrate this into CI/CD or a simple batch script).
+
+6) Optional: make it even simpler for non‑technical users
+_________________________________________________________
+
+	Use pipedog-gui
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+

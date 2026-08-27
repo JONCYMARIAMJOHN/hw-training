@@ -1,0 +1,125 @@
+__________ISSUES____________
+============================
+
+
+1) bayut_properties_rent_commercial_2026_08_19.json
+__________________________________________
+
+* location has values --> 'Dubai', 'Sharjah', None, 'Fujairah', 'Abu Dhabi'. Eg:
+listing_url : https://www.bayut.com/property/details-15871454.html (row 384), location: 'Sharjah'
+listing_url : https://www.bayut.com/property/details-15239927.html  (row 2831), location: 'Fujairah'
+listing_url : https://www.bayut.com/property/details-15870334.html (row 2835), location: 'Abu Dhabi'
+listing_url : https://www.bayut.com/property/details-15887947.html (row 1136), location: None
+* url in coverPhoto is empty for 4 records :
+(row 16991)  https://www.bayut.com/property/details-14952763.html
+(row 28556)  https://www.bayut.com/property/details-16204410.html
+(row 28558)  https://www.bayut.com/property/details-15299789.html
+(row 28559)  https://www.bayut.com/property/details-15300057.html
+
+* sourceID is 1 accross the entire dataset
+* title is available , but title_l9, title_l10, title_l11 empty for 7819 records and title_l12, title_l13, title_l14 emoty for 8731 records
+
+
+2) bayut_properties_buy_commercial_2026_08_19.json
+__________________________________________________
+
+* id: 2 - name key in location field is 'Dubai' for all records. But,
+agency field's location "Sharjah" for 5 records. Eg:
+Row 2999: https://www.bayut.com/property/details-15792857.html
+
+* price field is integer type in API, but 1f float type in the dataset
+* "createdAt", "approvedAt","updatedAt", "touchedAt", "reactivatedAt" field are integer type in API, but 1f float type in the dataset.
+* In completionDetails in project field, stratDate, completionDate, completionPercentage are integer type in API, but 1f float type in the dataset.
+* title_l12, title_l13, title_l14, description_l12, description_l13, description_l14 missing on dataset, but present on API for listing_url: https://www.bayut.com/property/details-15792857.html (row 2999)
+* title_l2 to title_l11 keys of project field are missing in dataset, but present in API for listing_url: https://www.bayut.com/property/details-15792857.html (row 2999)
+
+3) DataHut_AT_Billa_FullDump_20260820.CSV
+_________________________________________
+
+* Datacount : 12259
+* Non empty fields - age_of_the_product, packaging
+Extra empty fields - file_name_1, file_name_2, file_name_3, file_name_4, file_name_5, file_name_6, retail_limit
+* image is available on website, but image_url_1 is empty for https://shop.billa.at/produkte/billa-rogenbroetchen-00877458 (row 10854)
+
+* product_description ends with 'li>' , which is not present in the website for pdp_url : https://shop.billa.at/produkte/borotalco-deospray-men-marine-scent-00468087 (row 3739)
+* selling_price = promotion_price = regular_price for 4 records :
+Row: 4189, url : https://shop.billa.at/produkte/almdudler-original-00490819, price : 1.32, promotion_description : 'Bei 6 Flaschen je'   
+Row: 4877, url : https://shop.billa.at/produkte/almdudler-zuckerfrei-00575986, price : 1.32, promotion_description : 'Bei 6 Flaschen je'     
+Row: 6642, url : https://shop.billa.at/produkte/spezi-orange-00721650, price : 1.32, promotion_description : 'Bei 6 Flaschen je'   
+Row: 7570, url : https://shop.billa.at/produkte/goesser-bio-stoff-00742269, price : 1.32, promotion_description : 'Bei 12 Flaschen je' 
+* regular_price: Found 304 values not having exactly 2 decimal places
+* selling_price: Found 320 values not having exactly 2 decimal places
+* promotion_price: Found 28 values not having exactly 2 decimal places
+* storage_instructions is '- -' for 2 records(Same as in the website)
+1052   https://shop.billa.at/produkte/billa-langkornreis-00299558 (row 1054)  
+1350  https://shop.billa.at/produkte/clever-langkornreis-00309662 (row 1352)
+
+
+4) DataHut_AT_Spar_FullDump_20260820.CSV
+________________________________________
+
+* Data count : 41198
+* age_of_the_product' not empty.
+
+* brand value is 'null' for 2 records (Same as in the website)
+https://www.spar.at/produktwelt/null-sparkling-tea-rose-alkoholfrei-p2020004999153 (row 9316)
+https://www.spar.at/produktwelt/null-sparkling-tea-blanc-alkoholfrei-p2020005975286 (row 196623)
+* product_description contain '</li>' in 1 record(same as in the website)
+https://www.spar.at/produktwelt/simpex-professional-edelstahl-bratpfanne-24-cm-p2020004775146 (row 2594)
+* price empty on dataset, but available on website for 4 records:
+https://www.spar.at/produktwelt/casa-al-pruno-amarone-della-valpolicella-docg-2020-p2020004691040 (row 41193)  
+https://www.spar.at/produktwelt/rex-sturzglas-290-ml-3er-set-p2020004157553 (row 41196)
+https://www.spar.at/produktwelt/umathum-blaufraenkisch-kirschgarten-2018-p2020005043008 (row 41197)
+https://www.spar.at/produktwelt/kracher-grande-cuvee-trockenbeerenauslese-no-5-2019-p2020004413970 (row 41199)
+* regular_price: Found 3983 values not having exactly 2 decimal places
+* selling_price: Found 3983 values not having exactly 2 decimal places
+* promotion_price: Found 21 values not having exactly 2 decimal places
+* '|' are not replaced with '\|' in several rows. Eg:
+https://www.spar.at/produktwelt/despar-premium-bio-apfel-limette-und-ingwer-p2020005534049 (row 55)
+https://www.spar.at/produktwelt/despar-premium-bio-grapefruit-p2020005534100 (row 57)
+
+* white space found in producthierarchy_level6 for 1 record:
+https://www.spar.at/produktwelt/vorarlberg-milch-laendle-halbfettmilch-laenger-frisch-1-5-fett-p2020006312547 (row 23924)
+* white space found in breadcrumb for 15 record:
+https://www.spar.at/produktwelt/s-budget-toiletten-papier-10-rollen-p2020006211093 (row 335)  
+https://www.spar.at/produktwelt/softis-feuchtes-toilettenpapier-kamille-42-stueck-p2020006282901 (row 4713)
+* html tags found in product_description for several rows. (Same as in the website). Eg:
+https://www.spar.at/produktwelt/motif-rose-p2020003424243 (row 4631)
+https://www.spar.at/produktwelt/motif-weiss-p2020003424229 (row 11389)
+* 
+
+5) DataHut_AT_Spar_FullDump_20260820.CSV
+_______________________________________
+
+* "* Following fileds are actually empty, but not mentioned in the requirement: 'producthierarchy_level5', 'file_name_1', 'file_name_2', 'file_name_3', 'file_name_4', 'file_name_5', 'file_name_6'       
+* 'barcode', retail_limit are not empty, but mentioned as empty in the requirement"
+
+* product_description includes '\n' in several records. Eg:
+https://www.dm.at/p/d/3158521/alpine-gehoerschutz-muffy-baby  (row 2)
+https://www.dm.at/p/d/3062457/philips-oneblade-rasierklingen-intimate (row 3)
+
+* instructionforuse is '-' for 2 records:
+https://www.dm.at/p/d/1711440/neonail-puder-metallic-effekt-01  (row 7892)
+https://www.dm.at/p/d/1891671/felix-katzenleckerli-knabber-mix-hof-und-wiese (row 12053)
+* white space found in product_name for 48 records. Eg:
+https://www.dm.at/p/d/3137062/essence-nagelpuder-studio-nails-01-gelato-glaze (row 1279)
+https://www.dm.at/p/d/3104287/mivolis-tabletten-vitamin-b12-350 (row 1757)
+* white space found in variants for 219 records. Eg: 
+https://www.dm.at/p/d/3144608/essie-nagellack-1022-midnight-encore (row 12)
+https://www.dm.at/p/d/3144607/essie-nagellack-1023-onyx-swan (row 16)
+* grammage_quantity converted from litre to ml, but unit is not converted for 1 record : https://www.dm.at/p/d/3090443/pediakid-immunsaft-kraftkind (row 11122)
+
+6) bayut_properties_rent_residential_metadata_2026_08_19.csv
+____________________________________________________________
+
+* Datacount : 156213
+
+
+
+
+
+
+
+
+
+

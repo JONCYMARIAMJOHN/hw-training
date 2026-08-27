@@ -1,0 +1,181 @@
+______________ISSUES________________
+====================================
+
+1) DataHut_SI_Mercator_FullDump_20260827.CSV
+____________________________________________
+
+* regular_price: Found 75 values not having exactly 2 decimal places
+* selling_price: Found 327 values not having exactly 2 decimal places. Eg:
+https://mercatoronline.si/izdelek/17720502/maslo-mu-cuisine-20-g (row 358), value - 0.4
+https://mercatoronline.si/izdelek/19119393/maslo-meggle-20-g (row 376), value - 0.5
+* promotion_price: Found 259 values not having exactly 2 decimal places. Eg:
+https://mercatoronline.si/izdelek/19901731/musli-cokolada-rise-amp-smile-750-g (row 3594), value - 1.5
+https://mercatoronline.si/izdelek/19901742/hrustljavi-musli-cokolada-rise-amp-smile-350-g (row 3612), value - 1.2
+* price_was empty for 15323 records. Eg:
+https://mercatoronline.si/izdelek/18342686/jajca-l-iz-hlevske-reje-mercator-10-1 (row 2)
+https://mercatoronline.si/izdelek/13633580/jajca-m-izpod-kamniskih-planin-jata-12-1 (row 3)
+* several records with all the keys not avaialble in nutritional_information. Eg:
+https://mercatoronline.si/izdelek/17646350/bio-mesanica-zacimb-s-kurkumo-dodatek-ingverja-sonnentor-60-g (row 16846)
+https://mercatoronline.si/izdelek/17789613/bio-ajdini-krekerji-amisa-120-g (row 16901)
+* brand field with values 'KREPKO  EKO', 'BEL  BABYBEL', 'FELIX  PURINA' has unwanted white space in between for 18 records. Eg:
+https://mercatoronline.si/izdelek/14738215/bio-kisla-smetana-krepko-200-g (row 1079) 
+https://mercatoronline.si/izdelek/17069084/prigrizek-za-macke-original-mix-felix-60-g (row 10399)
+* instructionforuse has ',', '-', '/' etc. Eg:
+https://mercatoronline.si/izdelek/16999656/sladkor-za-bezgov-sirup-wiener-zucker-1-kg (row 3452)
+ https://mercatoronline.si/izdelek/19684769/negazirana-voda-first-aloe-vera-fructal-0-5-l (row 4531)
+* promotion_description present, but promotion_price empty for several records, even if 2 prices available on website. promotion_description contains 'Znižano'/'Pika'/'Ob nakupu 2 izdelkov' in all these cases. Eg:
+https://mercatoronline.si/izdelek/17294851/sadni-jogurt-panna-cotta-vec-okusov-3-5-m-m-zott-jogobella-150-g (row 39)
+https://mercatoronline.si/izdelek/17164308/tekoci-jogurt-1-3-m-m-ego-1-kg (row 135)
+
+
+2) DataHut_SI_Spar_FullDump_20260827.CSV
+_________________________________________
+
+* grammage_quantity converted from g to kg, but grammage_unit is not converted for 2 records:
+https://online.spar.si/p/nadomestek-kave-z-okusom-po-kakavu-calmrooty-62g-681408 (row 680) 
+https://online.spar.si/p/testenine-fusilli-feelingok-220g-679091 (row 8480)
+* promotion_description present but promotion_price emoty for several records with 2 prices on website and description contains 'Trajno znižano'. Eg:
+https://online.spar.si/p/omaka-tartufata-black-s-sampinjoni-olivami-in-crnimi-poletnimi-tartufi-zigante-tartufi-80g-656931 (row 69)
+https://online.spar.si/p/prazene-in-soljene-pistacije-odlicno-125g-590419 (row 154)
+* white space found in producthierarchy_level3 for 519 records. Eg:
+https://online.spar.si/p/sardele-v-soncnicnem-olju-z-limono-s-budget-125g-477666 (row 7042)
+https://online.spar.si/p/sardele-v-oljcnem-olju-s-budget-125g-616317 (row 7043)
+* white space found in producthierarchy_level4 for 33 records. Eg:
+https://online.spar.si/p/univerzalni-robcki-s-budget-801-666299 (row 13687) 
+https://online.spar.si/p/zepni-robcki-4-slojni-lavender-essence-sensitive-care-paloma-8-x-9-458113 (row 13688)
+* white space found in breadcrumb for 552 records. Eg:
+https://online.spar.si/p/sardele-v-soncnicnem-olju-z-limono-s-budget-125g-477666 (row 7042)  
+https://online.spar.si/p/sardele-v-oljcnem-olju-s-budget-125g-616317 (row 7043)
+* instructionforuse is '/' for several records:
+https://online.spar.si/p/bio-vrecke-za-smeti-30l-spar-81-592677 (row 14629)  
+https://online.spar.si/p/sekundno-lepilo-universal-essentials-loctite-2g-665144 (row 14901)
+
+
+3) DataHut_SI_Dm_FullDump_20260827.CSV
+________________________________________
+
+* 'price_was', 'promotion_price' also empty
+* regular_price: Found 2660 values not having exactly 2 decimal places
+* selling_price: Found 2660 values not having exactly 2 decimal places
+https://www.dm.si/p/d/3079415/selfie-project-encimska-hidrogelna-maska-za-obraz (row 11)
+https://www.dm.si/p/d/3139908/apinature-dopolnilna-krmna-mesanica-za-starejse-pse-in-macke-energija-in-vitalnost (row 12)
+* \t found in preparationinstructions, labelling, warning fields in following 8 records:
+https://www.dm.si/p/d/1461294/babylove-bio-zitna-kasica-iz-treh-vrst-polnozrnatih-mok (row 4057) 
+https://www.dm.si/p/d/3082378/babylove-bio-ovsena-kasa-s-kozjim-mlekom-jabolki-in-jagodami-po-dopolnjenem-6-mesecu-starosti (row 4334)   
+https://www.dm.si/p/d/3108089/dmbio-bio-mesanica-za-pripravo-kruha-brez-glutena-z-41-semen (row 5313)   
+https://www.dm.si/p/d/3127159/pajs-brez-obresti-keto-potica-mesanica-za-pripravo-testa (row 9294)   
+https://www.dm.si/p/d/2226766/herba-medica-bio-planinski-caj-25-1-2-g (row 9337)   
+https://www.dm.si/p/d/1586730/dmbio-bio-otroski-masleni-pirini-piskoti-z-datlji-od-3-leta (row 1747)   
+https://www.dm.si/p/d/1491605/dmbio-bio-kasa-s-polnozrnatimi-zitni-kosmici-orescki-in-semeni-indijskega-trpotca (row 1957)   
+https://www.dm.si/p/d/3063319/syoss-platinasti-posvetljevalec-las-13-5 (row 4643) 
+* '|' is not replaced with '\|' for 106 records in ingredients field. Eg:
+https://www.dm.si/p/d/1681439/trend-t-up-rdecilo-za-lica-075-rose (row 10543)
+https://www.dm.si/p/d/1647163/trend-t-up-lak-za-nohte-easy-speedy-100 (row 10546)
+* white space found in breadcrumb:
+https://www.dm.si/p/d/1715572/babylove-naravna-mineralna-voda-brez-ogljikovega-dioksida (row 20)
+https://www.dm.si/p/d/3159283/hipp-ekolosko-junior-mleko-pure-3-12m (row 32)
+* white space found in storageinstructions. Eg:
+https://www.dm.si/p/d/3149350/lekobeba-krema-za-ritko (row 1239)
+https://www.dm.si/p/d/3115301/mivolis-prsilo-za-nos-z-morsko-vodo (row 2532)  
+
+
+4) DataHut_CH_Coop_FullDump_20260827.CSV
+________________________________________
+
+* Data count : 35540
+* Found '> >' on breadcrumb in 3 records:
+https://www.coop.ch/de//wein-tonic/p/7400136 (row 22062)
+https://www.coop.ch/de//wein-tonic/p/7400134 (row 22133)
+https://www.coop.ch/de//petite-arvine-noblereine-jg-75cl-2023/p/1016746004 (row 25996)
+* regular_price: Found 15244 values not having exactly 2 decimal places
+* selling_price: Found 15049 values not having exactly 2 decimal places
+https://www.coop.ch/de/lebensmittel/fruechte-gemuese/salatgemuese/gurken/naturaplan-bio-gurken/p/7565172 (row 5)
+https://www.coop.ch/de/lebensmittel/fruechte-gemuese/kohlgemuese/broccoli-blumenkohl/broccoli-ca/p/6675160 (row 6)
+* promotion_price: Found 2192 values not having exactly 2 decimal places
+https://www.coop.ch/de/lebensmittel/fruechte-gemuese/fruechte/melonen/mini-wassermelone-1-stueck/p/3355988 (row 12)
+https://www.coop.ch/de/lebensmittel/tiefgekuehlt/fleisch-fisch/fisch-meeresfruechte/ganze-fische-filets/lachsfilets-asc/p/6460763 (row 109)
+* image_url_1 is empty even if image is avaialble on the website for several records. Eg :
+https://www.coop.ch/de/lebensmittel/milchprodukte-eier/abgepackter-kaese/frischkaese-mozzarella/frischkaese-aufstrich/emmi-gala-alpenchili/p/4824473 (row 1433)
+https://www.coop.ch/de/lebensmittel/suesses-snacks/chips-snacks/gesalzene-nuesse/erdnuesse/erdnuesse-geroestet-gesalzen/p/7174109 (row 6635)
+* promotion_description present on website, but empty on dataset :
+https://www.coop.ch/de/weine/alle-weine/roseweine/valais-aoc-dole-blanche-valisiana/p/3367356 (row 15515)
+https://www.coop.ch/de/weine/alle-weine/rotweine/veneto-igt-fontanera-merlot/p/4068453 (row 15583)
+https://www.coop.ch/de/kiosk/schnittblumen/fairtrade-rosen-pink/p/6773714 (row 18896)
+https://www.coop.ch/de/weine/alle-weine/rotweine/magnum-burgenland-qualitaetswein-cuvee-reserve-big-john-scheiblhofer/p/1019158007 (row 23557)
+https://www.coop.ch/de/weine/alle-weine/alkoholfreie-weine/bree-free-rose-alkoholfrei/p/7023832 (row 24539)
+https://www.coop.ch/de/lebensmittel/fruechte-gemuese/fruechte/steinobst/primagusto-aprikosen/p/7291433 (row 35106)
+
+
+5) DataHut_AT_Billa_FullDump_20260827.CSV
+_________________________________________
+
+* Non empty fields - age_of_the_product, packaging
+* Extra empty fields - file_name_1, file_name_2, file_name_3, file_name_4, file_name_5, file_name_6, retail_limit
+* product description not in line by line format
+* product_description ends with 'li>' which is not present in the website : https://shop.billa.at/produkte/borotalco-deospray-men-marine-scent-00468087 (row 3734)
+* promotion_price = selling_price = regular_price for 8 records with promotion_description 'AKTION'. Eg:
+https://shop.billa.at/produkte/clever-knoblauchbaguette-00422074   (row 2909)
+https://shop.billa.at/produkte/clever-kraeuterbaguette-00427222  (row 3018)
+* In cases of promotion_description contain 'AKTION', promotion_price = selling_price and in all other cases promotion_price ≠ selling_price. Eg;
+https://shop.billa.at/produkte/iglo-pazifischer-polardorsch-paniert-0010042 (row 8) 
+https://shop.billa.at/produkte/rauch-happy-day-apfelsaft-0010351 (row 53)  
+* storage_instructions is '- -'fpr 2 records:
+https://shop.billa.at/produkte/billa-langkornreis-00299558 (row 1052)
+1197  https://shop.billa.at/produkte/clever-langkornreis-00309662 (row 1199)
+* regular_price: Found 311 values not having exactly 2 decimal places
+* selling_price: Found 328 values not having exactly 2 decimal places
+https://shop.billa.at/produkte/oelz-mehrkorntoast-0014336 (row 105)
+https://shop.billa.at/produkte/stangl-fadennudeln-mit-ei-00196840 (row 144)
+* promotion_price: Found 28 values not having exactly 2 decimal places
+https://shop.billa.at/produkte/ja-natuerlich-sonnenura-aus-schlaegler-urroggen-00295263 (row 991)
+https://shop.billa.at/produkte/beerenmix-00310265 (row 1198)
+
+
+6) DataHut_AT_Dm_FullDump_20260827.CSV
+_______________________________________
+
+* image present on website but image_url_1 is empty for 1 record: https://www.dm.at/p/d/1647586/hipp-babysanft-baby-waschschaum-sensitiv (row 15423)
+* regular_price: Found 1881 values not having exactly 2 decimal places
+* selling_price: Found 1884 values not having exactly 2 decimal places
+https://www.dm.at/p/d/3158521/alpine-gehoerschutz-muffy-baby (row 7)
+https://www.dm.at/p/d/3119014/dm-box-jubilaeumsbox-50-jahre-dm-gesundheit-und-wohlbefinden  (row 13)
+* promotion_price: Found 21 values not having exactly 2 decimal places
+https://www.dm.at/p/d/1621324/gillette-rasierer-skinguard-sensitive (row 345)
+https://www.dm.at/p/d/1630608/balea-bodyspray-aloe-vera (row 394)
+* grammage_quantity convrted from ml to l, but grammage_unit is not converted for 1 record : https://www.dm.at/p/d/3090443/pediakid-immunsaft-kraftkind  (row 11315)
+* instructionforuse has value '-', ','. Eg:
+https://www.dm.at/p/d/1711440/neonail-puder-metallic-effekt-01 (row 6876)
+https://www.dm.at/p/d/1891671/felix-katzenleckerli-knabber-mix-hof-und-wiese (row 12196)
+* white space found in product_name. Eg:
+https://www.dm.at/p/d/3137062/essence-nagelpuder-studio-nails-01-gelato-glaze (row 1414)
+https://www.dm.at/p/d/1712323/reell-e-toenungsshampoo-7-4-kupfergold (row 1569)
+* white space found in product_description. Eg:
+https://www.dm.at/p/d/3136741/frosch-bad-reiniger-weinsaeure (row 1096)  
+https://www.dm.at/p/d/3123371/frosch-scheuermilch (row 1097)
+* white space found in preparation_instructions. Eg:
+https://www.dm.at/p/d/1617230/hipp-anfangsmilch-bio-combiotik-pre-von-geburt-an (row 85)
+https://www.dm.at/p/d/1624418/dmbio-langkorn-und-wildreis-express (row 105)
+
+
+7) DataHut_AT_Spar_FullDump_20260827.CSV
+_______________________________________
+
+* age_of_the_product' not empty.
+* regular_price: Found 4801 values not having exactly 2 decimal places
+* selling_price: Found 4801 values not having exactly 2 decimal places. Eg:
+https://www.spar.at/produktwelt/spar-premium-mezze-maniche-p2020004938749 (row 54)
+https://www.spar.at/produktwelt/spar-premium-premium-nektarinen-p2020005871441 (row 288)
+* promotion_price: Found 21 values not having exactly 2 decimal places
+https://www.spar.at/produktwelt/spar-qualitaetsmarke-marillenkrapfen-premium-qualitaet-mit-butter-verfeinert-p2020002041977 (row 4499)
+* '|' is not replaced with '\|' for several rows. Eg:
+https://www.spar.at/produktwelt/ferrero-kuesschen-20-stueck-p7651571 (row 42498)   
+https://www.spar.at/produktwelt/ferrero-mon-cheri-mon-cheri-geschenkspackung-15-stueck-p7653056 (row 42499)
+* white space found in producthierarchy_level6 for 1 record:
+https://www.spar.at/produktwelt/vorarlberg-milch-laendle-halbfettmilch-laenger-frisch-1-5-fett-p2020006312547 (row 25398)
+* white space found inbreadcrumb for 15 records. Eg:
+https://www.spar.at/produktwelt/s-budget-toiletten-papier-10-rollen-p2020006211093 (row 551)
+https://www.spar.at/produktwelt/softis-feuchtes-toilettenpapier-kamille-42-stueck-p2020006282901 (row 5093)
+* html tags found on product_description. Same as in the website. Eg:
+https://www.spar.at/produktwelt/motif-weiss-p2020003424229 (row 12043) 
+https://www.spar.at/produktwelt/sloggi-damen-maxi-slip-comfort-in-weiss-l-1er-p2020005620896 (row 12444) 
+

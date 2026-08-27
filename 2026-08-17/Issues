@@ -1,0 +1,280 @@
+________________ISSUES____________________
+==========================================
+
+
+1) DataHut_SI_Dm_PriceExtractions_20260817.CSV
+______________________________________________
+
+* data count : 10445
+* regular_price: Found 2570 values not having exactly 2 decimal places. 
+selling_price: Found 2570 values not having exactly 2 decimal places. Eg:
+row : 10, regular_price : 3.6, selling_price : 3.6, pdp_url : https://www.dm.si/p/d/1916589/alpro-kokosov-napitek-s-sojo-barista-obogaten-s-kalcijem  
+row : 11, regular_price : 3.6, selling_price : 3.6, pdp_url : https://www.dm.si/p/d/1849953/alpro-rastlinski-napitek-mandelj-nesladkan 
+* grammage_quantity includes 1f and 3f format data too
+row : 2401, grammage_quantity : 0.333, pdp_url : https://www.dm.si/p/d/1436961/denkmit-cistilo-za-steklo-polnilo 
+row : 2, grammage_quantity : 100.0, pdp_url : https://www.dm.si/p/d/3159161/nivea-kremni-gel-za-obraz-facial-vitamin-c 
+* extra whitespace found in product_name for 14 records:
+row : 378, pdp_url : https://www.dm.si/p/d/1321849/essence-maskara-i-love-extreme-volume   
+row : 2598, pdp_url : https://www.dm.si/p/d/2244306/afrodita-young-pure-gel-za-susenje-mozoljev 
+* extra white space found in breadcrumb for 501 records. Eg:
+row: 6, pdp_url: https://www.dm.si/p/d/3159283/hipp-ekolosko-junior-mleko-pure-3-12m   
+row: 8, pdp_url: https://www.dm.si/p/d/3159227/hipp-ekolosko-zacetno-mleko-za-dojencke-pure-1-0m 
+
+
+2) DataHut_SI_Spar_PriceExtractions_20260817.CSV
+_________________________________________________
+
+* Data count : 16541
+* percentage_discount field is also empty.
+* regular_price: Found 834 values not having exactly 2 decimal places
+* selling_price: Found 672 values not having exactly 2 decimal places
+row: 395, regular_price: 2.2, sellimg_price: 2.2, pdp_url: https://online.spar.si/p/nastrgani-mandlji-spar-200g-274032  
+row: 430, regular_price: 2.5, sellimg_price: 2.5, pdp_url: https://online.spar.si/p/fizol-pisani-s-budget-1kg-348544  
+* promotion_price: Found 242 values not having exactly 2 decimal places
+row: 810, promotion_price: 2.2, pdp_url: https://online.spar.si/p/smetana-za-kuhanje-brzofino-dukat-500g-193922  
+row: 1923, promotion_price: 3.3, pdp_url: https://online.spar.si/p/panceta-narezek-kras-100g-288830 
+* price_per_unit is empty for 2 records,  where site shows value '0,00 €/KOS' :'
+row : 10991, pdp_url : https://online.spar.si/p/vatirane-palcke-papirnate-100-bombaz-brez-klora-beauty-kiss-3001-591908  
+row : 10992, pdp_url : https://online.spar.si/p/vatirane-palcke-papirnate-100-bombaz-brez-klora-beauty-kiss-1601-591906 
+ 
+3) DataHut_SI_Mercator_PriceExtractions_20260817.CSV
+_____________________________________________________
+
+* Data count : 16919
+* regular_price: Found 70 values not having exactly 2 decimal places
+* selling_price: Found 326 values not having exactly 2 decimal places
+row : 305, regular_price: 0.4, selling_price: 0.4, pdp_url : https://mercatoronline.si/izdelek/17720502/maslo-mu-cuisine-20-g  
+row : 348, regular_price: 0.5, selling_price: 0.5, pdp_url : https://mercatoronline.si/izdelek/19119393/maslo-meggle-20-g
+* promotion_price: Found 264 values not having exactly 2 decimal places
+row: 3587, promotion_price: 1.5, pdp_url : https://mercatoronline.si/izdelek/19901731/musli-cokolada-rise-amp-smile-750-g  
+row: 3603, promotion_price: 1.2, pdp_url : https://mercatoronline.si/izdelek/19901742/hrustljavi-musli-cokolada-rise-amp-smile-350-g 
+* In all cases , where promotion_price and promotion_description available on site, the promotion_price is assigned to selling_price and regular_price and promotion_price keep empty. But incases of promotion_description contain 'Ugodno', promotion_price on the website is assigned to promotion_price and selling_price, also the other price is assigned to 'regular_price.
+eg:
+Row : 560,
+promotion_description: Ugodno -31%, 
+regular_price: 1.29,
+selling_price: 0.89,
+promotion_price: 0.89  
+pdp_url : https://mercatoronline.si/izdelek/19682209/trajno-polnomastno-mleko-3-5-m-m-mercator-1-l 
+ 
+Row : 579,
+promotion_description: Ugodno -31%,
+regular_price: 1.29,           
+selling_price: 0.89,
+promotion_price: 0.89,
+pdp_url: https://mercatoronline.si/izdelek/19664977/trajno-polnomastno-mleko-3-5-m-m-mercator-1-l
+
+* percentage_discount is in 1f format, not integor. Eg: 15.0, 11.0, 14.0
+
+
+4) bayut_bah_2026_08_03.json
+____________________________
+
+* In cases of 'ZAYANI PROPERTIES', both broker and broker_displat_name are in uppercase. Eg:
+https://www.bayut.bh/en/property/details-105472026.html (row 220) 
+242   https://www.bayut.bh/en/property/details-105470219.html (row 243)
+* price values are comma separated
+* 
+
+
+5) bahrainfinder_bah_2026_08_03.json
+____________________________________
+
+* fully furnished is miising in the file .
+* price value is comma separated
+* In details field value is taken from size in the website, but in some cases value of Buildsize is also get appended to it without a space or comma in between. Eg:
+Row : 1808
+details : '80.7 m²100 m²'
+url : https://bahrainfinder.bh/en/property/building-for-sale-in-um-al-hasam-11280.html 
+
+
+6) bayut_uae_project_2026_08_03.json
+____________________________________
+
+* Data count : 2967
+* The min_area_in_sqft is value is '1687998' in url - https://www.bayut.com/for-sale/off-plan/property/dubai/damac-hills/greenwoods (row 2658), which is a very high value having huge variation from the usual values in this particular field. Also couldn't find the value in website. In this case min_area_in_sqft = max_area_in_sqft = unit_area_in_sqft
+* min_area_in_sqft = max_area_in_sqft in 62 rows. Eg:
+https://www.bayut.com/for-sale/off-plan/property/dubai/dubai-maritime-city/31-above-by-beyond (row 181) 
+https://www.bayut.com/for-sale/off-plan/property/dubai/business-bay/burj-capital (row 199)
+
+7) dubizzle_qat_2026_08_03.json
+_______________________________
+
+* Webisite shows 'This ad is no longer available' for following records and so broker details are missing in the dataset :
+Row: 2074, url : https://www.dubizzle.qa/en/ad/studio-1bhk-available-in-al-wukair-meshaf-ID120370710.html  
+Row: 2077, url : https://www.dubizzle.qa/en/ad/studio-1bhk-available-wukir-meshaf-wakhra-ID120370709.html  
+* Found 3 broker_display_name and broker values with extra whitespace ('Happier  propertyies') :
+Row: 6, url : https://www.dubizzle.qa/en/ad/7500-sqm-cold-storage-facility-with-accommodation-offices-for-rent-ID120317983.html   
+Row : 2277, url : https://www.dubizzle.qa/en/ad/spacious-5-bedroom-villas-west-bay-lagoon-ID120316725.html   
+Row : 2280, url : https://www.dubizzle.qa/en/ad/spacious-5-bedroom-villas-west-bay-lagoon-ID120317178.html 
+* Found 130 title with extra white space. Eg:
+Row : 14, url : https://www.dubizzle.qa/en/ad/warehouse-for-rent-in-birket-alawamir-the-total-area-is-5000-sqm-ID120337904.html   
+Row : 29, url : https://www.dubizzle.qa/en/ad/moci-approved-office-space-trade-license-furnished-office-space-ID120351507.html     
+* price and currency missing for 7 records (Same as in the website)
+* number_of_photos is empty in file, but photo is avaialble on website for 2 records :
+Row : 2074, url : https://www.dubizzle.qa/en/ad/studio-1bhk-available-in-al-wukair-meshaf-ID120370710.html  
+Row : 2077, url : https://www.dubizzle.qa/en/ad/studio-1bhk-available-wukir-meshaf-wakhra-ID120370709.html 
+
+
+8) dubizzle_egp_2026_08_03.json
+_______________________________
+
+* scraped_ts and date fields have 2 different values : 2026-08-16 , 2026-08-15
+* depth values are in Camel Case : 'Featured', 'Elite'.
+* As compared with other datasets, category_url is expected to be : ['/en/properties/villas-for-rent/','/en/properties/villas-for-sale/'. But found different values in this dataset.
+
+* price is comma separated
+
+* number_of_photos is empty in dataset, but avaialble on website for following 
+Row : 16216, url : https://www.dubizzle.com.eg/en/ad/receive-the-key-to-your-villa-immediately-in-the-city-valley-compound-and-enjoy-a-charming-and-direct-view-of-the-lakes-in-the-most-prestigious-ne-ID503485394.html
+Row : 161044, url : https://www.dubizzle.com.eg/en/ad/apartment-for-rent-at-the-lowest-price-immediate-occupancy-super-deluxe-finishing-in-new-garden-city-new-administrative-capital-with-an-open-view-ID503866067.html
+Row : 222813, url : https://www.dubizzle.com.eg/en/ad/view-and-receive-a-270m2-twin-house-in-new-cairos-fifth-settlement-next-to-the-american-university-in-marq-garden-compound-with-a-40-discount-ID503817080.html
+
+* whitespace found in broker and broker_display_name in 193 records. Eg:
+Row : 415, url : https://www.dubizzle.com.eg/en/ad/%D9%81%D9%8A%D9%84%D8%A7-%D9%84%D9%84%D8%A7%D8%B3%D8%AA%D8%AB%D9%85%D8%A7%D8%B1-%D9%A8-%D9%86%D9%88%D9%85-%D9%A4-%D8%AD%D9%85%D8%A7%D9%85-%D9%A2-%D8%AA%D8%B1%D8%A7%D8%B3-%D8%A8%D8%A7%D8%A8%D9%88%D9%8A%D9%88%D8%B3%D9%81-%D8%AA%D8%B3%D8%AC%D9%8A%D9%84-%D9%86%D9%87%D8%A7%D8%A6%D9%8A-ID182500665.html   
+Row : 581, url : https://www.dubizzle.com.eg/en/ad/%D9%81%D9%8A%D9%84%D8%A7-%D9%84%D9%82%D8%B7%D8%A9-%D9%84%D9%84%D8%A7%D9%8A%D8%AC%D8%A7%D8%B1-%D9%85%D9%81%D8%B1%D9%88%D8%B4%D8%A9-%D9%88-%D8%AC%D8%A7%D9%87%D8%B2%D8%A9-ID208310543.html
+
+* white space found in description. Eg:
+Row : 2, url : https://www.dubizzle.com.eg/en/ad/stand-alone-villa-for-rent-cfc-oriana-3spacious-stand-alone-villa-with-appliances-and-acs-included-ID503926762.html   
+Row : 3, url : https://www.dubizzle.com.eg/en/ad/ultimate-luxury-waterfront-living-direct-sea-view-villa-in-marina-5-zone-23-ID503933851.html 
+
+* white space found in location. Eg:
+Row : 10967, url : https://www.dubizzle.com.eg/en/ad/%D8%B4%D9%82%D8%A9-%D9%A1%D9%A0%D9%A5-%D9%85%D8%AA%D8%B1-%D8%AD%D9%8A-%D8%A7%D9%84%D8%B2%D9%87%D9%88%D8%B1-%D8%A7%D9%84%D8%AD%D8%B1%D9%81%D9%8A%D9%8A%D9%86-ID208579817.html   
+Row : 1096, url : https://www.dubizzle.com.eg/en/ad/%D8%B4%D9%82%D9%87-%D9%84%D9%84%D8%A8%D9%8A%D8%B9-ID208606696.html
+
+9) DataHut_AT_Spar_Pricextractions_20260817.CSV
+_______________________________________________
+
+* Data count : 41236
+* Filename error : Expected value - 'DataHut_AT_Spar_PriceExtractions_20260817', Actual value - 'DataHut_AT_Spar_Pricextractions_20260817'
+'E' is missing for 'Extractions'
+* site_shown_uom is empty for one record : https://www.spar.at/produktwelt/simpex-basic-p2020005670242 (row 3293), while site shows value, '15 x 15 x 6,5 cm'
+* Incorrect extraction_date. Expected value - '2026-08-17', Actual value - '2026-08-18'
+* regular_price: Found 3981 values not having exactly 2 decimal places
+* selling_price: Found 3981 values not having exactly 2 decimal places. Eg:
+Row : 109, regular_price : 1.7, selling_price : 1.7, pdp_url : https://www.spar.at/produktwelt/spar-premium-mezze-maniche-p2020004938749  
+Row : 273, regular_price : 3.8, selling_price : 3.8, pdp_url : https://www.spar.at/produktwelt/spar-premium-premium-nektarinen-p2020005871441 
+* promotion_price: Found 23 values not having exactly 2 decimal places. Eg:
+Row : 3877, promotion_price : 29.9, pdp_url : https://www.spar.at/produktwelt/bumbu-original-spiced-p2020004205377  
+Row : 4284, promotion_price : 44.9, pdp_url : https://www.spar.at/produktwelt/simpex-basic-kontaktgriller-31-x-21-5-cm-p2020002365110
+* Promotion description present, but selling_price and regular_price are not regular_price for 1 record :
+Row : 2753
+pdp_url :  https://www.spar.at/produktwelt/karlovacko-bier-lager-0-5l-p2020005521056 
+regular_price : 1.39
+selling_price : 1.19
+promotion_price : 1.19
+promotion_description : 'Aktion!'
+* Invalid url : hroduktwelt/simpex-spruehflasche-braun-p2020006112130 (row 2850) 
+* product_name is null for one record : https://www.spar.at/produktwelt/simpex-basic-celebration-geburtstagskerzen-blau-lang-12-stueck-p2020004287793  (row 3135), while site shows value 'SIMPEX BASIC Celebration Geburtstagskerzen blau lang 12 Stück'
+* Dataset is not unique. 1 record is duplicated with pdp_url : https://www.spar.at/produktwelt/spar-natur-pur-bio-topfenaufstrich-liptauer-art-scharf-p2020005277724 (Rows 2926, 2942) [So the pdp_url and unique_id are not unique due to this case]
+* promotion_description occupies whitespace without any value for 1 record : https://www.spar.at/produktwelt/kneipp-badekristalle-erkaeltungszeit-600g-p2020003555589 (row 3315)
+* Whitespace found in breadcrumb for 2 records :
+Row : 23857, pdp_url : https://www.spar.at/produktwelt/vorarlberg-milch-laendle-halbfettmilch-laenger-frisch-1-5-fett-p2020006312547   
+Row : 33016, pdp_url : https://www.spar.at/produktwelt/berglandmilch-schaerdinger-cremig-15-p2020006140843 
+* '|' is not replaced with '\|' for several records , in product_name and site_shown_uom. Eg:
+Row : 8876 , pdp_url : https://www.spar.at/produktwelt/isana-cleanser-aha-pha-peeling-125ml-p2020006024686   
+Row : 18543, pdp_url : https://www.spar.at/produktwelt/mehrzweckschrauben-4x40-150stk-p2020005763197 
+* regular_price and selling_price is null for 17 records (Same as in the website)
+
+
+10) DataHut_AT_Billa_PriceExtractions_20260817.CSV
+__________________________________________________
+
+* grammage_unit value error : 'stük' instead of 'stück' accross the entire dataset. Eg:
+Row : 7, pdp_url : https://shop.billa.at/produkte/tofix-wc-beckensteine-ocean-nachfuellung-00100709  
+Row : 11, pdp_url : https://shop.billa.at/produkte/toppits-gefrierbeutel-1l-00101511 
+* unique_id not unique. It's value is '00-289492' for 2 records :
+https://shop.billa.at/produkte/dettol-reinigungstuecher-granatapfel-und-limette-00289415 (row 859) 
+https://shop.billa.at/produkte/kitkat-chunky-classic-schokoriegel-single-00289492 (row 860)
+* promotion_price is greater than selling and regular price for 1 record (All the 3 prices are different in this case) :
+Row: 200
+pdp_url : https://shop.billa.at/produkte/nimm2-vitaminbonbons-0017772 
+promotion_price: 3.49
+selling_price: 1.89 
+regular_price: 2.15                      
+promotion_description: 'ab 2 Beutel, AKTION'
+* regular_price is empty for 25 records. Eg:
+https://shop.billa.at/produkte/goesser-maerzen-0021841 (row 290)
+https://shop.billa.at/produkte/stiegl-goldbraeu-0021982 (row 306)
+* selling_price not equal to regular_price, even if promotion_price is empty and promotion_description not empty in 713 rows. Eg:
+https://shop.billa.at/produkte/efko-pusstasalat-0015153 (row 146)
+https://shop.billa.at/produkte/efko-rote-rueben-salat-0015154 (row 147)
+* site_shown_uom is empty fpr 9 records,  where site shows value 'Ab 0,8 kg', 'Ab 0,4 kg' etc. Eg:
+Row : 362, pdp_url : https://shop.billa.at/produkte/ja-natuerlich-hendlruecken-00240470  
+Row : 2882, pdp_url : https://shop.billa.at/produkte/ja-natuerlich-hendlfilet-00424344 
+* regular_price: Found 305 values not having exactly 2 decimal places
+* selling_price: Found 321 values not having exactly 2 decimal places. Eg:
+Row : 64 , regular_price : 47.9, selling_price : 47.9, pdp_url : https://shop.billa.at/produkte/hennessy-very-special-0011379  
+Row : 132, regular_price: 3.8, selling_price : 3.8, pdp_url : https://shop.billa.at/produkte/oelz-mehrkorntoast-0014336 
+* promotion_price: Found 2 values not having exactly 2 decimal places
+Row : 10, promotion_price : 2.0, pdp_url : https://shop.billa.at/produkte/bahlsen-ohne-gleichen-vollmilch-0010143  
+Row : 13, promotion_price : 2.0, pdp_url : https://shop.billa.at/produkte/bahlsen-ohne-gleichen-edelherb-0010139  
+
+11) DataHut_CH_Lidl_FullDump_20260817.CSV
+_________________________________________
+
+* Data count : 3699
+* country_of_origin is also empty
+* instock is false for 32 records. Eg:
+https://sortiment.lidl.ch/de/catalog/product/view/id/21482/s/bio-fruit-go-squeezer-5006930/category/54/  (row 205)
+https://sortiment.lidl.ch/de/catalog/product/view/id/21259/s/magnum-almond-1801620/category/54/ (row 285)
+* percentage_discount is in 1f format, not int. Eg: 30.0, 17.0
+* regular_price: Found 60 values not having exactly 2 decimal places
+* selling_price: Found 62 values not having exactly 2 decimal places. Eg:
+Row : 243, value : 2.6, pdp_url : https://sortiment.lidl.ch/de/catalog/product/view/id/21483/s/spezialwaschmittel-1012861/category/54/  
+Row : 466, value : 3.3, pdp_url : https://sortiment.lidl.ch/de/catalog/product/view/id/20849/s/schweizer-kartoffeln-0083292/category/54/  
+* promotion_price: Found 20 values not having exactly 2 decimal places. Eg:
+Row : 1308, value : 3.0, pdp_url : https://sortiment.lidl.ch/de/catalog/product/view/id/16482/s/zinfandel-rose-0206816/category/54/  
+Row : 1339, value : 2.2, pdp_url : https://sortiment.lidl.ch/de/catalog/product/view/id/16343/s/piu-secco-0206227/category/54/ 
+* price_was is null for 3352 records. Eg:
+https://sortiment.lidl.ch/de/catalog/product/view/id/13737/s/schweizer-aepfel-rot-0080220/category/54/ (row 2) 
+https://sortiment.lidl.ch/de/catalog/product/view/id/12790/s/trauben-hell-kernlos-0080505/category/54/ (row 3)
+* promotion_description presents but promotion dates are null for 144 records. Eg :
+https://sortiment.lidl.ch/de/catalog/product/view/id/21944/s/pinsa-teig-xxl-6018554/category/54/ (row 46) 
+https://sortiment.lidl.ch/de/catalog/product/view/id/21940/s/frisco-extreme-cornets-soft-core-1801686/category/54/ (row 48)
+* breadcrumb and product_name includes '---' for https://sortiment.lidl.ch/de/catalog/product/view/id/21628/s/-old-el-paso-taco-mix-5114055/category/54/ (row 139)
+* '|' is not replaced with '\|' in product_description for 2 records :
+https://www.lidl.ch/p/de-CH/pattex-kleber-sortiment/p10056998 (row 3240)  
+https://www.lidl.ch/p/de-CH/livarno-led-badleuchte/p10057002  (row 3243)
+* white space found in product_name for 1 record:
+https://sortiment.lidl.ch/de/catalog/product/view/id/20869/s/mini-pizza-pancetta-provola-und-zwiebel-1015165/category/54/ (row 3681)
+* white space found in producthierarchy_level3 for 2 records:
+https://sortiment.lidl.ch/de/catalog/product/view/id/12888/s/bio-orangen-0081532/category/54/  (row 12) 
+https://sortiment.lidl.ch/de/catalog/product/view/id/20869/s/mini-pizza-pancetta-provola-und-zwiebel-1015165/category/54/ (row 3681)
+* whitespace in breadcrumb for 1 record :
+https://sortiment.lidl.ch/de/catalog/product/view/id/20869/s/mini-pizza-pancetta-provola-und-zwiebel-1015165/category/54/ (row 3681)
+* white space in product_description for 115 records:
+https://www.lidl.ch/p/de-CH/lupilu-matsch-und-buddeloverall/p10057028 (row 3042) 
+https://www.lidl.ch/p/de-CH/esmara-trenchcoat/p10057023 (row 3043)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

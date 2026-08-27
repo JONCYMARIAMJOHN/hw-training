@@ -1,0 +1,95 @@
+____________ISSUES_____________
+================================
+
+
+1) bayut_properties_buy_residential_2026_08_19.json
+___________________________________________________
+
+* int values in API are recorded as float in the dataset. Eg fields:
+	- price
+	- createdAt
+    	- approvedAt
+    	- updatedAt
+    	- reactivatedAt
+    	- completionDetails --> startDate
+    	- completionDetails -->  completionDate
+    	- completionDetails -->  completionPercentage	
+* description tag unicodes are replaced with tag symbol in the dataset. ie, description to description_l14 fields starts like '\u003Cstrong\u003E' in the API, but <strong> in the dataset. Eg. (row 384, listing_url : https://www.bayut.com/property/details-16134180.html)
+* paymentPlans and paymentPlanSummaries field
+ value is completely mismatching from the API for records --> (row 384, listing_url : https://www.bayut.com/property/details-16134180.html)
+* indyScore, indyScore_l1 are 284 on API but 341 on dataset --> (row 384, listing_url : https://www.bayut.com/property/details-16134180.html)
+* indyScore_l2, indyScore_l3 are 191 on API, but 230 on dataset --> (row 384, listing_url : https://www.bayut.com/property/details-16134180.html)
+* The above mismatches found in several records. Eg:
+https://www.bayut.com/property/details-15948957.html (row 385)
+https://www.bayut.com/property/details-15985431.html (row 1)
+https://www.bayut.com/property/details-16130468.html (row 2)
+
+2) bayut_properties_rent_residential_2026_08_19.json
+_____________________________________________________
+
+* coverPhoto is null in dataset, but have value on API for 21 records. Eg:
+(Row 55374)   https://www.bayut.com/property/details-14774497.html
+(Row 55482)   https://www.bayut.com/property/details-16074419.html
+(Row 55483)   https://www.bayut.com/property/details-16076899.html
+(Row 55484)   https://www.bayut.com/property/details-16158784.html 
+(Rows : 55488, 55489, 55491, 55492, 55495, 80401, 116032 etc..)
+* An extra key 'floorPlan' with value found on dataset, which is not present on API for record : https://www.bayut.com/property/details-15118555.html(row 1)
+* active : false on API but trie on dataset for record : https://www.bayut.com/property/details-15118555.html(row 1)
+* indyScore, indyScore_l1, indyScore_l2, indyScore_l3 values have mismatches accross the dataset.
+* int values in API are recorded as float in the dataset. Eg fields:
+	- price
+	- createdAt
+    	- approvedAt
+    	- updatedAt
+    	- reactivatedAt
+    	- completionDetails --> startDate
+    	- completionDetails -->  completionDate
+    	- completionDetails -->  completionPercentage
+    	  	
+ 3) bayut_uae_project_2026_08_04.json
+ ____________________________________
+ 
+ * Data count: 2971
+ * property type is 'Apartment' on website, but empty on dataset for following records:
+https://www.bayut.com/for-sale/off-plan/property/dubai/meydan/mercedes-benz-places-binghatti-city/maybach-six (row 17)
+https://www.bayut.com/for-sale/off-plan/property/dubai/meydan-city/mercedes-benz-places-binghatti-city/maybach-ultimate-luxury (row 18)
+https://www.bayut.com/for-sale/off-plan/property/dubai/business-bay/binghatti-skyrise (row 39)
+https://www.bayut.com/for-sale/off-plan/property/dubai/dubai-hills-estate/hillsedge/ (row 188)
+ * max_area_in_sqft = min_area_in_sqft = unit_area_in_sqft for 62 records. Eg:
+ https://www.bayut.com/for-sale/off-plan/property/dubai/dubai-maritime-city/31-above-by-beyond (row 185)
+ https://www.bayut.com/for-sale/off-plan/property/dubai/business-bay/burj-capital (row 202)
+ * unit type has trailing sapce for 3 records:
+ https://www.bayut.com/for-sale/off-plan/property/abu-dhabi/al-reem-island/tamouh/muheira-by-modon (row 615)  
+ https://www.bayut.com/for-sale/off-plan/property/dubai/dubai-islands/treppan-serenique-residences/treppan-serenique-residences-tower-a (row 1416)  
+ https://www.bayut.com/for-sale/off-plan/property/dubai/dubai-islands/treppan-serenique-residences/treppan-serenique-residences-tower-b  (row 1445)
+ * White space found in developer_name for 1 record:
+https://www.bayut.com/for-sale/off-plan/property/abu-dhabi/al-shamkha/al-reeman-1/nourwatan (row 1988)
+ * White space found in unit_type for 52 records. Eg:
+https://www.bayut.com/for-sale/off-plan/property/dubai/the-oasis-by-emaar/mareva-the-oasis (row 54)
+https://www.bayut.com/for-sale/off-plan/property/dubai/dubai-islands/hado-by-beyond/hado-by-beyond-tower-b (row 129)
+
+4) qatarliving_qat_2026_08_04.json
+___________________________________
+
+* Data count : 25739
+* price value is 'Price on request' on website, but '5800' on the dataset for 2 records:
+https://qlp.qatarliving.com/en/properties/rent/residential/hotel_stay/luxury_stay_in_fereej_bin_mahmoud_superior_deluxe_room_at_qr_3_500_monthly_/153150 (row 37)
+https://qlp.qatarliving.com/en/properties/rent/residential/hotel_stay/superior_deluxe_room_for_monthly_hotel_stay_old_al_ghanim_fully_furnished/162518 (row 40)
+* white space found in description. Eg:
+https://qlp.qatarliving.com/en/properties/rent/residential/apartment/direct_from_the_owner_no_commission_apartments_for_employees_and_bachelors_/214971 (row 36)  
+https://qlp.qatarliving.com/en/properties/rent/residential/apartment/2_bhk_flat_for_ladies_staff_or_executive_bachelor_old_airport_near_metro_link/131855 (row 38)
+
+5) dari_ae_2026_08_04.json
+__________________________
+
+* No issues found
+* white space found in broker and broker_display_name for 3 rows:
+https://www.dubizzle.qa/en/ad/7500-sqm-cold-storage-facility-with-accommodation-offices-for-rent-ID120317983.html (row 1044)
+https://www.dubizzle.qa/en/ad/spacious-5-bedroom-villas-west-bay-lagoon-ID120316725.html (row 2261)
+https://www.dubizzle.qa/en/ad/spacious-5-bedroom-villas-west-bay-lagoon-ID120317178.html (row 2262)
+* white space found in description fot=r 871 rows:
+https://www.dubizzle.qa/en/ad/bright-2-bhk-fully-furnished-near-patk-park-ID120370209.html (row 1)
+https://www.dubizzle.qa/en/ad/studio-for-rent-city-view-direct-from-the-owner-ID120375478.html (row 2)
+
+
+
