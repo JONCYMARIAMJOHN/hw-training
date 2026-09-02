@@ -1,0 +1,158 @@
+___________ISSUES___________
+============================
+
+1) haraj_ksa_2026_09.json
+_________________________
+
+* category_url values are suspicious like '/tags/%D8%A7%D8%AF%D9%88%D8%A7%D8%B1%20%D9%84%D9%84%D8%A7%D9%8A%D8%AC%D8%A7%D8%B1'
+* user_id = broker_display_name accross the entire dataset
+* white space found on user_id, broker and broker_display_name. Eg:
+https://haraj.com.sa/11186925765/دور_أرضي_للإيجار_السنوي___حي_النفل___الرياض (row 17)
+https://haraj.com.sa/11187060306/فله_للايجار_في_حي_عكاظ (row 51)
+* White space found on title. Eg:
+https://haraj.com.sa/11186968665/دور_كامل_فاخر_بطراز_إنجليزي_للإيجار_الرمال___الرياض (row 6)
+https://haraj.com.sa/11186925765/دور_أرضي_للإيجار_السنوي___حي_النفل___الرياض (row 17)
+* White space found on description. Eg:
+https://haraj.com.sa/11187061896/دور_ارضي_للايجارGround_Floor_for_Rent (row 5)
+https://haraj.com.sa/11186316155/دور_علوي_للايجار_حي_المونسيه (row 7)
+
+* number_of_photos is empty on dataset, but avasilable on website:
+https://haraj.com.sa/https://haraj.com.sa/11187036569/ابحث_عن_دور_ارضي_او_اول_بمدخل_خاص_جنوب_او_غرب_الرياض (row 12)
+https://haraj.com.sa/11185083693/مطلوب_فله_في_القاعد_تقبل_البنك  (row 34176)
+https://haraj.com.sa/11184955044/مطلوب_ايجار_فيلا_داخل_حائل (row 34178)
+
+
+2) aqar_ksa_2026_09.json
+________________________
+
+* white space found on description. Eg:
+https://sa.aqar.fm/عمائر-للإيجار/الرياض/شمال-الرياض/حي-الرحمانية/شارع-التخصصي-الفرعي-حي-الرحمانية-مدينة-الرياض-منطقة-الرياض-6659778 (row 857)
+https://sa.aqar.fm/شقق-للإيجار/الرياض/شمال-الرياض/حي-العقيق/شارع-الانتصار-حي-العقيق-مدينة-الرياض-منطقة-الرياض-6785413 (row 1382)
+* white space fpund on title . eg:
+https://sa.aqar.fm/فلل-للإيجار/الرياض/شمال-الرياض/حي-العارض/شارع-البخاري-حي-العارض-مدينة-الرياض-منطقة-الرياض-6821311 (row 12)
+https://sa.aqar.fm/شقق-للإيجار/الرياض/شمال-الرياض/حي-الوادي/شارع-عبدالله-المخضوب-حي-الوادي-مدينة-الرياض-منطقة-الرياض-6610528  (row 64)
+
+
+3) nawy_egp_2026_09_01.json
+___________________________
+
+* Data count: 1397
+* No specific issues
+
+
+4) aqarmap_egp_2026_09_01.json
+______________________________
+
+
+* broker adnd broker_display_name is 'ـــــ' for  https://aqarmap.com.eg/en/listing/7203857-for-sale-alexandria-al-agamy-lbytsh-bianchiii/ (row 6720)
+* seller_role is empty accross the dataset
+* depth', 'seller_role', 'listing_type' fields are also empty
+* website not accessible
+* broker and broker_display_name values are 'null' for 4 records:
+https://aqarmap.com.eg/en/listing/7219915-for-sale-monufia-quweisna-quweisna-city/ (row 15376)
+https://aqarmap.com.eg/en/listing/7219894-for-sale-monufia-quweisna-quweisna-city/ (row 31984)
+https://aqarmap.com.eg/en/listing/7076578-for-rent-cairo-heliopolis-el-higaz-square-el-hegaz-st/ (row 118970)
+https://aqarmap.com.eg/en/listing/7090680-for-sale-cairo-dar-el-salam/ (row 262143)
+* broker and broker_display_name values are 'NaN' for 24 records. Eg:
+https://aqarmap.com.eg/en/listing/7100944-for-rent-cairo-elnozha-Streettt-27/ (row 139558)
+https://aqarmap.com.eg/en/listing/7099796-for-rent-cairo-elnozha-Streettt-27/ (row 139570)
+* description contains '\t' in several records. Eg:
+https://aqarmap.com.eg/en/listing/7197149-projects-beta-residence-october/ (row 1503)
+https://aqarmap.com.eg/en/listing/7224948-projects-once-mall/ (row 1504)
+* bedrooms value is '01' instead of '1' for 3 records:
+https://aqarmap.com.eg/en/listing/7170273-for-rent-cairo-el-maadi-zahraa-el-maadi-zahraa-el-maadi-st/ (row 114299)
+https://aqarmap.com.eg/en/listing/7185386-for-rent-cairo-el-maadi-zahraa-el-maadi-zahraa-el-maadi-st/ (row 114544)
+https://aqarmap.com.eg/en/listing/6725813-for-rent-cairo-new-cairo-el-lotus-lotus-south/ (row 114649)
+* bathrooms value is 2.5 for 2 records:
+https://aqarmap.com.eg/en/listing/7155474-for-sale-cairo-dokki-mydn-lmsh-almosekar-ali-ismail-st/ (row 84280)
+https://aqarmap.com.eg/en/listing/7207250-for-rent-cairo-old-cairo-el-fostat-lfstt-ljdyd-arabesque-compound-sed/ (row 118072)
+* bathrooms value is '01' for 1 record:
+https://aqarmap.com.eg/en/listing/6939476-for-rent-cairo-new-cairo-90th-street-northern-90th-street/ (row 113071)
+* Phone number last digits are hided with 'xxx'
+* white space found on broker and broker_display_name . Eg:
+https://aqarmap.com.eg/en/listing/7212299-projects-palm-island/ (row 1884)
+https://aqarmap.com.eg/en/listing/7212298-projects-palm-island/ (row 1888)
+* white space found on title. Eg:
+https://aqarmap.com.eg/en/listing/6978830-for-rent-port-said-kmbwnd-fy-bwr-s-yd-porto-said-compound-amer-group/ (row 27)
+https://aqarmap.com.eg/en/listing/6936701-for-rent-port-said-kmbwnd-fy-bwr-s-yd-porto-said-compound-amer-group/ (row 29)
+* white space found on description. Eg:
+https://aqarmap.com.eg/en/listing/7019795-for-rent-port-said-kmbwnd-fy-bwr-s-yd-porto-said-compound-amer-group/ (row 1)
+https://aqarmap.com.eg/en/listing/7018416-for-rent-port-said-kmbwnd-fy-bwr-s-yd-porto-said-compound-amer-group/ (row 25)
+* white space found in location. Eg:
+https://aqarmap.com.eg/en/listing/7200397-projects-rafts/ (row 975)
+https://aqarmap.com.eg/en/listing/7200394-projects-rafts/  (row 978)
+
+5) dubizzle_qat_2026_09_01.json
+________________________________
+
+* Both broker and broker_display_name are in block letters for some records. Eg:
+'FAYAZ K'--> https://www.dubizzle.qa/en/ad/bed-space-in-ummgualina-kerala-peoples-4-ID120373169.html (row 2277)
+'I R'--> https://www.dubizzle.qa/en/ad/%D8%B4%D9%82%D8%A9-%D9%84%D9%84%D8%A5%D9%8A%D8%AC%D8%A7%D8%B1-%D8%A8%D8%A3%D8%B2%D8%BA%D9%88%D9%89-%D8%B4%D8%A7%D9%85%D9%84%D8%A9-%D9%88%D8%A8%D8%AF%D9%88%D9%86-%D8%B9%D9%85%D9%88%D9%84%D8%A9-ID120371715.html (row 45)
+* white space on broker and broker_display_name for 1 record : https://www.dubizzle.qa/en/ad/7500-sqm-cold-storage-facility-with-accommodation-offices-for-rent-ID120317983.html (row 467)
+* white space on title. Eg:
+https://www.dubizzle.qa/en/ad/premium-commercial-villa-for-rent-new-slata-ID120376536.html (row 9)
+https://www.dubizzle.qa/en/ad/warehouse-cold-store-for-rent-industrial-area-ID120376507.html (row 16)
+* white space on description. Eg:
+https://www.dubizzle.qa/en/ad/6500-factory-for-rent-ID120376548.html (row 2)
+https://www.dubizzle.qa/en/ad/1100-store-with-10-room-for-rent-ID120346161.html (row 3)
+
+6) bahrainfinder_bah_2026_09_01.json
+_____________________________________
+
+* Both broker and broker_display_name are in block letters for 12 records. Eg:
+https://bahrainfinder.bh/en/property/penthouse-for-sale-in-juffair-5028.html (row 3)
+https://bahrainfinder.bh/en/property/penthouse-for-sale-in-seef-district-5628.html (row 5)
+* furnished value 'fully furnished' is miising in the file .
+
+7) dubizzle_egp_2026_09_01.json
+_______________________________
+
+* Invalid broker and broker_display_name : 'TEXTFIELDSTATE(SELECTION=TEXTRANGE(12, 12), TEXT="AYMAN ESMAEL")' (Same as in the website) for 2 records :
+https://www.dubizzle.com.eg/en/ad/%D8%B4%D9%82%D8%A9-160-%D9%85%D8%AA%D8%B1-%D9%84%D9%84%D8%A8%D9%8A%D8%B9-ID208841631.html (row 232219)
+https://www.dubizzle.com.eg/en/ad/%D8%B4%D9%82%D8%A9-%D9%84%D9%84%D8%A8%D9%8A%D8%B9-%D8%A8%D8%A7%D9%84%D8%A7%D8%B4%D8%B1%D9%81-%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A-%D8%AA%D8%A7%D9%86%D9%8A-%D9%86%D9%85%D8%B1%D8%A9-%D9%85%D9%86-%D9%83%D9%88%D8%B1%D9%86%D9%8A%D8%B4-%D8%A7%D9%84%D9%85%D8%B1%D8%B4%D8%AD%D8%A9-ID208798595.html (row 2100)
+* depth values are in Camel Case : 'Featured', 'Elite'
+* number_of_photos is empty in dataset, but photos available on website for 3 records: 
+https://www.dubizzle.com.eg/en/ad/receive-the-key-to-your-villa-immediately-in-the-city-valley-compound-and-enjoy-a-charming-and-direct-view-of-the-lakes-in-the-most-prestigious-ne-ID503485394.html (row 51678)
+https://www.dubizzle.com.eg/en/ad/apartment-for-rent-at-the-lowest-price-immediate-occupancy-super-deluxe-finishing-in-new-garden-city-new-administrative-capital-with-an-open-view-ID503866067.html (row 163925)
+https://www.dubizzle.com.eg/en/ad/ready-to-move-ultra-super-lux-finishing-bargain-price-including-maintenance-club-membership-and-parking-townhouse-in-sodic-east-new-heliopolis-ID504008388.html (row 231443)
+* white space found in broker and broker_display_name . Eg:
+https://www.dubizzle.com.eg/en/ad/chalet-with-garden-with-prime-location-in-il-mounte-galala-tatweer-misr-ain-sokhna-ID503764005.html (row 1224) 
+https://www.dubizzle.com.eg/en/ad/chalet-with-garden-150m-direct-on-lagoon-il-monte-galala-ain-sokhna-ID503436726.html (row 1233)
+* white space found on location. Eg:
+https://www.dubizzle.com.eg/en/ad/jamaloun-for-rent-in-the-industrial-area-on-the-main-road-cairo-belbeis-desert-road-asphalt-land-including-all-facilities-with-areas-starting-from-500-m-and-its-multiples-ID503664197.html (row 3484) 
+https://www.dubizzle.com.eg/en/ad/hangar-for-rent-1000-sq-m-located-on-the-belbeis-desert-road-ID503664478.html (row 5142)
+* white space found on description.Eg:
+https://www.dubizzle.com.eg/en/ad/semi-furnished-standalone-villa-for-rent-in-mivida-new-cairo-ID503948384.html (row 8)  
+https://www.dubizzle.com.eg/en/ad/luxury-living-in-mivida-standalone-villa-for-rent-with-kitchen-acs-appliances-ID504006681.html (row 9)
+
+8) qatarliving_qat_2026_09_01.json
+__________________________________
+
+* white space found on title. Eg:
+https://www.dubizzle.com.eg/en/ad/super-luxury-finishes-open-view-all-utilities-included-apartment-for-rent-177-m2-sawary-compound-ID503992468.html (row 1328)
+https://www.dubizzle.com.eg/en/ad/no-commission-exceptional-5-star-hotel-apartment-for-rent-in-alexandria-direct-from-owner-ID503985023.html (row 1345)
+* white space found on description. Eg:
+https://www.dubizzle.com.eg/en/ad/s-villa-with-garden-fully-finished-with-acs-for-rent-in-sarai-s2-ID503290588.html (row 3776) 
+https://www.dubizzle.com.eg/en/ad/a-sea-view-home-with-your-own-private-garden-in-sahl-hasheesh-ID503943398.html (row 4641)
+
+9) dubizzle_bah_2026_09_01.json
+_______________________________
+
+* white space found in broker and broker_display_name. Eg:
+https://www.dubizzle.com.bh/en/ad/the-best-price-and-place-to-get-office-address-for-bd-99-ID104650527.html (row 386)
+https://www.dubizzle.com.bh/en/ad/perfect-place-for-your-cr-office-address-call-us-now-ID104650533.html (row 387)
+* white space found in title. Eg:
+https://www.dubizzle.com.bh/en/ad/commercial-address-offices-for-rent-ID105694722.html (row 5)  
+https://www.dubizzle.com.bh/en/ad/labour-accommodation-for-rent-in-hamad-town26-rooms-available-ID105737213.html (row 25)
+* white space found in description. eg:
+https://www.dubizzle.com.bh/en/ad/special-business-address-office-offer-ID105251331.html (row 1)
+https://www.dubizzle.com.bh/en/ad/limited-time-offer-business-address-packages-in-bahrain-ID105396597.html (row 2)
+
+
+
+
+
+
+
+
+

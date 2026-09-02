@@ -1,0 +1,179 @@
+___________ISSUES__________
+===========================
+
+1) DataHut_SI_Mercator_PriceExtractions_20260901.CSV
+_____________________________________________________
+
+* Data count : 16901
+* regular_price: Found 75 values not having exactly 2 decimal places
+* selling_price: Found 334 values not having exactly 2 decimal places
+https://mercatoronline.si/izdelek/17720502/maslo-mu-cuisine-20-g (row 360)
+https://mercatoronline.si/izdelek/19119393/maslo-meggle-20-g (row 373)
+* promotion_price: Found 266 values not having exactly 2 decimal places
+https://mercatoronline.si/izdelek/876755/kisla-smetana-20-m-m-mu-cusine-180-g (row 1061)
+https://mercatoronline.si/izdelek/5068345/alpska-smetana-za-stepanje-33-m-m-mu-cuisine-500-ml (row 1077)
+* promotion_description present, but promotion_price empty for several records, evenif 2 prices are available on website. Eg:
+https://mercatoronline.si/izdelek/17294851/sadni-jogurt-panna-cotta-vec-okusov-3-5-m-m-zott-jogobella-150-g (row 34)
+https://mercatoronline.si/izdelek/17164308/tekoci-jogurt-1-3-m-m-ego-1-kg (row 141)
+
+
+2) DataHut_SI_Dm_PriceExtractions_20260901.CSV
+________________________________________________
+
+* regular_price: Found 2604 values not having exactly 2 decimal places
+* selling_price: Found 2604 values not having exactly 2 decimal places
+https://www.dm.si/p/d/3090088/adidas-parfumska-voda-za-moske-vibes-wonder-force (row 4)
+https://www.dm.si/p/d/3161799/adidas-parfumska-voda-za-zenske-vibes-smooth-pace (row 5)
+* whitespace found in product_name. Eg:
+https://www.dm.si/p/d/1321849/essence-maskara-i-love-extreme-volume (row 253)
+https://www.dm.si/p/d/3123816/denkmit-kapsule-za-pranje-obcutljivega-perila-3v1-pure-delight (row 2734)
+* white space found on breadcrumb. Eg:
+https://www.dm.si/p/d/1715572/babylove-naravna-mineralna-voda-brez-ogljikovega-dioksida (row 24)
+https://www.dm.si/p/d/1575910/babylove-previjalna-podloga-60-x-60-cm (row 41)
+
+3) DataHut_AT_Spar_PriceExtractions_20260901.CSV
+_________________________________________________
+
+* regular_price: Found 4807 values not having exactly 2 decimal places
+* selling_price: Found 4807 values not having exactly 2 decimal places
+ https://www.spar.at/produktwelt/spar-premium-mezze-maniche-p2020004938749 (row 48)  
+ https://www.spar.at/produktwelt/spar-premium-premium-nektarinen-p2020005871441 (row 180)
+* promotion_price: Found 20 values not having exactly 2 decimal places
+https://www.spar.at/produktwelt/bumbu-original-spiced-p2020004205377 (row 3333)
+https://www.spar.at/produktwelt/gorenje-waschmaschine-wnhei74saps-at-7-kg-p2020005994362 (row 9906)
+* regular_price and selling_price are empty from rows 42629 to 42640 even if price available on website for 10 records:
+https://www.spar.at/produktwelt/enders-wetterschutzhuelle-san-diego-next-3-p2020004102430 (row 42639)
+https://www.spar.at/produktwelt/riess-emaille-passiersieb-weiss-18-cm-p2020005365957 (row 42640)
+* white space found on breadcrumb for https://www.spar.at/produktwelt/vorarlberg-milch-laendle-halbfettmilch-laenger-frisch-1-5-fett-p2020006312547 (row 24399)
+*'|'is not replaced with '\|' for 10 records. Eg:
+https://www.spar.at/produktwelt/isana-cleanser-aha-pha-peeling-125ml-p2020006024686 (row 9474)  
+https://www.spar.at/produktwelt/mehrzweckschrauben-4x40-150stk-p2020005763197 (row 17457)
+
+4) DataHut_SI_Spar_PriceExtractions_20260902.CSV
+_____________________________________
+
+* Filename error : Expected name - DataHut_SI_Spar_PriceExtractions_20260901, Actual name - DataHut_SI_Spar_PriceExtractions_20260902
+Mismatch in date part
+* percentage_discount is also empty
+* selling_price is 1'99 for https://online.spar.si/p/jabolka-gala-tehtano-296981 (row 117)
+* regular_price: Found 722 values not having exactly 2 decimal places
+* selling_price: Found 647 values not having exactly 2 decimal places
+https://online.spar.si/p/nastrgani-mandlji-spar-200g-274032 (row 358)  
+https://online.spar.si/p/fizol-pisani-s-budget-1kg-348544 (row 384)
+* promotion_price: Found 230 values not having exactly 2 decimal places
+https://online.spar.si/p/sir-mozzarela-cucina-galbani-400g-258464 (row 1232)
+https://online.spar.si/p/kruh-droznik-zito-400g-614033 (row 5205)
+* promotion_price has value for 1 record with promotion_description have 'Trajno znižano' :
+https://online.spar.si/p/omaka-tartufata-black-s-sampinjoni-olivami-in-crnimi-poletnimi-tartufi-zigante-tartufi-80g-656931 (row 71)
+promotion_description : 0.9 € Trajno znižano , promotion_price : 5.09
+* product_name missing for 1 record: https://online.spar.si/p/zalni-set-v-pastelnih-barvah-venus-61-537351  (row 15884)
+* Invalid grammage_quantity value '0.05 kg' for 1 record: https://online.spar.si/p/trdi-zeliscni-bonboni-bezgovo-cvetje-brez-sladkorja-ricola-50g-271572 (row 9630)
+* Invalid price_per_unit which not contain '€' symbol for 1 record : https://online.spar.si/p/nastrgana-limonina-lupinica-finesse-dr-oetker-3x6g-600647 (row 6650), price_per_unit: 'KG. za 98.33'
+* grammage_quantity converted from g to kg, but grammage_unit not converted for 2 records:
+https://online.spar.si/p/nadomestek-kave-z-okusom-po-kakavu-calmrooty-62g-681408 (row 668)
+https://online.spar.si/p/testenine-fusilli-feelingok-220g-679091 (row 8548)
+* selling_price not equal to promotion_price for 1 record: https://online.spar.si/p/omaka-tartufata-black-s-sampinjoni-olivami-in-crnimi-poletnimi-tartufi-zigante-tartufi-80g-656931 (row 71)
+
+5) DataHut_SI_Dm_PriceExtraction_20260802.CSV
+__________________________________________
+
+* Filename error. Expected name : DataHut_SI_Dm_PriceExtractions_20260901, Actual name: DataHut_SI_Dm_PriceExtraction_20260802
+Mismatch in spelling and date
+* promotion_price has value for 1 record: https://www.dm.si/p/d/3136924/keine-marke-zenski-dm-tek-pulover-s-kapuco-velikost-s (row 10614)
+* grammage_quantity comma separated (0,75) for 3 records:
+https://www.dm.si/p/d/3149632/bref-cistilo-za-wc-auto-active-blooming-fresh (row 159)
+https://www.dm.si/p/d/3156724/bref-cistilo-za-wc-self-active-aqua-fresh  (row 160)
+https://www.dm.si/p/d/3156733/bref-cistilo-za-wc-power-active-pine (row 161)
+* regular_price: Found 2604 values not having exactly 2 decimal places
+* selling_price: Found 2604 values not having exactly 2 decimal places
+https://www.dm.si/p/d/3090088/adidas-parfumska-voda-za-moske-vibes-wonder-force (row 4)
+https://www.dm.si/p/d/3161799/adidas-parfumska-voda-za-zenske-vibes-smooth-pace (row 5)
+* price_valid_from ≠ promotion_valid_from for 1 record: https://www.dm.si/p/d/3110459/apinature-ekoloski-sok-aloe-vera-preciscen (row 9)
+* Invalid site_shown_uom '<linking>stroškov dostave</linking>' for 1 record: https://www.dm.si/p/d/1391257/balea-olje-za-telo-5v1-za-nego-suhe-in-zahtevne-koze-ter-brazgotin-in-strij (row 274)
+* selling_price ≠ regular_price for 1 record:  https://www.dm.si/p/d/3136924/keine-marke-zenski-dm-tek-pulover-s-kapuco-velikost-s (row 10614)
+* white space found in product_name. Eg:
+https://www.dm.si/p/d/1321849/essence-maskara-i-love-extreme-volume (row 253)
+https://www.dm.si/p/d/3123816/denkmit-kapsule-za-pranje-obcutljivega-perila-3v1-pure-delight (row 2734)
+* white space found in breadcrumb. Eg:
+https://www.dm.si/p/d/1715572/babylove-naravna-mineralna-voda-brez-ogljikovega-dioksida (row 24)
+https://www.dm.si/p/d/1575910/babylove-previjalna-podloga-60-x-60-cm  (row 41)
+ 
+6) DataHut_AT_Dm_PriceExtractions_20260901.CSV
+______________________________________________
+
+* breadcrumb is empty on dataset, even value available on website: https://www.dm.at/p/d/1867793/rosenfellner-muehle-buchweizenmehl-bio (row 13958)
+* regular_price: Found 1875 values not having exactly 2 decimal places
+* selling_price: Found 1877 values not having exactly 2 decimal places
+https://www.dm.at/p/d/3119014/dm-box-jubilaeumsbox-50-jahre-dm-gesundheit-und-wohlbefinden (row 12)
+https://www.dm.at/p/d/1575911/babylove-wickelunterlagen-monatspack (row 18)
+* promotion_price: Found 10 values not having exactly 2 decimal places
+https://www.dm.at/p/d/1630608/balea-bodyspray-aloe-vera (row 356)
+https://www.dm.at/p/d/3123753/balea-koerperspray-schimmernd-tropical-dream-mit-fruchtigem-duft (row 655)
+* product_name missing for 1 record : https://www.dm.at/p/d/3150610/artdeco-lidschatten-high-performance-stylo-80-bottle-green (row 109)
+* grammage_quantity converted from ml to l, but grammage_unit is not converted for 1 record: 
+https://www.dm.at/p/d/3090443/pediakid-immunsaft-kraftkind (row 11159)
+* selling_price ≠ promotion_price for 1 record: https://www.dm.at/p/d/3117809/essence-uv-gel-nagellack-studio-nails-22-nude-to-know (row 7755)
+* white space found on product_name. Eg:
+https://www.dm.at/p/d/3104287/mivolis-tabletten-vitamin-b12-350  (row 1409)
+https://www.dm.at/p/d/1712323/reell-e-toenungsshampoo-7-4-kupfergold (row 1590)
+
+7) DataHut_SI_Mercator_PriceExtractions_20260902.CSV
+_____________________________________________________
+
+* Filename error: Expected name- DataHut_SI_Mercator_PriceExtractions_20260901, Actual name: DataHut_SI_Mercator_PriceExtractions_20260902
+Mismatch in date part
+* Invalid unique_id '5***** ' for 1 record: https://mercatoronline.si/izdelek/17533039/tekoci-jogurt-1-3-m-m-lca-500-g  (row 78)
+* extraction_date is '2026_09_02' Format incorrect and value is future date
+* regular_price: Found 75 values not having exactly 2 decimal places
+* selling_price: Found 334 values not having exactly 2 decimal places.Eg:
+https://mercatoronline.si/izdelek/17720502/maslo-mu-cuisine-20-g (row 360)
+https://mercatoronline.si/izdelek/19119393/maslo-meggle-20-g (row 373)
+* promotion_price: Found 266 values not having exactly 2 decimal places
+https://mercatoronline.si/izdelek/876755/kisla-smetana-20-m-m-mu-cusine-180-g  (row 1061)
+https://mercatoronline.si/izdelek/5068345/alpska-smetana-za-stepanje-33-m-m-mu-cuisine-500-ml (row 1077)
+
+* Invalid breadcrumb value 'VSI IZDELKI > xxxxx, JAJCA IN MLEČNI IZDELKI > vvvv > 5555555 ' for url :  https://mercatoronline.si/izdelek/16857209/trajno-polnomastno-alpsko-mleko-3-5-m-m-ljubljanske-mlekarne-6-x-1-l (row 559) 
+* promotion_description present but promotion_price emoty for several records. eg:
+ https://mercatoronline.si/izdelek/17164308/tekoci-jogurt-1-3-m-m-ego-1-kg (row 141) promo : 'Znižano cvb -20% ' 
+
+8) DataHut_CH_LIDL_PriceExtractions_20260901.CSV
+________________________________________________
+
+* Filename error: Expected name- DataHut_CH_Lidl_PriceExtractions_20260901, Actual name- DataHut_CH_LIDL_PriceExtractions_20260901
+Mismatch in casing
+* price_valid_from ≠ promotion_valid_from for 1 record (date format is different):
+url : https://sortiment.lidl.ch/de/catalog/product/view/id/21206/s/rustico-gipfeli-1017991/category/54/ (row 329)
+price_valid_from: 28.8.2026 
+promotion_valid_from: 28.08.2026 
+* percentage_discount is empty even promotion_description is '-20%' for  https://sortiment.lidl.ch/de/catalog/product/view/id/21104/s/volvic-tee-1800720/category/54/ (row 354)
+* breadcrumb empty for 2 records :
+https://www.lidl.ch/p/de-CH/cien-sonnenspray-sport-transparent-lsf-30/p10052386 (row 3794)
+https://www.lidl.ch/p/de-CH/cien-sonnenspray-sport-transparent-lsf50/p10052388 (row 3819)
+
+* regular_price: Found 102 values not having exactly 2 decimal places
+* selling_price: Found 94 values not having exactly 2 decimal places
+https://sortiment.lidl.ch/de/catalog/product/view/id/21483/s/spezialwaschmittel-1012861/category/54/   (row 216)
+https://sortiment.lidl.ch/de/catalog/product/view/id/20849/s/schweizer-kartoffeln-0083292/category/54/ (row 457)
+*  promotion_price: Found 39 values not having exactly 2 decimal places
+https://www.lidl.ch/p/de-CH/parkside-40-v-akku-rasenmaeher/p10057594 (row 3018)
+https://www.lidl.ch/p/de-CH/parkside-20-v-akku-rasenmaeher/p10057595 (row 3022)
+* promotion_price ≠ selling_price for 1 record :  https://sortiment.lidl.ch/de/catalog/product/view/id/21607/s/mandel-glace-1009858/category/54/ (row 186)
+* white space found in product_name for https://sortiment.lidl.ch/de/catalog/product/view/id/20869/s/mini-pizza-pancetta-provola-und-zwiebel-1015165/category/54/ (row 3746)
+* promotion dates are empty for records with promotion_description 'Aktion'. Eg:
+https://sortiment.lidl.ch/de/catalog/product/view/id/22028/s/puerto-mate-bio-mate-puro-5114186/category/54/ (row 36)
+https://sortiment.lidl.ch/de/catalog/product/view/id/22027/s/knorr-asia-noodles-1801656/category/54/ (row 38)
+
+9) bayut_properties_buy_commercial_2026_09_02.json
+__________________________________________________
+
+* int values in API are recorded as float in the dataset. Eg fields:
+        - price
+        - createdAt
+        - approvedAt
+        - updatedAt
+        - reactivatedAt
+        - completionDetails --> startDate
+        - completionDetails -->  completionDate
+        - completionDetails -->  completionPercentage
+
+

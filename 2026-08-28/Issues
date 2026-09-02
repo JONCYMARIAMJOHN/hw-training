@@ -1,0 +1,171 @@
+_______________ISSUES______________
+===================================
+
+1) DataHut_SI_Mercator_PriceExtractions_20260828.CSV
+____________________________________________________
+
+* regular_price: Found 75 values not having exactly 2 decimal places
+* selling_price: Found 324 values not having exactly 2 decimal places. Eg:
+https://mercatoronline.si/izdelek/17720502/maslo-mu-cuisine-20-g (row 353)
+https://mercatoronline.si/izdelek/19119393/maslo-meggle-20-g (row 374)
+* promotion_price: Found 256 values not having exactly 2 decimal places
+https://mercatoronline.si/izdelek/8554376/narezek-pecen-prsut-kras-pakirano-100-g  (row 1292)
+https://mercatoronline.si/izdelek/19901731/musli-cokolada-rise-amp-smile-750-g (row 3595)
+* promotion_price: Found 256 values not having exactly 2 decimal places
+https://mercatoronline.si/izdelek/8554376/narezek-pecen-prsut-kras-pakirano-100-g (row 1292) 
+https://mercatoronline.si/izdelek/19901731/musli-cokolada-rise-amp-smile-750-g (row 3595)
+* promotion_description and percentage_discount present on the website, but empty on the dataset for 1 record:
+https://mercatoronline.si/izdelek/5129711/jogurt-1-3-m-m-ego-500-g (row 93)
+
+
+2) DataHut_SI_Spar_PriceExtractions_20260828.CSV
+________________________________________________
+
+* percentage_discount field is also empty.
+* regular_price: Found 747 values not having exactly 2 decimal places
+* selling_price: Found 645 values not having exactly 2 decimal places
+https://online.spar.si/p/nastrgani-mandlji-spar-200g-274032 (row 354) 
+https://online.spar.si/p/fizol-pisani-s-budget-1kg-348544 (row 391)
+* promotion_price: Found 237 values not having exactly 2 decimal places
+https://online.spar.si/p/kruh-droznik-zito-400g-614033 (row 5285)
+https://online.spar.si/p/grah-natureta-450g-56437 (row 9047)
+* promotion_price greater than regular_price for 6 rows with promotion_description is 'Prihranek -(x.xx) €' :
+Row: 15230--> https://online.spar.si/p/steklen-pokrov-jamie-oliver-home-cook-tefal-28cm-11-674062   
+Row: 15231--> https://online.spar.si/p/stekleni-pokrov-jamie-oliver-home-cook-tefal-24cm-11-674058   
+Row: 15264--> https://online.spar.si/p/ponev-wok-jamie-oliver-home-cook-tefal-28cm-11-674053   
+Row: 15265--> https://online.spar.si/p/ponev-jamie-oliver-home-cook-tefal-20cm-11-674048   
+Row: 15266--> https://online.spar.si/p/ponev-jamie-oliver-home-cook-tefal-24cm-11-674049   
+Row: 15267--> https://online.spar.si/p/ponev-jamie-oliver-home-cook-tefal-28cm-11-674051
+* grammage_quantity converted fromn g to kg, but grmmage_unit not converted for 2 records :
+https://online.spar.si/p/nadomestek-kave-z-okusom-po-kakavu-calmrooty-62g-681408 (row 672)
+https://online.spar.si/p/testenine-fusilli-feelingok-220g-679091 (row 8667)
+
+3) DataHut_SI_Dm_PriceExtractions_20260828.CSV
+______________________________________________
+
+* regular_price: Found 2667 values not having exactly 2 decimal places
+* selling_price: Found 2667 values not having exactly 2 decimal places. Eg:
+https://www.dm.si/p/d/1681460/selfie-project-hidrokoloidni-oblizi-proti-mozoljem-v-obliki-srckov (row 10)
+https://www.dm.si/p/d/1916589/alpro-kokosov-napitek-s-sojo-barista-obogaten-s-kalcijem (row 11)
+* Unwanted white space found on product name for 16 records:
+https://www.dm.si/p/d/1321849/essence-maskara-i-love-extreme-volume (row 252)
+https://www.dm.si/p/d/3123816/denkmit-kapsule-za-pranje-obcutljivega-perila-3v1-pure-delight (row 2906)
+* Unwanted space found on breadcrumb for 518 records:
+https://www.dm.si/p/d/3159227/hipp-ekolosko-zacetno-mleko-za-dojencke-pure-1-0m (row 19)
+https://www.dm.si/p/d/3159283/hipp-ekolosko-junior-mleko-pure-3-12m (row 22)
+
+4) servicesbahrain_bah_2026_09.json
+____________________________________
+
+* legal type values are Individual CR, Corporate CR
+* Unwanted white space found on name for 28 records. Eg:
+Row : 14, license_number : B201803/0026   
+Row : 76, license_number : D201810/0063 
+* telephone_number has invalid value, '(+973)' for 40 records. Eg:
+Row 6, licence_number: B201803/0007
+Row 12, license_number: B201803/0025
+
+5) sedd_uae_2026_09.json
+________________________
+
+* Data count : 1056
+* Unwanted white space found on name field for 57 records.Eg:
+Row 727, license_number: 907298
+Row 762, license_number: 945733
+
+
+6) baity_bah_2026_09.json
+_________________________
+
+* furnished values are in block letters in the dataset, but in Camel case on the website
+* property_type is 'Land' in website, But 'PLOT' in dataset. Eg:
+https://baity.bh/properties/land-in-hamala-38154 (row 2996)
+https://baity.bh/properties/land-in-arad-25496 (row 2997) 
+* property_type values are in block letters in the dataset, but in Camel case on the website
+
+7) wasalt_ksa_2026_09.json
+_______________________
+
+* bathrooms value '+9' in dataset, but '9+' in website for 2 records:
+https://wasalt.com/en/property/sale/villa-1026-sqm-with-2-apartments-facing-3-5857581 (row 12579)
+https://wasalt.com/en/property/sale/villa-480-sqm-with-2-apartments-facing-east-5861344 (row 24252)
+* Unwanted white space found in broker and broker_display_name for 5 records. Eg:
+https://wasalt.com/en/property/sale/villa-300-sqm-facing-west-5861892 (10742)
+https://wasalt.com/en/property/sale/apartment-5862158 (row 16937)
+* Unwanted white space found in title for 1 record: https://wasalt.com/en/project/Riyadh/-100507/222-sqm-facing-south-on-15m-width-street-5873578 (row 10255)
+* Unwanted white space found in description for 42176 records. Eg:
+https://wasalt.com/en/property/sale/apartment-17496-sqm-with-3-bedrooms-5889041 (row 3) 
+https://wasalt.com/en/property/sale/apartment-11438-sqm-with-3-bedrooms-5884385 (row 4)
+  
+  
+8) haraj_ksa_2026_09.json
+_________________________
+
+* user_id is not numeric, but the same value of broker_display_name accross the entire dataset.
+* category_url value is suspicious. Eg: '/tags/%D8%A7%D8%B1%D8%A7%D8%B6%D9%8A%20%D9%84%D9%84%D8%A8%D9%8A%D8%B9'
+* Unwanted white space found in broker, broker_display_name and user_id for 295 records. Eg:
+https://haraj.com.sa/11186925765/دور_أرضي_للإيجار_السنوي___حي_النفل___الرياض (row 17)
+https://haraj.com.sa/11187060306/فله_للايجار_في_حي_عكاظ  (row 51)
+* Unwanted white space found in title for 1407 records. Eg:
+https://haraj.com.sa/11186968665/دور_كامل_فاخر_بطراز_إنجليزي_للإيجار_الرمال___الرياض (row 6) 
+https://haraj.com.sa/11186925765/دور_أرضي_للإيجار_السنوي___حي_النفل___الرياض (row 17)
+* Unwanted white space found in description for 13880 records. Eg:
+https://haraj.com.sa/11187061896/دور_ارضي_للايجارGround_Floor_for_Rent (row 5) 
+https://haraj.com.sa/11186316155/دور_علوي_للايجار_حي_المونسيه (row 7)
+
+
+9) hepsiemlak_tur_2026_09.json
+______________________________
+
+* 'For Sale' is also included in category
+* Both broker and broker_display_name are in block letters for several records. Eg:
+Row 307296 | url : https://www.hepsiemlak.com/en/canakkale-biga-pekmezli-satilik/tarla/130847-94 | value : ATAHAN GROUP GAYRİMENKUL 
+Row 310089 | url : https://www.hepsiemlak.com/en/konya-selcuklu-parsana-satilik/daire/168376-5 | value : ELEGANCE EMLAK
+* currency is 'USD' on website, but 'GBP' on dataset for several records. Eg:
+https://www.hepsiemlak.com/en/kibris-iskele-kalecik-satilik/imarli-villa/0-47141044 (row 6467)
+https://www.hepsiemlak.com/en/kibris-iskele-kalecik-satilik/imarli-konut/0-47142662 (row 6575)
+* currency is 'TRY' on website, but 'TL' on dataset. Eg:  
+https://www.hepsiemlak.com/en/istanbul-fatih-aksaray-kiralik/butik-otel/44825-5425 (row 2641)
+https://www.hepsiemlak.com/en/istanbul-sisli-mecidiyekoy-kiralik/apart/153552-108 (row 2647)
+* bedrooms value is '9' on website but '9 ve üzeri' on dataset. Eg:
+https://www.hepsiemlak.com/en/istanbul-fatih-aksaray-kiralik/butik-otel/44825-5425 (row 2641)
+* Unwanted white space found in broker, broker_display_name for 65 records. Eg:
+https://www.hepsiemlak.com/en/proje/bursa-nilufer/efe-yamac-evleri-projesi-6424 (row 561)
+https://www.hepsiemlak.com/en/proje/bursa-nilufer/efe-saray-park-projesi-6423  (row 562)
+* Unwanted white space found in agent_name for 5995 records. Eg:
+https://www.hepsiemlak.com/en/proje/bursa-nilufer/marine-evleri-zirve-2-etap-projesi-6418 (row 568)
+https://www.hepsiemlak.com/en/proje/ankara-etimesgut/goksu-5-2-forces-vista-projesi-4090 (row 919)  
+* category_url values are ['/projeleri', '/Kiralık', '/Satılık', '/Sezonluk Kiralık']
+
+10) ewm_2026_09_05.json
+_______________________
+
+* Filename is having future date value '2026_09_05'
+* state value is 'Florida' for 1 record : https://www.ewm.com/agents/1776735/Ramon+Franco (row 421)
+
+
+11) sutton_2026_09_05.json
+__________________________
+
+* Filename is having future date value '2026_09_05'
+* White space found in first_name for  https://www.sutton.com/ca/agent/rui-xia-liu-105182 (row 3907)
+* White space found in last_name for 2 records:
+https://www.sutton.com/ca/agent/migin-kan-57320 (row 2791)
+https://www.sutton.com/ca/agent/angela-cheng-prec-106701 (row 4296)
+* "social": {} accross the dataset
+* languages amd office_phone_numbers fields includes value []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

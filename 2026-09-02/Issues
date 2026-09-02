@@ -1,0 +1,308 @@
+___________ISSUES__________
+===========================
+
+1) bayut_properties_rent_commercial_2026_09_02.json
+__________________________________________________
+
+* int values in API are recorded as float in the dataset. Eg fields:
+        - price
+        - createdAt
+        - approvedAt
+        - updatedAt
+        - reactivatedAt
+        - completionDetails --> startDate
+        - completionDetails -->  completionDate
+        - completionDetails -->  completionPercentage
+* url under coverPhoto missing in API, but present in dataset. Eg :
+https://www.bayut.com/property/details-6624832.html (row 1)
+https://www.bayut.com/property/details-12439222.html (row 2)
+* url under photos key missing in API, but present in dataset
+https://www.bayut.com/property/details-6624832.html (row 1)
+https://www.bayut.com/property/details-12439222.html (row 2)
+* indyScore and indyScore_l1 are 54 in API, but 55 in dataset for https://www.bayut.com/property/details-6624832.html (row 1)
+* indyScore and indyScore_l1 are 321 in API, but 329 in dataset for https://www.bayut.com/property/details-12439222.html (row 2)
+* coverPhoto missing for 4 records :
+https://www.bayut.com/property/details-15422479.html (row 6113)
+https://www.bayut.com/property/details-16235228.html (row 10277)
+https://www.bayut.com/property/details-16288575.html (row 16675)
+https://www.bayut.com/property/details-14952763.html (row 16686)
+
+
+2) bayut_properties_rent_residential_2026_09_02.json
+____________________________________________________
+
+* coverPhoto missing for 14 records. Eg:
+https://www.bayut.com/property/details-15843495.html (row 3989)
+https://www.bayut.com/property/details-16076899.html (row 45141)
+
+* url under coverPhoto missing in API, but present in dataset. Eg :
+https://www.bayut.com/property/details-15940430.html (row 1)
+https://www.bayut.com/property/details-15888854.html (row 2)
+* url under photos key missing in API, but present in dataset. Eg:
+https://www.bayut.com/property/details-15940430.html (row 1)
+https://www.bayut.com/property/details-15888854.html (row 2)
+* indyScore, indyScore_l1, indyScore_l2, indyScore_l3, indyScore_l4 values mismatch found in some records. Eg:
+https://www.bayut.com/property/details-15888854.html (row 2)
+* int values in API are recorded as float in the dataset. Eg fields:
+        - price
+        - createdAt
+        - approvedAt
+        - updatedAt
+        - reactivatedAt
+        - completionDetails --> startDate
+        - completionDetails -->  completionDate
+        - completionDetails -->  completionPercentage
+        
+3) DataHut_SI_Dm_PriceExtractions_20260902.CSV
+______________________________________________
+
+* regular_price: Found 2581 values not having exactly 2 decimal places
+* selling_price: Found 2581 values not having exactly 2 decimal places
+https://www.dm.si/p/d/3090088/adidas-parfumska-voda-za-moske-vibes-wonder-force (row 3)
+https://www.dm.si/p/d/3161799/adidas-parfumska-voda-za-zenske-vibes-smooth-pace (row 5)
+
+* white space found in product_name. Eg:
+https://www.dm.si/p/d/1321849/essence-maskara-i-love-extreme-volume (row 271)
+https://www.dm.si/p/d/3123816/denkmit-kapsule-za-pranje-obcutljivega-perila-3v1-pure-delight (row 2897) 
+* white space found in breadcrumb. Eg:
+https://www.dm.si/p/d/1715572/babylove-naravna-mineralna-voda-brez-ogljikovega-dioksida (row 23)
+https://www.dm.si/p/d/1575910/babylove-previjalna-podloga-60-x-60-cm (row 41)
+
+4) DataHut_SI_Spar_PriceExtractions_20260902.CSV
+________________________________________________
+
+* percentage_discount is also empty
+* regular_price: Found 718 values not having exactly 2 decimal places
+* selling_price: Found 710 values not having exactly 2 decimal places
+https://online.spar.si/p/nastrgani-mandlji-spar-200g-274032 (row 358)
+https://online.spar.si/p/fizol-pisani-s-budget-1kg-348544 (row 383)
+* promotion_price: Found 140 values not having exactly 2 decimal places
+https://online.spar.si/p/igra-miselni-izziv-rotor-t6-huzzle-11-666721 (row 10749)
+https://online.spar.si/p/igra-miselni-izziv-planet-t4-huzzle-11-666724 (row 10755)
+* grammage_quantity converted from g to kg, but grammage_unit is still g for 2 records:
+https://online.spar.si/p/nadomestek-kave-z-okusom-po-kakavu-calmrooty-62g-681408 (row 663)
+https://online.spar.si/p/testenine-fusilli-feelingok-220g-679091 (row 8497) 
+
+5) DataHut_SI_Mercator_PriceExtractions_20260902.CSV
+______________________________________________________
+
+* regular_price: Found 75 values not having exactly 2 decimal places
+* selling_price: Found 334 values not having exactly 2 decimal places
+https://mercatoronline.si/izdelek/17720502/maslo-mu-cuisine-20-g (row 361)
+https://mercatoronline.si/izdelek/19119393/maslo-meggle-20-g (row 376)
+* promotion_price: Found 266 values not having exactly 2 decimal places
+https://mercatoronline.si/izdelek/876755/kisla-smetana-20-m-m-mu-cusine-180-g (row 1065)
+https://mercatoronline.si/izdelek/5068345/alpska-smetana-za-stepanje-33-m-m-mu-cuisine-500-ml (row 1078)
+* promotion_price empty even value available on website. Eg:
+https://mercatoronline.si/izdelek/17294851/sadni-jogurt-panna-cotta-vec-okusov-3-5-m-m-zott-jogobella-150-g (row 64)
+https://mercatoronline.si/izdelek/17164308/tekoci-jogurt-1-3-m-m-ego-1-kg (row 80)
+* 
+
+6) DataHut_CH_Lidl_PriceExtractions_20260902.CSV
+________________________________________________
+
+* breadcrumb empty for 2 records :
+https://www.lidl.ch/p/de-CH/cien-sonnenspray-sport-transparent-lsf-30/p10052386  (row 3707)
+https://www.lidl.ch/p/de-CH/cien-sonnenspray-sport-transparent-lsf50/p10052388 (row 3804)
+* regular_price: Found 102 values not having exactly 2 decimal places
+* selling_price: Found 94 values not having exactly 2 decimal places
+https://sortiment.lidl.ch/de/catalog/product/view/id/21483/s/spezialwaschmittel-1012861/category/54/ (row 215)
+https://sortiment.lidl.ch/de/catalog/product/view/id/20849/s/schweizer-kartoffeln-0083292/category/54/ (row 455)
+* promotion_price: Found 39 values not having exactly 2 decimal places
+https://sortiment.lidl.ch/de/catalog/product/view/id/15277/s/felix-katzensnack-party-mix-0008705/category/54/ (row 1777)
+https://sortiment.lidl.ch/de/catalog/product/view/id/12333/s/rahmweichkaese-0002754/category/54/ (row 2703)
+* 119 records with promotion_description 'Aktion' have promotion dates empty. Eg:
+https://sortiment.lidl.ch/de/catalog/product/view/id/22025/s/knorr-asia-noodles-1801654/category/54/ (row 38)
+https://sortiment.lidl.ch/de/catalog/product/view/id/22027/s/knorr-asia-noodles-1801656/category/54/ (row 39)
+* white space found in product_name and breadcrumb for 1 record : https://sortiment.lidl.ch/de/catalog/product/view/id/20869/s/mini-pizza-pancetta-provola-und-zwiebel-1015165/category/54/ (row 3731)
+
+7) DataHut_AU_Coles_FullDump_20260902.CSV
+_________________________________________
+
+* product_description value is 'Null' for 20 records. Eg:
+539905  https://www.coles.com.au/product/milka-crispy-rice-chocolate-100g-9960228 (row 539907)
+539906  https://www.coles.com.au/product/milka-crispy-rice-chocolate-100g-9960228 (row 539908)
+* instructions and instructionforuse value are '(null)' for 24 records :
+https://www.coles.com.au/product/kb%27s-cooked-and-peeled-prawns-tail-on-extra-large-350g-1420442 (row 154136)
+https://www.coles.com.au/product/kb%27s-cooked-and-peeled-prawns-tail-on-extra-large-350g-1420442 (row 154137)
+* product_description value is '(null)' for 23 records:
+https://www.coles.com.au/product/cadbury-mousse-caramello-90g-1809652 (row 178017)
+https://www.coles.com.au/product/cadbury-mousse-caramello-90g-1809652 (row 178018)
+* pdp_url is not unique. 734838 duplicate urls found
+* more empty columns: file_name_1, features, suitable_for, environmental
+non empty: regular_price, barcode, producthierarchy_level4, producthierarchy_level5
+* labelling is empty for 353276 records. Eg:
+https://www.coles.com.au/product/nerf-2.5in-squeak-tennis-ball-dog-toy-4-pack-4407280 (row 2)
+https://www.coles.com.au/product/nerf-2.5in-squeak-tennis-ball-dog-toy-4-pack-4407280 (row 3)
+* regular_price: Found 698354 values not having exactly 2 decimal places
+* selling_price: Found 679879 values not having exactly 2 decimal places
+https://www.coles.com.au/product/nerf-2.5in-squeak-tennis-ball-dog-toy-4-pack-4407280 (row 2)
+https://www.coles.com.au/product/nerf-2.5in-squeak-tennis-ball-dog-toy-4-pack-4407280 (row 3)
+* promotion_price: Found 216991 values not having exactly 2 decimal places
+ https://www.coles.com.au/product/cucina-matese-basilico-pasta-sauce-550g-5050731 (row 98)
+https://www.coles.com.au/product/cucina-matese-basilico-pasta-sauce-550g-5050731 (row 99)
+
+8) DataHut_IT_Eurospin_PriceExtractions_20260902.CSV
+____________________________________________________
+
+* extraction_date should be 2026-09-02, but it is 2026-09-01
+* regular_price: Found 333 values not having exactly 2 decimal places
+* selling_price: Found 333 values not having exactly 2 decimal places
+https://online.eurospin.com/product/fontina-dop (row 225)
+https://online.eurospin.com/product/fontina-dop (row 226)
+* promotion_price: Found 20 values not having exactly 2 decimal places
+https://online.eurospin.com/product/fettine-sottili-bovino-adulto2 (row 1368)
+https://online.eurospin.com/product/fettine-sottili-bovino-adulto2 (row 1369)
+* price_valid_from and promotion_valid_from are in yyyy-mm-dd format.
+* barcode is in 1f format
+
+9) DataHut_IT_Esselunga_PriceExtractions_20260902.CSV
+_____________________________________________________
+
+* extraction_date should be 2026-09-02, but it is 2026-09-01
+* regular_price: Found 60394 values not having exactly 2 decimal places
+* selling_price: Found 58500 values not having exactly 2 decimal places
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/852150/domopak-living-reti-proteggi-reggiseni-16-x-10-cm-2-pz (row 33)  
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/852022/vileda-premium-2in1-copriasse-universal (row 39)
+* promotion_price: Found 3261 values not having exactly 2 decimal places
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/734813/pecorino-di-amatrice-riserva-di-grotta (row 73)
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/734110/brigante (row 74)
+* brand includes '\t' character : 'Soré\t\t'. Eg:
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/552165/sore-valtenesi-riviera-del-garda-classico-doc-75-cl (row 31)
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/552165/sore-valtenesi-riviera-del-garda-classico-doc-75-cl (row 32)
+* pdp_url uncludes '\t' character in 21 records. Eg:
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/157442/elephant-baked-squeezed-pretzels-sea-salt-\t80-g (row 2)
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/653548/amico-veg-snack\tal-gusto-riso-100-vegetale-mini-48-g (row 3)
+* white space found in grammage_quantity:
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/672102/grey-lacchiappa-smacchia-azione-totale-buste-12-x-30-g (row 32)
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/620615/labello-original-e-hydro-care-balsamo-labbra-sfp-15-2x48-g (row 8891)
+* white space found in site_shown_uom:
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/311519/sterzing-vipiteno-sapori-di-vipiteno-yogurt-al-limone-2-x-125-g (row 4826)   
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/651110/felix-le-ghiottonerie-selezioni-deliziose-in-gelatina-pollo-manzo-coniglio-agnello-24-x-85-g (row 7586)
+* price_valid_from, promotion_valid from are in dd/mm/yyyy format
+* '|' is not replaced with '\|' for several records. Eg:
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/672021/omino-bianco-sbianca-lana-cotone-e-seta-5-x-20-g (row 504) 
+https://spesaonline.esselunga.it/commerce/nav/drive/store/prodotto/212540/splendid-classico-10-30-capsule-caffe-compatibili-con-macchine-nespresso-original-156g (row 829)
+
+10) DataHut_AT_Spar_FullDump_20260903.CSV
+_________________________________________
+
+* Filename is DataHut_AT_Spar_FullDump_20260903, which includes future date
+* age_of_the_product' not empty.
+* product_name is taken as site_shown_uom only in the cases where the value is not avaialble on website
+* extraction_date, 2026-09-03 is a future date
+* regular_price: Found 4810 values not having exactly 2 decimal places
+* selling_price: Found 4810 values not having exactly 2 decimal places
+https://www.spar.at/produktwelt/spar-premium-mezze-maniche-p2020004938749 (row 130)
+https://www.spar.at/produktwelt/spar-premium-premium-nektarinen-p2020005871441 (row 217)
+* promotion_price: Found 26 values not having exactly 2 decimal places
+https://www.spar.at/produktwelt/bumbu-original-spiced-p2020004205377 (row 3621)
+https://www.spar.at/produktwelt/spar-natur-pur-bio-wolfsbarsch-p1417487 (row 6572)
+* image_url_1 not valid for 32 records:
+https://www.spar.at/produktwelt/nescafe-classic-loeskaffee-kraeftig-p241274 (5991)
+https://www.spar.at/produktwelt/beko-kuehl-gefrierkombination-b3rcso255s-p2020006036221 (row 12651)
+* grammage_quanity is '2.' for 1 record: https://www.spar.at/produktwelt/fritz-fries-vampir-set-2-teilig-p2020006166256  (row 42060)
+* '|' is not replaced with '\|' in columns product_name, nutritional_information and site_shown_uom for several records. Eg:
+https://www.spar.at/produktwelt/despar-premium-bio-apfel-limette-und-ingwer-p2020005534049 (row 26) 
+https://www.spar.at/produktwelt/despar-caffe-crema-classico-p2020000668688 (row 28)
+* white space in producthierarchy_level6 for  https://www.spar.at/produktwelt/vorarlberg-milch-laendle-halbfettmilch-laenger-frisch-1-5-fett-p2020006312547 (row 23401)
+* white space in promotion_description. Eg:
+https://www.spar.at/produktwelt/finish-power-geschirrspuel-tabs-classic-fresh-56-stueck-p2020005738744 (row 12576)
+https://www.spar.at/produktwelt/finish-ultimate-geschirrspuel-caps-citrus-36-stueck-p2020005738928 (row 17834)
+* white space in breadcrumb. Eg:
+https://www.spar.at/produktwelt/s-budget-toiletten-papier-10-rollen-p2020006211093 (row 329)
+https://www.spar.at/produktwelt/softis-feuchtes-toilettenpapier-kamille-42-stueck-p2020006282901 (row 4099)
+* brand null for 2 records (same as in website) :
+https://www.spar.at/produktwelt/null-sparkling-tea-rose-alkoholfrei-p2020004999153 (row 8591)
+https://www.spar.at/produktwelt/null-sparkling-tea-blanc-alkoholfrei-p2020005975286 (row 19139)
+
+
+11) DataHut_SI_Dm_FullDump_20260903.CSV
+_________________________________________
+
+* Filename is DataHut_SI_Dm_FullDump_20260903, which includes future date
+* 'price_was', 'promotion_price' also empty
+* regular_price: Found 2580 values not having exactly 2 decimal places
+* selling_price: Found 2580 values not having exactly 2 decimal places
+https://www.dm.si/p/d/3114702/celimax-retinal-shot-booster-nega-za-obraz (row 2)
+https://www.dm.si/p/d/3161799/adidas-parfumska-voda-za-zenske-vibes-smooth-pace (row 5)
+* competitor_product_key is taken from dm product number
+* '\t' found in preparationinstructions (4 records), labelling (2 records) and warning (1 record). Eg:
+https://www.dm.si/p/d/1491605/dmbio-bio-kasa-s-polnozrnatimi-zitni-kosmici-orescki-in-semeni-indijskega-trpotca (row 3200) 
+https://www.dm.si/p/d/3063319/syoss-platinasti-posvetljevalec-las-13-5  (row 4485)
+* '|' is not replaced with '\|' for 103 records. Eg:
+https://www.dm.si/p/d/3123738/balea-zascita-pred-drgnjenjem-koze-v-stiku-tropical-dream (row 77)
+https://www.dm.si/p/d/3135979/alverde-naturkosmetik-sampon-family  (row 153)
+* white space found in breadcrumb:
+https://www.dm.si/p/d/1715572/babylove-naravna-mineralna-voda-brez-ogljikovega-dioksida (row 26)
+https://www.dm.si/p/d/1575910/babylove-previjalna-podloga-60-x-60-cm  (row 51)
+* white space found in storage_instructions. Eg:
+https://www.dm.si/p/d/3149875/lekobeba-vetrovne-kapljice-prehransko-dopolnilo (row 1345)
+https://www.dm.si/p/d/1689987/pure-fun-bio-sadna-kasica-tacke-na-patrulji-jabolko-banana-jagoda (row 1410)
+* white space found in preparation_instructions. Eg:
+https://www.dm.si/p/d/1462215/dmbio-bio-ovsena-zitna-kasica-po-dopolnjenem-5-mesecu (row 133)
+https://www.dm.si/p/d/1462222/dmbio-bio-polnozrnata-zitna-kasica-s-psenicnim-zdrobom-za-dojencke-po-dopolnjenem-5-mesecu (row 358)
+* white space found in country_of_origin. Eg:
+https://www.dm.si/p/d/3103371/mivolis-zeliscni-caj-s-kolagenom-biotinom-in-vitaminom-c (row 2567)
+https://www.dm.si/p/d/1494320/dmbio-bio-polnozrnati-pirini-krekerji (row 3189)
+* white space found in labelling: https://www.dm.si/p/d/1299311/denkmit-detergent-za-rocno-pomivanje-posode-ultra-pro-climate  (row 1378)
+
+12) dubizzle_uae_2026_09_01.json 
+_________________________________
+
+* Data count : 602022
+* latitude, longitude missing for 1 record: https://dubai.dubizzle.com/property-for-rent/residential/apartmentflat/2026/8/16/2-bedroom-apartment-facing-zabeel-park-2-479/ (row 336499)
+* white space found in agent_name. Eg:
+https://dubai.dubizzle.com/property-for-rent/short-term/hotel-apartment/2026/7/30/premium-business-bay-living-fully-furni-2-131530/  (row 6736)
+https://dubai.dubizzle.com/property-for-rent/short-term/hotel-apartment/2026/7/30/premium-hotel-room-business-bay-ideal-f-2-231284/  (row 6746)
+* white space found in broker and broker_display_name. Eg:
+https://dubai.dubizzle.com/property-for-rent/short-term/apartmentflat/2025/8/15/exclusive-1br-with-iconic-views-in-para-2-145457/ (row 6954)
+https://dubai.dubizzle.com/property-for-rent/short-term/apartmentflat/2025/8/1/fully-furnished-studio-bayz-by-danube-b-2-185563/ (row 7301)
+* white space found in description. Eg:
+https://dubai.dubizzle.com/property-for-rent/rooms-for-rent-flatmates/apartmentflat/2026/7/22/available-new-family-partition-near-al-rig-2-599/ (row 3)
+https://dubai.dubizzle.com/property-for-rent/rooms-for-rent-flatmates/apartmentflat/2026/8/23/family-room-metro-al-qiyadah-2-906/ (row 6)
+* white space found in reference_number. Eg:
+https://sharjah.dubizzle.com/property-for-rent/rooms-for-rent-flatmates/apartmentflat/2026/8/11/fully-furnished-bed-space-450-aed-12-353/ (row 3025)
+https://ajman.dubizzle.com/property-for-rent/residential/apartmentflat/2026/8/10/1bedroom-close-kitchen-apartment-14-313300/ (row 180937)
+
+13) DataHut_SI_Mercator_FullDump_20260903.CSV
+_____________________________________________
+
+* Filename date part having future date
+* extractiondate, 2026-09-03 is afuture date
+*  regular_price: Found 75 values not having exactly 2 decimal places
+* selling_price: Found 334 values not having exactly 2 decimal places
+https://mercatoronline.si/izdelek/17720502/maslo-mu-cuisine-20-g (row 359) 
+https://mercatoronline.si/izdelek/19119393/maslo-meggle-20-g (row 373)
+* promotion_price: Found 266 values not having exactly 2 decimal places
+https://mercatoronline.si/izdelek/876755/kisla-smetana-20-m-m-mu-cusine-180-g  (row 1064)
+https://mercatoronline.si/izdelek/5068345/alpska-smetana-za-stepanje-33-m-m-mu-cuisine-500-ml (row 1076)
+* nutritional_information with all keys and values not available exists. Eg :
+https://mercatoronline.si/izdelek/18384410/mini-piscancji-file-natur-premium-perutnina-ptuj-800-g-ik (row 1263)
+* instructionforuse is ',' for https://mercatoronline.si/izdelek/19684769/negazirana-voda-first-aloe-vera-fructal-0-5-l (row 4518)
+* extra space found in brand : 'BEL  BABYBEL', 'KREPKO  EKO', 'KREPKO  EKO' . Eg:
+https://mercatoronline.si/izdelek/14738215/bio-kisla-smetana-krepko-200-g (row 1074)
+https://mercatoronline.si/izdelek/17069084/prigrizek-za-macke-original-mix-felix-60-g (row 10384)
+* promotion_description present but promtion price empty for several records, even two proces are avaiable on website. Eg:
+https://mercatoronline.si/izdelek/17294851/sadni-jogurt-panna-cotta-vec-okusov-3-5-m-m-zott-jogobella-150-g (row 48)
+https://mercatoronline.si/izdelek/17164308/tekoci-jogurt-1-3-m-m-ego-1-kg (row 82)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
